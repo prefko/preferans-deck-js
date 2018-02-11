@@ -1,0 +1,26 @@
+{
+  "name": "deckjs",
+  "version": "1.0.0",
+  "description": "nodejs deck of cards",
+  "main": "deck.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cope/deckjs.git"
+  },
+  "keywords": [
+    "deck",
+    "cards"
+  ],
+  "author": "Predrag Stojadinovic",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/cope/deckjs/issues"
+  },
+  "homepage": "https://github.com/cope/deckjs#readme",
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
+}
