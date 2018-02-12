@@ -3,25 +3,10 @@
 'use strict';
 
 const _ = require('lodash');
-let exports = module.exports;
+let Card = require('./card');
 
-// ------------------------------------------------------------------
-//  @class  Card
+var card = new Card({suit: 'spade', value: 7, trump: false});
 
-let Card = exports.Card = function (definition) {
-	if (_.isString(definition)) {
+console.log(card.toString());
+console.log(card.unicodeString());
 
-	} else if (_.isPlainObject(definition)) {
-		this.suit = definition.suit;
-		this.value = definition.value;
-		this.trump = _.isBoolean(definition.trump) ? definition.trump : false;
-	}
-	this.suit = suit;
-	this.value = value;
-	this.trump = trump || false;
-};
-
-Card.prototype.toString = () => this.value + '' + this.suit;
-
-Card.unicodeSuit = {heart: '♥', diamond: '♦', club: '♣', spade: '♠'};
-Card.prototype.unicodeString = () => this.value + (Card.unicodeSuit[this.suit] || this.suit);
