@@ -61,6 +61,7 @@ let isValidValue = value => extraxtValue(value) ? true : false;
 
 class Card {
 	constructor(definition) {
+		definition = definition || {};
 		if (_.isString(definition)) {
 			if (_.startsWith(definition, '1')) {
 				this.value = definition.substring(0, 2);
@@ -69,7 +70,7 @@ class Card {
 				this.value = _.toLower(_.first(definition));
 				this.suit = _.toLower(_.join(_.drop(definition), ''));
 			}
-		} else if (_.isPlainObject(definition)) {
+		} else {
 			this.value = _.toLower(definition.value + '');
 			this.suit = _.toLower(definition.suit);
 		}

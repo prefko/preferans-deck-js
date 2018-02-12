@@ -61,7 +61,7 @@ describe("Card tests", function () {
 	});
 
 	describe("Bad contructor tests", function () {
-		let fails = ['5club', 'Ahearts', {value: 16, suit: '♣'}];
+		let fails = [null, '5club', 'Ahearts', {value: 16, suit: '♣'}];
 		_.forEach(fails, fail => {
 			it('should fail for ' + JSON.stringify(fail), function () {
 				expect(() => new Card(fail)).to.throw();
