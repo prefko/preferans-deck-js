@@ -4,8 +4,9 @@
 
 const _ = require('lodash');
 
-const unicodeSuit = Object.freeze({spade: '♠', diamond: '♦', heart: '♥', club: '♣'});
+const unicodes = Object.freeze({spade: '♠', diamond: '♦', heart: '♥', club: '♣'});
 const values = Object.freeze({'7': '7', '8': '8', '9': '9', 'x': 'X', 'j': 'J', 'q': 'Q', 'k': 'K', 'a': 'A'});
+const ranks = Object.freeze({'7': 7, '8': 8, '9': 9, 'x': 19, 'j': 12, 'q': 13, 'k': 14, 'a': 15});
 const suits = Object.freeze({
 	spade: 'spade', s: 'spade', '♠': 'spade',
 	diamond: 'diamond', d: 'diamond', '♦': 'diamond',
@@ -29,6 +30,7 @@ class Card {
 		if (!isValidSuit(this.suit)) throw new Error("Invalid suit extracted: " + this.suit);
 		this.value = values[this.value];
 		this.suit = suits[this.suit];
+		this.label = _.toLower(this.value + '' + this.suit);
 	}
 
 	getValue() {
@@ -39,12 +41,16 @@ class Card {
 		return this.suit;
 	}
 
+	getLabel() {
+		return this.label;
+	}
+
 	compare(c1, c2, trump) {
 		return c1.compareTo(c2, trump);
 	}
 
 	compareTo(c, trump) {
-		if (this.getSuit() === c.getSuit()) return this.getValue() - c.getValue();
+		if (this.getSuit() === c.getSuit()) return ranks[this.getValue()] - ranks[c.getValue()];
 		if (isValidSuit(trump) && c.getSuit() === suits[trump]) return 1;
 		return -1;
 	}
@@ -53,12 +59,16 @@ class Card {
 		return this.compareTo(c, trump) < 0;
 	}
 
+	ppn() {
+
+	}
+
 	toString() {
 		return _.toUpper(this.value) + '' + _.upperFirst(this.suit);
 	}
 
-	unicodeString() {
-		return _.toUpper(this.value) + (unicodeSuit[this.suit] || _.upperFirst(this.suit));
+	toUnicodeString() {
+		return _.toUpper(this.value) + (unicodes[this.suit] || _.upperFirst(this.suit));
 	}
 }
 
