@@ -52,12 +52,12 @@ const ppns = Object.freeze({
 	'aclub': 'W'
 });
 
-let extraxtSuit = suit => suits[_.toLower(suit)];
-let extraxtValue = value => values[_.toLower(value)];
-let extraxtRank = value => ranks[_.toLower(value)];
+let extractSuit = suit => suits[_.toLower(suit)];
+let extractValue = value => values[_.toLower(value)];
+let extractRank = value => ranks[_.toLower(value)];
 
-let isValidSuit = suit => extraxtSuit(suit) ? true : false;
-let isValidValue = value => extraxtValue(value) ? true : false;
+let isValidSuit = suit => extractSuit(suit) ? true : false;
+let isValidValue = value => extractValue(value) ? true : false;
 
 class Card {
 	constructor(definition) {
@@ -78,9 +78,9 @@ class Card {
 		if (!isValidValue(this.value)) throw new Error("Invalid value extracted: " + this.value);
 		if (!isValidSuit(this.suit)) throw new Error("Invalid suit extracted: " + this.suit);
 
-		this.value = extraxtValue(this.value);
-		this.suit = extraxtSuit(this.suit);
-		this.rank = extraxtRank(this.value);
+		this.value = extractValue(this.value);
+		this.suit = extractSuit(this.suit);
+		this.rank = extractRank(this.value);
 
 		this.label = _.toLower(this.value + '' + this.suit);
 		this.ppn = ppns[this.label];
@@ -116,7 +116,7 @@ class Card {
 
 	compareTo(c, trump) {
 		if (this.getSuit() === c.getSuit()) return c.getRank() - this.getRank();
-		if (isValidSuit(trump) && c.getSuit() === extraxtSuit(trump)) return 1;
+		if (isValidSuit(trump) && c.getSuit() === extractSuit(trump)) return 1;
 		return -1;
 	}
 
