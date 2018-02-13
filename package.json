@@ -2,7 +2,7 @@
 	"name": "deckjs",
 	"version": "1.0.0",
 	"description": "nodejs deck of cards",
-	"main": "deck.js",
+	"main": "lib/deck.js",
 	"scripts": {
 		"test": "nyc --reporter=html mocha"
 	},
