@@ -49,4 +49,21 @@ describe("Value tests", function () {
 		});
 	});
 
+	describe("test method all", function () {
+		it('should be a non-empty array', function () {
+			expect(Value.all()).to.be.an('array').that.is.not.empty;
+		});
+	});
+
+	describe("should have exact values", function () {
+		let check = _.uniq(_.values(__values));
+		let vals = _.join(check, ',');
+		it('response should include all values: ' + vals, function () {
+			expect(Value.all()).to.include.members(check);
+		});
+		it(vals + ' should include all from response', function () {
+			expect(check).to.include.members(Value.all());
+		});
+	});
+
 });

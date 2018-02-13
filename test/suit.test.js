@@ -81,4 +81,20 @@ describe("Suit tests", function () {
 		});
 	});
 
+	describe("test method all", function () {
+		it('should be a non-empty array', function () {
+			expect(Suit.all()).to.be.an('array').that.is.not.empty;
+		});
+	});
+
+	describe("should have exact values", function () {
+		let vals = _.join(_.keys(goodUnicodes), ',');
+		it('response should include all values: ' + vals, function () {
+			expect(Suit.all()).to.include.members(_.keys(goodUnicodes));
+		});
+		it(vals + ' should include all from response', function () {
+			expect(_.keys(goodUnicodes)).to.include.members(Suit.all());
+		});
+	});
+
 });

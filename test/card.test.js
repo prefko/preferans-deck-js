@@ -4,7 +4,7 @@ const expect = require("chai").expect;
 let Card = require("../lib/card");
 let cards = [
 	{
-		card: new Card('7', 'Spade'),
+		card: new Card({value: 7, suit: "spade"}),
 		string: '7Spade',
 		unicode: '7♠',
 		value: '7',
@@ -12,8 +12,7 @@ let cards = [
 		rank: 7,
 		label: '7spade',
 		ppn: '1'
-	},
-	{
+	}, {
 		card: new Card(8, '♦'),
 		string: '8Diamond',
 		unicode: '8♦',
@@ -22,8 +21,7 @@ let cards = [
 		rank: 8,
 		label: '8diamond',
 		ppn: 'A'
-	},
-	{
+	}, {
 		card: new Card('X', 'h'),
 		string: 'XHeart',
 		unicode: 'X♥',
@@ -32,8 +30,7 @@ let cards = [
 		rank: 10,
 		label: 'xheart',
 		ppn: 'K'
-	},
-	{
+	}, {
 		card: new Card(12, 'd'),
 		string: 'JDiamond',
 		unicode: 'J♦',
@@ -42,9 +39,8 @@ let cards = [
 		rank: 12,
 		label: 'jdiamond',
 		ppn: 'D'
-	},
-	{
-		card: new Card(13, 'club'),
+	}, {
+		card: new Card({value: '13', suit: "club"}),
 		string: 'QClub',
 		unicode: 'Q♣',
 		value: 'Q',

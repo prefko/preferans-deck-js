@@ -39,6 +39,8 @@ const __ppns = Object.freeze({
 	'kclub': 'V',
 	'aclub': 'W'
 });
+const make = key => ({value: _.first(key), suit: _.join(_.drop(key), '')});
+const __cards = Object.freeze(_.transform(__ppns, (result, value, key) => result[value] = make(key), {}));
 const badLabels = Object.freeze([1, 2, 3, 4, 5, 6, 11, 16, 'z', 'Z']);
 
 describe("PPN tests", function () {
@@ -48,6 +50,14 @@ describe("PPN tests", function () {
 
 	it('PPN.get should exist', function () {
 		expect(PPN.get).to.exist;
+	});
+
+	it('PPN.all should exist', function () {
+		expect(PPN.all).to.exist;
+	});
+
+	it('PPN.card should exist', function () {
+		expect(PPN.card).to.exist;
 	});
 
 	describe("Get ppn tests", function () {
@@ -65,4 +75,30 @@ describe("PPN tests", function () {
 			});
 		});
 	});
+
+	describe("test method all", function () {
+		it('should be a non-empty array', function () {
+			expect(PPN.all()).to.be.an('array').that.is.not.empty;
+		});
+	});
+
+	describe("should have exact values", function () {
+		let check = _.uniq(_.values(__ppns));
+		let vals = _.join(check, ',');
+		it('response should include all values: ' + vals, function () {
+			expect(PPN.all()).to.include.members(check);
+		});
+		it(vals + ' should include all from response', function () {
+			expect(check).to.include.members(PPN.all());
+		});
+	});
+
+	describe("card ppn tests", function () {
+		_.forEach(__cards, (card, ppn) => {
+			it(ppn + ' PPN.card should return ' + JSON.stringify(card), function () {
+				expect(PPN.card(ppn)).to.be.deep.equal(card);
+			});
+		});
+	});
+
 });

@@ -29,4 +29,22 @@ describe("Rank tests", function () {
 			});
 		});
 	});
+
+	describe("test method all", function () {
+		it('should be a non-empty array', function () {
+			expect(Rank.all()).to.be.an('array').that.is.not.empty;
+		});
+	});
+
+	describe("should have exact values", function () {
+		let check = _.uniq(_.values(__ranks));
+		let vals = _.join(check, ',');
+		it('response should include all values: ' + vals, function () {
+			expect(Rank.all()).to.include.members(check);
+		});
+		it(vals + ' should include all from response', function () {
+			expect(check).to.include.members(Rank.all());
+		});
+	});
+
 });
