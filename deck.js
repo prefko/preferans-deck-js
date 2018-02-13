@@ -17,3 +17,11 @@ console.log(card1.toString(), card1.toUnicodeString(), card1.getLabel(), card1.g
 console.log(card2.toString(), card2.toUnicodeString(), card2.getLabel(), card2.getRank(), card2.getPPN());
 console.log(card3.toString(), card3.toUnicodeString(), card3.getLabel(), card3.getRank(), card3.getPPN());
 console.log(card4.toString(), card4.toUnicodeString(), card4.getLabel(), card4.getRank(), card4.getPPN());
+
+class Deck {
+	constructor() {
+
+	}
+}
+
+module.exports = Deck;

@@ -1,5 +1,5 @@
 # preferans-deck-js
-nodejs deck of cards
+nodejs deck of cards for  preferans
 
 
 ##### Labels and meaning
