@@ -1,10 +1,10 @@
 const _ = require('lodash');
 const expect = require("chai").expect;
 
-let Card = require("../card");
+let Card = require("../lib/card");
 let cards = [
 	{
-		card: new Card('7Spade'),
+		card: new Card('7', 'Spade'),
 		string: '7Spade',
 		unicode: '7♠',
 		value: '7',
@@ -14,7 +14,7 @@ let cards = [
 		ppn: '1'
 	},
 	{
-		card: new Card('8♦'),
+		card: new Card(8, '♦'),
 		string: '8Diamond',
 		unicode: '8♦',
 		value: '8',
@@ -24,7 +24,7 @@ let cards = [
 		ppn: 'A'
 	},
 	{
-		card: new Card('Xh'),
+		card: new Card('X', 'h'),
 		string: 'XHeart',
 		unicode: 'X♥',
 		value: 'X',
@@ -34,7 +34,7 @@ let cards = [
 		ppn: 'K'
 	},
 	{
-		card: new Card('12d'),
+		card: new Card(12, 'd'),
 		string: 'JDiamond',
 		unicode: 'J♦',
 		value: 'J',
@@ -44,7 +44,7 @@ let cards = [
 		ppn: 'D'
 	},
 	{
-		card: new Card({suit: 'club', value: 13}),
+		card: new Card(13, 'club'),
 		string: 'QClub',
 		unicode: 'Q♣',
 		value: 'Q',
@@ -56,15 +56,18 @@ let cards = [
 ];
 
 describe("Card tests", function () {
-	it('should exist', function () {
+	it('Card should exist', function () {
 		expect(Card).to.exist;
 	});
 
 	describe("Bad contructor tests", function () {
 		let fails = [null, '5club', 'Ahearts', {value: 16, suit: '♣'}];
 		_.forEach(fails, fail => {
-			it('should fail for ' + JSON.stringify(fail), function () {
+			it('contructor should fail for value=' + JSON.stringify(fail), function () {
 				expect(() => new Card(fail)).to.throw();
+			});
+			it('contructor should fail for suit=' + JSON.stringify(fail), function () {
+				expect(() => new Card(7, fail)).to.throw();
 			});
 		});
 	});
@@ -100,38 +103,38 @@ describe("Card tests", function () {
 
 	describe("Compare cards tests", function () {
 		it('7Club should beat 8Heart', function () {
-			let c1 = new Card('7c');
-			let c2 = new Card('8h');
+			let c1 = new Card('7', 'c');
+			let c2 = new Card('8', 'h');
 			expect(c1.beats(c2)).to.be.true;
 		});
 		it('7Club should not beat 8Club', function () {
-			let c1 = new Card('7c');
-			let c2 = new Card('8c');
+			let c1 = new Card('7', 'c');
+			let c2 = new Card('8', 'c');
 			expect(c1.beats(c2)).to.be.false;
 		});
 		it('9Club should not beat 8Heart for trump h', function () {
-			let c1 = new Card('9c');
-			let c2 = new Card('8h');
+			let c1 = new Card('9', 'c');
+			let c2 = new Card('8', 'h');
 			expect(c1.beats(c2, 'h')).to.be.false;
 		});
 		it('9Club should not beat 8Heart for trump Heart', function () {
-			let c1 = new Card('9c');
-			let c2 = new Card('8h');
+			let c1 = new Card('9', 'c');
+			let c2 = new Card('8', 'h');
 			expect(c1.beats(c2, 'Heart')).to.be.false;
 		});
 		it('9Club should not beat 8Heart for trump ♥', function () {
-			let c1 = new Card('9c');
-			let c2 = new Card('8h');
+			let c1 = new Card('9', 'c');
+			let c2 = new Card('8', 'h');
 			expect(c1.beats(c2, '♥')).to.be.false;
 		});
 		it('KClub should beat JClub for trump Club', function () {
-			let c1 = new Card('Kc');
-			let c2 = new Card('Jc');
+			let c1 = new Card('K', 'c');
+			let c2 = new Card('J', 'c');
 			expect(c1.beats(c2, 'Club')).to.be.true;
 		});
 		it('7Club should not beat 8Club for trump Club', function () {
-			let c1 = new Card('7c');
-			let c2 = new Card('8c');
+			let c1 = new Card('7', 'c');
+			let c2 = new Card('8', 'c');
 			expect(c1.beats(c2, 'Club')).to.be.false;
 		});
 	});
