@@ -2,7 +2,7 @@ const _ = require('lodash');
 const expect = require("chai").expect;
 
 let Card = require("../lib/card");
-let cards = [
+let __cards = [
 	{
 		card: new Card({value: 7, suit: "spade"}),
 		string: '7Spade',
@@ -50,10 +50,20 @@ let cards = [
 		ppn: 'U'
 	}
 ];
+const __ppns = Object.freeze(['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W']);
 
 describe("Card tests", function () {
 	it('Card should exist', function () {
 		expect(Card).to.exist;
+	});
+
+	describe("Contructor PPN tests", function () {
+		_.forEach(__ppns, ppn => {
+			it('contructor should create card for ' + ppn, function () {
+				expect(() => new Card(ppn)).to.not.throw();
+				expect(new Card(ppn)).to.be.a('object');
+			});
+		});
 	});
 
 	describe("Bad contructor tests", function () {
@@ -63,13 +73,13 @@ describe("Card tests", function () {
 				expect(() => new Card(fail)).to.throw();
 			});
 			it('contructor should fail for suit=' + JSON.stringify(fail), function () {
-				expect(() => new Card(7, fail)).to.throw();
+				expect(() => new Card('X', fail)).to.throw();
 			});
 		});
 	});
 
 	describe("Single card tests", function () {
-		_.forEach(cards, card => {
+		_.forEach(__cards, card => {
 			it('should exist', function () {
 				expect(card.card).to.exist;
 			});
