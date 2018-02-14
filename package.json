@@ -1,5 +1,5 @@
 {
-	"name": "deckjs",
+	"name": "preferans-deck-js",
 	"version": "0.0.1",
 	"description": "nodejs deck of cards",
 	"main": "lib/deck.js",
