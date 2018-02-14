@@ -1,7 +1,5 @@
-# preferans-deck-js
+# preferans-deck-js [![Build Status](https://travis-ci.org/cope/preferans-deck-js.svg?branch=master)](https://travis-ci.org/cope/preferans-deck-js)
 nodejs deck of cards for preferans
-
-[![Build Status](https://travis-ci.org/cope/preferans-deck-js.svg?branch=master)](https://travis-ci.org/cope/preferans-deck-js)
 
 ##### Labels and meaning
 
