@@ -1,6 +1,6 @@
 {
 	"name": "preferans-deck-js",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "nodejs deck of cards",
 	"main": "lib/deck.js",
 	"scripts": {
@@ -8,7 +8,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/cope/deckjs.git"
+		"url": "git+https://github.com/cope/preferans-deck-js.git"
 	},
 	"keywords": [
 		"deck",
@@ -17,9 +17,9 @@
 	"author": "Predrag Stojadinovic",
 	"license": "Unlicense",
 	"bugs": {
-		"url": "https://github.com/cope/deckjs/issues"
+		"url": "https://github.com/cope/preferans-deck-js/issues"
 	},
-	"homepage": "https://github.com/cope/deckjs#readme",
+	"homepage": "https://github.com/cope/preferans-deck-js#readme",
 	"dependencies": {
 		"lodash": "^4.17.5"
 	},
