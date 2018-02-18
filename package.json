@@ -2,6 +2,9 @@
 	"name": "preferans-deck-js",
 	"version": "0.0.2",
 	"description": "nodejs deck of cards",
+	"engines": {
+		"node": ">=8.9.4"
+	},
 	"main": "lib/deck.js",
 	"scripts": {
 		"test": "nyc --reporter=html mocha"

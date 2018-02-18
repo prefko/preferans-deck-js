@@ -1,0 +1,18 @@
+deck:
+	- new		()
+	- isValid	(cards)	- checks if all the cards are there
+	- getPPN	()		- returns a PPN string representation
+	- cut		()		- cut the deck
+	- shuffle	()		- shuffle the deck
+	- restore	(cards)	- restore deck from played cards
+	- deal		()		- deal to 3 players and talon
+
+pile
+	- new		()
+	- getPPN	()		- returns a PPN string representation
+	- countSuits()		- returns the number of different suits
+	- sort		(config)- sort cards by config {sorting: Pile.SORTING.RED, reversed: false}
+
+card
+	- new		()
+	- 
