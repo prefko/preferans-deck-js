@@ -10,9 +10,19 @@ deck:
 pile
 	- new		()
 	- getPPN	()		- returns a PPN string representation
-	- countSuits()		- returns the number of different suits
-	- sort		(config)- sort cards by config {sorting: Pile.SORTING.RED, reversed: false}
+	- sort		(config)- sort cards by config: e.g. {sorting: Pile.SORTING.SUITS, reversed: true}
 
 card
 	- new		()
-	- 
+	- compate	(c1, c2, trump)	- STATIC compare two cards with specified trump
+	- beats		(card, trump)	- check if it beats given card with specified trump
+	- compareTo	(card, trump)	- compare to given card with specified trump
+	- getters...
+		- value
+		- suit
+		- rank
+		- label
+		- ppn
+	- toString	()				- return cards two character representation
+	- toUnicodeString	()		- return cards value + unicode sign for suit
+
