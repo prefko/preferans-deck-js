@@ -8,13 +8,12 @@ const Card = require('./lib/deck').Card;
 const Pile = require('./lib/deck').Pile;
 
 var deck = new Deck();
-console.log(deck.getPPN());
-deck.cut();
-console.log(deck.getPPN());
-deck.shuffle();
-console.log(deck.getPPN());
+console.log(deck.shuffle().toString());
 let deal = deck.deal();
-console.log(deal.p1.countSuits() + ': ' + deal.p1.toUnicodeString());
-console.log(deal.p2.countSuits() + ': ' + deal.p2.toUnicodeString());
-console.log(deal.p3.countSuits() + ': ' + deal.p3.toUnicodeString());
-console.log(deal.t.countSuits() + ': ' + deal.t.toUnicodeString());
+console.log(deal.p1.sort().toUnicodeString(), '| ', deal.p2.sort().toUnicodeString(), '| ', deal.p3.sort().toUnicodeString(), '| ', deal.t.toUnicodeString());
+
+console.log('\n');
+
+deck.restore(_.concat(deal.p1.get(), deal.p2.get(), deal.p3.get(), deal.t.get()));
+console.log(deck.toString());
+console.log(deck.shuffle().toString());
