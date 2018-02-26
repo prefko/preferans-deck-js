@@ -3,7 +3,7 @@
 	"version": "0.0.2",
 	"description": "nodejs deck of cards",
 	"engines": {
-		"node": ">=8.9.4"
+		"node": ">=8.9"
 	},
 	"main": "lib/deck.js",
 	"scripts": {
