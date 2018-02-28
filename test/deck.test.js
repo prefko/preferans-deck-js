@@ -1,25 +1,29 @@
 const _ = require('lodash');
-const expect = require("chai").expect;
+const expect = require('chai').expect;
 
-const Deck = require("../lib/deck");
+let Deck = require('../lib/deck');
 const ppnString = '123456789ABCDEFGHIJKLMNOPQRSTUVW';
 const unicodeString = '7♠8♠9♠X♠J♠Q♠K♠A♠7♦8♦9♦X♦J♦Q♦K♦A♦7♥8♥9♥X♥J♥Q♥K♥A♥7♣8♣9♣X♣J♣Q♣K♣A♣';
+const fullString = '7Spade8Spade9SpadeXSpadeJSpadeQSpadeKSpadeASpade7Diamond8Diamond9DiamondXDiamondJDiamondQDiamondKDiamondADiamond7Heart8Heart9HeartXHeartJHeartQHeartKHeartAHeart7Club8Club9ClubXClubJClubQClubKClubAClub';
 
-describe("Deck tests", function () {
+describe('Deck tests', function () {
 	it('Deck should exist', function () {
 		expect(Deck).to.exist;
 	});
 
-	describe("Deck constructor/getters tests", function () {
+	describe('Deck constructor/getters tests', function () {
 		it('contructor should create object', function () {
 			expect(() => new Deck()).to.not.throw();
 			expect(new Deck()).to.be.a('object');
 		});
-		it('Deck getPPN should equal to ' + ppnString, function () {
-			expect(new Deck().getPPN()).to.be.equal(ppnString);
+		it('Deck toPPN should equal to ' + ppnString, function () {
+			expect(new Deck().toPPN()).to.be.equal(ppnString);
 		});
-		it('Deck toString should equal to ' + unicodeString, function () {
-			expect(new Deck().toString()).to.be.equal(unicodeString);
+		it('Deck toString should equal to ' + fullString, function () {
+			expect(new Deck().toString()).to.be.equal(fullString);
+		});
+		it('Deck toUnicodeString should equal to ' + unicodeString, function () {
+			expect(new Deck().toUnicodeString()).to.be.equal(unicodeString);
 		});
 		it('Deck get should return array', function () {
 			expect(new Deck().get()).to.be.an('array');
@@ -29,7 +33,7 @@ describe("Deck tests", function () {
 		});
 	});
 
-	describe("Deck validate tests", function () {
+	describe('Deck validate tests', function () {
 		it('Deck validate for cards should return true', function () {
 			expect(Deck.validate(new Deck().get())).to.be.equal(true);
 		});
@@ -40,14 +44,14 @@ describe("Deck tests", function () {
 		});
 	});
 
-	describe("Deck cut tests", function () {
+	describe('Deck cut tests', function () {
 		let deck = new Deck();
 		let cut = deck.cut();
 		it('Deck cut should return object', function () {
 			expect(cut).to.be.a('object');
 		});
 		it('Deck cut should not equal to ' + ppnString, function () {
-			expect(cut.getPPN()).to.be.not.equal(ppnString);
+			expect(cut.toPPN()).to.be.not.equal(ppnString);
 		});
 		it('Deck cut should return array of length 32', function () {
 			expect(cut.get()).to.be.an('array');
@@ -60,14 +64,14 @@ describe("Deck tests", function () {
 		});
 	});
 
-	describe("Deck shuffle tests", function () {
+	describe('Deck shuffle tests', function () {
 		let deck = new Deck();
 		let shuffle = deck.shuffle();
 		it('Deck shuffle should return object', function () {
 			expect(shuffle).to.be.a('object');
 		});
 		it('Deck shuffle should not equal to ' + ppnString, function () {
-			expect(shuffle.getPPN()).to.be.not.equal(ppnString);
+			expect(shuffle.toPPN()).to.be.not.equal(ppnString);
 		});
 		it('Deck shuffle should return array of length 32', function () {
 			expect(shuffle.get()).to.be.an('array');
@@ -80,7 +84,7 @@ describe("Deck tests", function () {
 		});
 	});
 
-	describe("Deck deal tests", function () {
+	describe('Deck deal tests', function () {
 		let deal = new Deck().deal();
 		it('Deck deal should return object', function () {
 			expect(deal).to.be.a('object');
@@ -101,7 +105,7 @@ describe("Deck tests", function () {
 		});
 	});
 
-	describe("Deck restore tests", function () {
+	describe('Deck restore tests', function () {
 		let deck = new Deck();
 		let deal = deck.deal();
 		it('Deck restore for cards should not throw', function () {

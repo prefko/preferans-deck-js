@@ -7,9 +7,13 @@ const Deck = require('./lib/deck');
 const Card = require('./lib/deck').Card;
 const Pile = require('./lib/deck').Pile;
 
+let card = new Card('7');
+console.log(card.toString());
+
 let deck = new Deck();
-console.log(deck.getPPN());
-console.log(deck.shuffle().toString());
+console.log(deck.toPPN());
+console.log(deck.toUnicodeString());
+console.log(deck.shuffle().toUnicodeString());
 
 let deal = deck.deal();
 console.log(
@@ -28,5 +32,5 @@ deck.restore(
 		deal.t.get()
 	)
 );
-console.log(deck.toString());
-console.log(deck.shuffle().toString());
+console.log(deck.toUnicodeString());
+console.log(deck.shuffle().toUnicodeString());

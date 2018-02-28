@@ -1,10 +1,10 @@
 const _ = require('lodash');
-const expect = require("chai").expect;
+const expect = require('chai').expect;
 
-let Card = require("../lib/card");
+let Card = require('../lib/card');
 let __cards = [
 	{
-		card: new Card({value: 7, suit: "spade"}),
+		card: new Card({value: 7, suit: 'spade'}),
 		string: '7Spade',
 		unicode: '7♠',
 		value: '7',
@@ -40,7 +40,7 @@ let __cards = [
 		label: 'jdiamond',
 		ppn: 'D'
 	}, {
-		card: new Card({value: '13', suit: "club"}),
+		card: new Card({value: '13', suit: 'club'}),
 		string: 'QClub',
 		unicode: 'Q♣',
 		value: 'Q',
@@ -52,12 +52,12 @@ let __cards = [
 ];
 const __ppns = Object.freeze(['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W']);
 
-describe("Card tests", function () {
+describe('Card tests', function () {
 	it('Card should exist', function () {
 		expect(Card).to.exist;
 	});
 
-	describe("Contructor PPN tests", function () {
+	describe('Contructor PPN tests', function () {
 		_.forEach(__ppns, ppn => {
 			it('contructor should create card for ' + ppn, function () {
 				expect(() => new Card(ppn)).to.not.throw();
@@ -66,7 +66,7 @@ describe("Card tests", function () {
 		});
 	});
 
-	describe("Bad contructor tests", function () {
+	describe('Bad contructor tests', function () {
 		let fails = [null, '5club', 'Ahearts', {value: 16, suit: '♣'}];
 		_.forEach(fails, fail => {
 			it('contructor should fail for value=' + JSON.stringify(fail), function () {
@@ -78,7 +78,7 @@ describe("Card tests", function () {
 		});
 	});
 
-	describe("Single card tests", function () {
+	describe('Single card tests', function () {
 		_.forEach(__cards, card => {
 			it('should exist', function () {
 				expect(card.card).to.exist;
@@ -102,12 +102,12 @@ describe("Card tests", function () {
 				expect(card.card.getLabel()).to.be.equal(card.label);
 			});
 			it(card.string + ' getPPN should return ' + card.ppn, function () {
-				expect(card.card.getPPN()).to.be.equal(card.ppn);
+				expect(card.card.toPPN()).to.be.equal(card.ppn);
 			});
 		});
 	});
 
-	describe("Compare cards tests", function () {
+	describe('Compare cards tests', function () {
 		it('7Club should beat 8Heart', function () {
 			let c1 = new Card('7', 'c');
 			let c2 = new Card('8', 'h');
