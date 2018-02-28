@@ -8,6 +8,7 @@ const Card = require('./lib/deck').Card;
 const Pile = require('./lib/deck').Pile;
 
 let deck = new Deck();
+console.log(deck.getPPN());
 console.log(deck.shuffle().toString());
 
 let deal = deck.deal();
