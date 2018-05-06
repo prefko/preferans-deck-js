@@ -1,6 +1,6 @@
 cards:
    - new						(cards)
-   - get						()	- returns array of these cards
+   - all						()	- returns array of these cards
    - getPPN						()	- returns a PPN string representation
    - toString					()	- returns a plain string representation
    - toUnicodeString			()	- returns a Unicode string representation
@@ -22,8 +22,7 @@ deck (extends cards):
    - shuffle	()		- shuffle the deck
    - deal		()		- deal to 3 players and talon
 
-
-card
+card:
 	- new		()
 	- compare	(c1, c2, trump)	- STATIC compare two cards for trump
 	- beats		(card, trump)	- check if it beats given card for trump
@@ -37,3 +36,25 @@ card
 	- toString			()		- return cards two character representation
 	- toUnicodeString	()		- return cards value + unicode sign for suit
 
+ppn:
+	- all	()			- get all cards PPN representations
+	- ppn	(label)		- get PPN representation for label
+	- ppns	(labels)	- get PPN representations for labels
+	- card	(ppn)		- get a Card instance for given PPN representation
+	- cards	(ppns)		- get Card instances for given PPN representations
+
+rank:
+	- rank		(r)		- get rank for value
+	- isValid	(r)		- check if the value is valid
+	- all		()		- get all ranks array
+
+suit:
+	- suit		(r)		- get suit for label
+	- isValid	(r)		- check if the label is valid
+	- toUnicode	()		- return unicode sign for suit
+	- all		()		- get all suits array
+
+value:
+	- value		(r)		- get value for label
+	- isValid	(r)		- check if the label is valid
+	- all		()		- get all values array

@@ -23,11 +23,11 @@ describe('Cards tests', function () {
 			expect(() => new Cards(fullDeck)).to.not.throw();
 			expect(cards).to.be.a('object');
 		});
-		it('Cards get should return array', function () {
-			expect(cards.get()).to.be.an('array');
+		it('Cards all should return array', function () {
+			expect(cards.all()).to.be.an('array');
 		});
-		it('Cards get should return 32 cards', function () {
-			expect(cards.get()).to.have.lengthOf(32);
+		it('Cards all should return 32 cards', function () {
+			expect(cards.all()).to.have.lengthOf(32);
 		});
 		it('Cards getPPN should equal to ' + ppnString, function () {
 			expect(cards.getPPN()).to.be.equal(ppnString);
@@ -46,7 +46,7 @@ describe('Cards tests', function () {
 		it('Cards original should be an array', function () {
 			expect(original).to.be.an('array');
 		});
-		it('Cards original get should return 32 cards', function () {
+		it('Cards original should return 32 cards', function () {
 			expect(original).to.have.lengthOf(32);
 		});
 		it('Cards getOriginalPPN should equal to ' + ppnString, function () {

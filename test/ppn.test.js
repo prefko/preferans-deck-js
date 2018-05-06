@@ -48,37 +48,51 @@ describe('PPN tests', function () {
 		expect(PPN).to.exist;
 	});
 
-	it('PPN.get should exist', function () {
-		expect(PPN.get).to.exist;
-	});
-
 	it('PPN.all should exist', function () {
 		expect(PPN.all).to.exist;
+	});
+
+	it('PPN.ppn should exist', function () {
+		expect(PPN.ppn).to.exist;
+	});
+
+	it('PPN.ppns should exist', function () {
+		expect(PPN.ppns).to.exist;
 	});
 
 	it('PPN.card should exist', function () {
 		expect(PPN.card).to.exist;
 	});
 
+	it('PPN.cards should exist', function () {
+		expect(PPN.cards).to.exist;
+	});
+
+	describe('test method all', function () {
+		it('should be a non-empty array', function () {
+			expect(PPN.all()).to.be.an('array').that.is.not.empty;
+		});
+	});
+
 	describe('Get ppn tests', function () {
 		_.forEach(__ppns, (ppn, label) => {
-			it(label + ' PPN.get should return ' + ppn, function () {
-				expect(PPN.get(label)).to.be.equal(ppn);
+			it(label + ' PPN.ppn should return ' + ppn, function () {
+				expect(PPN.ppn(label)).to.be.equal(ppn);
 			});
 		});
 	});
 
 	describe('Get ppn tests should fail', function () {
 		_.forEach(badLabels, label => {
-			it(label + ' PPN.get should fail', function () {
-				expect(PPN.get(label)).to.be.undefined;
+			it(label + ' PPN.ppn should fail', function () {
+				expect(PPN.ppn(label)).to.be.undefined;
 			});
 		});
 	});
 
-	describe('test method all', function () {
-		it('should be a non-empty array', function () {
-			expect(PPN.all()).to.be.an('array').that.is.not.empty;
+	describe('Get ppns tests', function () {
+		it('PPN.ppns should return ' + JSON.stringify(_.values(__ppns)), function () {
+			expect(PPN.ppns(_.keys(__ppns))).to.be.deep.equal(_.values(__ppns));
 		});
 	});
 
@@ -98,6 +112,12 @@ describe('PPN tests', function () {
 			it(ppn + ' PPN.card should return ' + JSON.stringify(card), function () {
 				expect(PPN.card(ppn)).to.be.deep.equal(card);
 			});
+		});
+	});
+
+	describe('cards ppn tests', function () {
+		it('PPN.cards should return ' + JSON.stringify(_.values(__cards)), function () {
+			expect(PPN.cards(_.values(__ppns))).to.be.deep.equal(_.values(__cards));
 		});
 	});
 

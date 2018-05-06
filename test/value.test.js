@@ -11,18 +11,22 @@ describe('Value tests', function () {
 		expect(Value).to.exist;
 	});
 
-	it('Value.get should exist', function () {
-		expect(Value.get).to.exist;
+	it('Value.value should exist', function () {
+		expect(Value.value).to.exist;
 	});
 
 	it('Value.isValid should exist', function () {
 		expect(Value.isValid).to.exist;
 	});
 
+	it('Value.all should exist', function () {
+		expect(Value.all).to.exist;
+	});
+
 	describe('Get value tests', function () {
 		_.forEach(__values, (value, valueLabel) => {
-			it(valueLabel + ' Value.get should return ' + value, function () {
-				expect(Value.get(valueLabel)).to.be.equal(value);
+			it(valueLabel + ' Value.value should return ' + value, function () {
+				expect(Value.value(valueLabel)).to.be.equal(value);
 			});
 		});
 	});

@@ -23,8 +23,8 @@ describe('Suit tests', function () {
 		expect(Suit).to.exist;
 	});
 
-	it('Suit.get should exist', function () {
-		expect(Suit.get).to.exist;
+	it('Suit.suit should exist', function () {
+		expect(Suit.suit).to.exist;
 	});
 
 	it('Suit.isValid should exist', function () {
@@ -35,10 +35,14 @@ describe('Suit tests', function () {
 		expect(Suit.toUnicode).to.exist;
 	});
 
+	it('Suit.all should exist', function () {
+		expect(Suit.all).to.exist;
+	});
+
 	describe('Get suit tests', function () {
 		_.forEach(__suits, (suit, suitLabel) => {
-			it(suitLabel + ' Suit.get should return ' + suit, function () {
-				expect(Suit.get(suitLabel)).to.be.equal(suit);
+			it(suitLabel + ' Suit.suit should return ' + suit, function () {
+				expect(Suit.suit(suitLabel)).to.be.equal(suit);
 			});
 		});
 	});

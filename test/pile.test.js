@@ -578,11 +578,11 @@ describe('Pile tests', function () {
 				it('Pile toString should equal to ' + fullString, function () {
 					expect(pile.toString()).to.be.equal(fullString);
 				});
-				it('Pile get should return array', function () {
-					expect(pile.get()).to.be.an('array');
+				it('Pile all should return array', function () {
+					expect(pile.all()).to.be.an('array');
 				});
-				it('Pile get should return ' + size + ' cards', function () {
-					expect(pile.get()).to.have.lengthOf(size);
+				it('Pile all should return ' + size + ' cards', function () {
+					expect(pile.all()).to.have.lengthOf(size);
 				});
 			});
 
@@ -601,11 +601,11 @@ describe('Pile tests', function () {
 				it('Pile sort toString should equal to ' + fullSortedString, function () {
 					expect(pile.toString()).to.be.equal(fullSortedString);
 				});
-				it('Pile sort get should return array', function () {
-					expect(pile.get()).to.be.an('array');
+				it('Pile sort cards should return array', function () {
+					expect(pile.all()).to.be.an('array');
 				});
-				it('Pile sort get should return ' + size + ' cards', function () {
-					expect(pile.get()).to.have.lengthOf(size);
+				it('Pile sort cards should return ' + size + ' cards', function () {
+					expect(pile.all()).to.have.lengthOf(size);
 				});
 			});
 

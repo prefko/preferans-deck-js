@@ -25,10 +25,10 @@ console.log('\n');
 
 deck.restore(
 	_.concat(
-		deal.p1.get(),
-		deal.p2.get(),
-		deal.p3.get(),
-		deal.t.get()
+		deal.p1.all(),
+		deal.p2.all(),
+		deal.p3.all(),
+		deal.t.all()
 	)
 );
 console.log(deck.toUnicodeString());
