@@ -102,7 +102,7 @@ describe('Card tests', function () {
 				expect(card.card.getLabel()).to.be.equal(card.label);
 			});
 			it(card.string + ' getPPN should return ' + card.ppn, function () {
-				expect(card.card.toPPN()).to.be.equal(card.ppn);
+				expect(card.card.getPPN()).to.be.equal(card.ppn);
 			});
 		});
 	});

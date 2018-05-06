@@ -569,8 +569,8 @@ describe('Pile tests', function () {
 					expect(() => new Pile(__cards)).to.not.throw();
 					expect(pile).to.be.a('object');
 				});
-				it('Pile toPPN should equal to ' + ppnString, function () {
-					expect(pile.toPPN()).to.be.equal(ppnString);
+				it('Pile getPPN should equal to ' + ppnString, function () {
+					expect(pile.getPPN()).to.be.equal(ppnString);
 				});
 				it('Pile toUnicodeString should equal to ' + unicodeString, function () {
 					expect(pile.toUnicodeString()).to.be.equal(unicodeString);
@@ -592,8 +592,8 @@ describe('Pile tests', function () {
 				it('sort should create object', function () {
 					expect(pile).to.be.a('object');
 				});
-				it('Pile sort toPPN should equal to ' + ppnSortedString, function () {
-					expect(pile.toPPN()).to.be.equal(ppnSortedString);
+				it('Pile sort getPPN should equal to ' + ppnSortedString, function () {
+					expect(pile.getPPN()).to.be.equal(ppnSortedString);
 				});
 				it('Pile sort toUnicodeString should equal to ' + unicodeSortedString, function () {
 					expect(pile.toUnicodeString()).to.be.equal(unicodeSortedString);
@@ -612,8 +612,8 @@ describe('Pile tests', function () {
 			describe('Pile sort original tests', function () {
 				let pile = new Pile(__cards);
 				pile.sort(sorting);
-				it('Pile toOriginalPPN should equal to ' + ppnString, function () {
-					expect(pile.toOriginalPPN()).to.be.equal(ppnString);
+				it('Pile getOriginalPPN should equal to ' + ppnString, function () {
+					expect(pile.getOriginalPPN()).to.be.equal(ppnString);
 				});
 				it('Pile toOriginalUnicodeString should equal to ' + unicodeString, function () {
 					expect(pile.toOriginalUnicodeString()).to.be.equal(unicodeString);

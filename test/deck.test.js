@@ -16,8 +16,8 @@ describe('Deck tests', function () {
 			expect(() => new Deck()).to.not.throw();
 			expect(new Deck()).to.be.a('object');
 		});
-		it('Deck toPPN should equal to ' + ppnString, function () {
-			expect(new Deck().toPPN()).to.be.equal(ppnString);
+		it('Deck getPPN should equal to ' + ppnString, function () {
+			expect(new Deck().getPPN()).to.be.equal(ppnString);
 		});
 		it('Deck toString should equal to ' + fullString, function () {
 			expect(new Deck().toString()).to.be.equal(fullString);
@@ -44,6 +44,12 @@ describe('Deck tests', function () {
 		});
 	});
 
+	describe('Deck isValid tests', function () {
+		it('Deck isValid should return true', function () {
+			expect(new Deck().isValid()).to.be.equal(true);
+		});
+	});
+
 	describe('Deck cut tests', function () {
 		let deck = new Deck();
 		let cut = deck.cut();
@@ -51,7 +57,7 @@ describe('Deck tests', function () {
 			expect(cut).to.be.a('object');
 		});
 		it('Deck cut should not equal to ' + ppnString, function () {
-			expect(cut.toPPN()).to.be.not.equal(ppnString);
+			expect(cut.getPPN()).to.be.not.equal(ppnString);
 		});
 		it('Deck cut should return array of length 32', function () {
 			expect(cut.get()).to.be.an('array');
@@ -71,7 +77,7 @@ describe('Deck tests', function () {
 			expect(shuffle).to.be.a('object');
 		});
 		it('Deck shuffle should not equal to ' + ppnString, function () {
-			expect(shuffle.toPPN()).to.be.not.equal(ppnString);
+			expect(shuffle.getPPN()).to.be.not.equal(ppnString);
 		});
 		it('Deck shuffle should return array of length 32', function () {
 			expect(shuffle.get()).to.be.an('array');
@@ -127,11 +133,11 @@ describe('Deck tests', function () {
 			expect(() => deck.restore('puppy')).to.throw();
 			expect(() => deck.restore(deal.p1.get())).to.throw();
 		});
-		// it('Deck validate should return false', function () {
-		// 	expect(Deck.validate(2)).to.be.equal(false);
-		// 	expect(Deck.validate([])).to.be.equal(false);
-		// 	expect(Deck.validate('puppy')).to.be.equal(false);
-		// });
+		it('Deck validate should return false', function () {
+			expect(Deck.validate(2)).to.be.equal(false);
+			expect(Deck.validate([])).to.be.equal(false);
+			expect(Deck.validate('puppy')).to.be.equal(false);
+		});
 	});
 
 });

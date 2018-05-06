@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 'use strict';
 
 const _ = require('lodash');
@@ -11,7 +10,7 @@ let card = new Card('7');
 console.log(card.toString());
 
 let deck = new Deck();
-console.log(deck.toPPN());
+console.log(deck.getPPN());
 console.log(deck.toUnicodeString());
 console.log(deck.shuffle().toUnicodeString());
 

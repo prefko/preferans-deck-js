@@ -30,7 +30,7 @@ describe('Cards tests', function () {
 			expect(cards.get()).to.have.lengthOf(32);
 		});
 		it('Cards getPPN should equal to ' + ppnString, function () {
-			expect(cards.toPPN()).to.be.equal(ppnString);
+			expect(cards.getPPN()).to.be.equal(ppnString);
 		});
 		it('Cards toString should equal to ' + fullString, function () {
 			expect(cards.toString()).to.be.equal(fullString);
@@ -49,8 +49,8 @@ describe('Cards tests', function () {
 		it('Cards original get should return 32 cards', function () {
 			expect(original).to.have.lengthOf(32);
 		});
-		it('Cards toOriginalPPN should equal to ' + ppnString, function () {
-			expect(cards.toOriginalPPN()).to.be.equal(ppnString);
+		it('Cards getOriginalPPN should equal to ' + ppnString, function () {
+			expect(cards.getOriginalPPN()).to.be.equal(ppnString);
 		});
 		it('Cards toOriginalString should equal to ' + fullString, function () {
 			expect(cards.toOriginalString()).to.be.equal(fullString);
