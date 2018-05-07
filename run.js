@@ -3,8 +3,8 @@
 
 const _ = require('lodash');
 const Deck = require('./lib/deck');
-const Card = require('./lib/deck').Card;
-const Pile = require('./lib/deck').Pile;
+const Card = Deck.Card;
+const Pile = Deck.Pile;
 
 let card = new Card('7');
 console.log(card.toString());
