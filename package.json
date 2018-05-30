@@ -8,6 +8,7 @@
 	"main": "lib/deck.js",
 	"scripts": {
 		"test": "nyc --reporter=html mocha",
+		"coverage": "nyc --reporter=html mocha",
 		"analyze": "sonarjs -e .sonarlint/**,node_modules/**,coverage/**,.nyc_output/**,_ref/**"
 	},
 	"repository": {
