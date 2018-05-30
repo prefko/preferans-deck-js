@@ -92,7 +92,7 @@ describe('PPN tests', function () {
 
 	describe('Get ppns tests', function () {
 		it('PPN.ppns should return ' + JSON.stringify(_.values(__ppns)), function () {
-			expect(PPN.ppns(_.keys(__ppns))).to.be.deep.equal(_.values(__ppns));
+			expect(PPN.ppns(_.keys(__ppns))).to.deep.equal(_.values(__ppns));
 		});
 	});
 
@@ -110,14 +110,14 @@ describe('PPN tests', function () {
 	describe('card ppn tests', function () {
 		_.forEach(__cards, (card, ppn) => {
 			it(ppn + ' PPN.card should return ' + JSON.stringify(card), function () {
-				expect(PPN.card(ppn)).to.be.deep.equal(card);
+				expect(PPN.card(ppn)).to.deep.equal(card);
 			});
 		});
 	});
 
 	describe('cards ppn tests', function () {
 		it('PPN.cards should return ' + JSON.stringify(_.values(__cards)), function () {
-			expect(PPN.cards(_.values(__ppns))).to.be.deep.equal(_.values(__cards));
+			expect(PPN.cards(_.values(__ppns))).to.deep.equal(_.values(__cards));
 		});
 	});
 
