@@ -50,7 +50,7 @@ rank:
 suit:
 	- suit		(label)	- get suit for label
 	- isValid	(label)	- check if the label is valid
-	- toUnicode	()		- return unicode sign for suit
+	- toUnicode	(suit)	- return unicode sign for suit
 	- all		()		- get all suits array
 
 value:
