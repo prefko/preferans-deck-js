@@ -97,17 +97,17 @@ ppn:
 * cards	(ppns) - get Card instances for given PPN representations
 
 rank:
-* rank		(r) - get rank for value
-* isValid	(r) - check if the value is valid
+* rank		(value) - get rank for value
+* isValid	(value) - check if the value is valid
 * all		() - get all ranks array
 
 suit:
-* suit		(r) - get suit for label
-* isValid	(r) - check if the label is valid
-* toUnicode	() - return unicode sign for suit
+* suit		(label) - get suit for label
+* isValid	(label) - check if the label is valid
+* toUnicode	(suit) - return unicode sign for suit
 * all		() - get all suits array
 
 value:
-* value		(r) - get value for label
-* isValid	(r) - check if the label is valid
+* value		(label) - get value for label
+* isValid	(label) - check if the label is valid
 * all		() - get all values array
