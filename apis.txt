@@ -26,7 +26,6 @@ card:
 	- new		()
 	- compare	(c1, c2, trump)	- STATIC compare two cards for trump
 	- beats		(card, trump)	- check if it beats given card for trump
-	- compareTo	(card, trump)	- compare to given card for trump
 	- getters...
 		- value
 		- suit
