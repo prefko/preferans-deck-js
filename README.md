@@ -53,7 +53,3 @@ Mostly from [Wikipedia](https://en.wikipedia.org/wiki/Glossary_of_card_game_term
 ### API
 
 https://github.com/cope/preferans-deck-js/wiki/API
-
-### User Stories
-
-https://github.com/cope/preferans-deck-js/wiki/User-Stories
