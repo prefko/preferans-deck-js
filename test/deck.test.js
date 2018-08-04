@@ -52,21 +52,25 @@ describe('Deck tests', function () {
 
 	describe('Deck cut tests', function () {
 		let deck = new Deck();
-		let cut = deck.cut();
+		deck = deck.cut();
 		it('Deck cut should return object', function () {
-			expect(cut).to.be.a('object');
+			expect(deck).to.be.a('object');
 		});
 		it('Deck cut should not equal to ' + ppnString, function () {
-			expect(cut.getPPN()).to.be.not.equal(ppnString);
+			expect(deck.getPPN()).to.be.not.equal(ppnString);
 		});
 		it('Deck cut should return array of length 32', function () {
-			expect(cut.all()).to.be.an('array');
-			expect(cut.all()).to.have.lengthOf(32);
+			expect(deck.all()).to.be.an('array');
+			expect(deck.all()).to.have.lengthOf(32);
 		});
-		_.forEach(_.times(1000), () => cut = deck.cut());
+	});
+
+	describe('Deck cut stress test', function () {
+		let deck = new Deck();
+		_.forEach(_.times(1000), () => deck.cut());
 		it('Deck 1000 cuts should return array of length 32', function () {
-			expect(cut.all()).to.be.an('array');
-			expect(cut.all()).to.have.lengthOf(32);
+			expect(deck.all()).to.be.an('array');
+			expect(deck.all()).to.have.lengthOf(32);
 		});
 	});
 
