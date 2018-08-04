@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const expect = require('chai').expect;
 
-const Value = require('../lib/help/value');
+const Value = require('../lib/value');
 const __values = Object.freeze({'7': '7', '8': '8', '9': '9', 'x': 'X', '10': 'X', 'j': 'J', '12': 'J', 'q': 'Q', '13': 'Q', 'k': 'K', '14': 'K', 'a': 'A', '15': 'A'});
 const badValues = Object.freeze([1, 2, 3, 4, 5, 6, 11, 16, 'z', 'Z']);
 const goodValues = Object.freeze([7, 8, 9, 10, 12, 13, 14, 15, 'x', 'X', 'j', 'J', 'q', 'Q', 'k', 'K', 'a', 'A']);

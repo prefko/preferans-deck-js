@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const expect = require('chai').expect;
 
-const PPN = require('../lib/help/ppn');
+const PPN = require('../lib/ppn');
 const __ppns = Object.freeze({
 	'7spade': '1',
 	'8spade': '2',
