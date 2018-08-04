@@ -113,42 +113,49 @@ describe('Card tests', function () {
 			let c2 = new Card('8', 'h');
 			expect(c1.beats(c2)).to.be.true;
 			expect(Card.compare(c1, c2)).to.be.below(0);
+			expect(Card.winner(c1, c2)).to.be.equal(c1);
 		});
 		it('7Club should not beat 8Club', function () {
 			let c1 = new Card('7', 'c');
 			let c2 = new Card('8', 'c');
 			expect(c1.beats(c2)).to.be.false;
 			expect(Card.compare(c1, c2)).to.be.above(0);
+			expect(Card.winner(c1, c2)).to.be.equal(c2);
 		});
 		it('9Club should not beat 8Heart for trump h', function () {
 			let c1 = new Card('9', 'c');
 			let c2 = new Card('8', 'h');
 			expect(c1.beats(c2, 'h')).to.be.false;
 			expect(Card.compare(c1, c2, 'h')).to.be.above(0);
+			expect(Card.winner(c1, c2, 'h')).to.be.equal(c2);
 		});
 		it('9Club should not beat 8Heart for trump Heart', function () {
 			let c1 = new Card('9', 'c');
 			let c2 = new Card('8', 'h');
 			expect(c1.beats(c2, 'Heart')).to.be.false;
 			expect(Card.compare(c1, c2, 'Heart')).to.be.above(0);
+			expect(Card.winner(c1, c2, 'Heart')).to.be.equal(c2);
 		});
 		it('9Club should not beat 8Heart for trump ♥', function () {
 			let c1 = new Card('9', 'c');
 			let c2 = new Card('8', 'h');
 			expect(c1.beats(c2, '♥')).to.be.false;
 			expect(Card.compare(c1, c2, '♥')).to.be.above(0);
+			expect(Card.winner(c1, c2, '♥')).to.be.equal(c2);
 		});
 		it('KClub should beat JClub for trump Club', function () {
 			let c1 = new Card('K', 'c');
 			let c2 = new Card('J', 'c');
 			expect(c1.beats(c2, 'Club')).to.be.true;
 			expect(Card.compare(c1, c2, 'Club')).to.be.below(0);
+			expect(Card.winner(c1, c2, 'Club')).to.be.equal(c1);
 		});
 		it('7Club should not beat 8Club for trump Club', function () {
 			let c1 = new Card('7', 'c');
 			let c2 = new Card('8', 'c');
 			expect(c1.beats(c2, 'Club')).to.be.false;
 			expect(Card.compare(c1, c2, 'Club')).to.be.above(0);
+			expect(Card.winner(c1, c2, 'Club')).to.be.equal(c2);
 		});
 	});
 });
