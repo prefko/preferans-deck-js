@@ -1,8 +1,9 @@
 # preferans-deck-js
-[![build status](https://travis-ci.org/cope/preferans-deck-js.svg?branch=master)](https://travis-ci.org/cope/preferans-deck-js)
-[![coverage](https://coveralls.io/repos/github/cope/preferans-deck-js/badge.svg?branch=master)](https://coveralls.io/github/cope/preferans-deck-js?branch=master)
-[![npm](https://img.shields.io/npm/dt/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js)
+[![build status](https://img.shields.io/travis/cope/preferans-deck-js.svg?branch=master)](https://travis-ci.org/cope/preferans-deck-js)
+[![codacy](https://img.shields.io/codacy/grade/e8fd65d33fed4145968fae5cbb477145.svg)](https://www.codacy.com/project/cope/preferans-deck-js/dashboard)
+[![coverage](https://img.shields.io/coveralls/github/cope/preferans-deck-js/master.svg)](https://coveralls.io/github/cope/preferans-deck-js?branch=master)
 [![dependencies](https://david-dm.org/cope/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js)
+[![npm](https://img.shields.io/npm/dt/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js)
 
 nodejs deck of cards for preferans
 
