@@ -32,7 +32,7 @@ describe("Rank tests", function () {
 	});
 
 	describe("Get rank tests should fail", function () {
-		_.forEach(badValues, value => {
+		_.forEach(badValues, (value) => {
 			it(value + " Rank.rank should fail", function () {
 				expect(Rank.rank(value)).to.be.undefined;
 			});
@@ -40,7 +40,7 @@ describe("Rank tests", function () {
 	});
 
 	describe("isValid value tests should be valid", function () {
-		_.forEach(goodValues, value => {
+		_.forEach(goodValues, (value) => {
 			if (_.isInteger(value)) {
 				it("Integer " + value + " should be valid", function () {
 					expect(Rank.isValid(value)).to.be.true;
@@ -54,7 +54,7 @@ describe("Rank tests", function () {
 	});
 
 	describe("isValid value tests should not be valid", function () {
-		_.forEach(badValues, value => {
+		_.forEach(badValues, (value) => {
 			it(value + " should not be valid", function () {
 				expect(Rank.isValid(value)).to.be.false;
 			});

@@ -39,7 +39,7 @@ const __ppns = Object.freeze({
 	"kclub": "V",
 	"aclub": "W"
 });
-const make = key => ({value: _.first(key), suit: _.join(_.drop(key), "")});
+const make = (key) => ({value: _.first(key), suit: _.join(_.drop(key), "")});
 const __cards = Object.freeze(_.transform(__ppns, (result, value, key) => result[value] = make(key), {}));
 const badLabels = Object.freeze([1, 2, 3, 4, 5, 6, 11, 16, "z", "Z"]);
 
@@ -83,7 +83,7 @@ describe("PPN tests", function () {
 	});
 
 	describe("Get ppn tests should fail", function () {
-		_.forEach(badLabels, label => {
+		_.forEach(badLabels, (label) => {
 			it(label + " PPN.ppn should fail", function () {
 				expect(PPN.ppn(label)).to.be.undefined;
 			});
