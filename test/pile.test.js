@@ -551,7 +551,7 @@ describe("Pile tests", function () {
 		expect(Pile).to.exist;
 	});
 
-	_.forEach(tests, test => {
+	_.forEach(tests, (test) => {
 		describe("Pile tests", function () {
 			let sorting = test.sorting;
 			let __cards = test.__cards;

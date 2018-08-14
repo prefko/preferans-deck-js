@@ -58,7 +58,7 @@ describe("Card tests", function () {
 	});
 
 	describe("Contructor PPN tests", function () {
-		_.forEach(__ppns, ppn => {
+		_.forEach(__ppns, (ppn) => {
 			it("contructor should create card for " + ppn, function () {
 				expect(() => new Card(ppn)).to.not.throw();
 				expect(new Card(ppn)).to.be.a("object");
@@ -79,7 +79,7 @@ describe("Card tests", function () {
 	});
 
 	describe("Single card tests", function () {
-		_.forEach(__cards, card => {
+		_.forEach(__cards, (card) => {
 			it("should exist", function () {
 				expect(card.card).to.exist;
 			});
