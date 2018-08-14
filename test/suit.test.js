@@ -48,7 +48,7 @@ describe("Suit tests", function () {
 	});
 
 	describe("isValid suit tests should be valid", function () {
-		_.forEach(goodSuits, value => {
+		_.forEach(goodSuits, (value) => {
 			if (_.isInteger(value)) {
 				it("Integer " + value + " should be valid", function () {
 					expect(Suit.isValid(value)).to.be.true;
@@ -62,7 +62,7 @@ describe("Suit tests", function () {
 	});
 
 	describe("isValid suit tests should not be valid", function () {
-		_.forEach(badSuits, value => {
+		_.forEach(badSuits,(value) => {
 			it(value + " should not be valid", function () {
 				expect(Suit.isValid(value)).to.be.false;
 			});
@@ -78,7 +78,7 @@ describe("Suit tests", function () {
 	});
 
 	describe("toUnicode suit tests should fail", function () {
-		_.forEach(badSuits, suit => {
+		_.forEach(badSuits, (suit) => {
 			it(suit + " should be undefined", function () {
 				expect(Suit.toUnicode(suit)).to.be.undefined;
 			});

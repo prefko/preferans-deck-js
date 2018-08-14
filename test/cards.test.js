@@ -5,7 +5,7 @@ let Card = require("../lib/card");
 let Cards = require("../lib/cards");
 
 let tmpCards = [];
-_.forEach(_.values(PPN.all()), ppn => tmpCards.push(new Card(PPN.card(ppn))));
+_.forEach(_.values(PPN.all()), (ppn) => tmpCards.push(new Card(PPN.card(ppn))));
 const fullDeck = Object.freeze(tmpCards);
 
 const ppnString = "123456789ABCDEFGHIJKLMNOPQRSTUVW";
