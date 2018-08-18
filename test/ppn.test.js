@@ -40,7 +40,7 @@ const __ppns = Object.freeze({
 	"aclub": "W"
 });
 const make = (key) => ({value: _.first(key), suit: _.join(_.drop(key), "")});
-const __cards = Object.freeze(_.transform(__ppns, (result, value, key) => result[value] = make(key), {}));
+const __cards = Object.freeze(_.transform(__ppns, (result, value, key) => _.set(result, value, make(key)), {}));
 const badLabels = Object.freeze([1, 2, 3, 4, 5, 6, 11, 16, "z", "Z"]);
 
 describe("PPN tests", function () {
