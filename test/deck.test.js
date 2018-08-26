@@ -100,15 +100,15 @@ describe("Deck tests", function () {
 			expect(deal).to.be.a("object");
 		});
 		it("Deck cut should not equal to " + ppnString, function () {
-			expect(deal.p1).to.be.a("object");
-			expect(deal.p1.all()).to.be.an("array");
-			expect(deal.p1.all()).to.have.lengthOf(10);
-			expect(deal.p2).to.be.a("object");
-			expect(deal.p2.all()).to.be.an("array");
-			expect(deal.p2.all()).to.have.lengthOf(10);
-			expect(deal.p3).to.be.a("object");
-			expect(deal.p3.all()).to.be.an("array");
-			expect(deal.p3.all()).to.have.lengthOf(10);
+			expect(deal.h1).to.be.a("object");
+			expect(deal.h1.all()).to.be.an("array");
+			expect(deal.h1.all()).to.have.lengthOf(10);
+			expect(deal.h2).to.be.a("object");
+			expect(deal.h2.all()).to.be.an("array");
+			expect(deal.h2.all()).to.have.lengthOf(10);
+			expect(deal.h3).to.be.a("object");
+			expect(deal.h3.all()).to.be.an("array");
+			expect(deal.h3.all()).to.have.lengthOf(10);
 			expect(deal.t).to.be.a("object");
 			expect(deal.t.all()).to.be.an("array");
 			expect(deal.t.all()).to.have.lengthOf(2);
@@ -135,7 +135,7 @@ describe("Deck tests", function () {
 			expect(() => deck.restore(1)).to.throw();
 			expect(() => deck.restore([])).to.throw();
 			expect(() => deck.restore("puppy")).to.throw();
-			expect(() => deck.restore(deal.p1.all())).to.throw();
+			expect(() => deck.restore(deal.h1.all())).to.throw();
 		});
 		it("Deck validate should return false", function () {
 			expect(Deck.validate(2)).to.be.equal(false);

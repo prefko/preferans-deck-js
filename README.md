@@ -24,14 +24,14 @@ nodejs deck of cards for preferans
 
     let deck = new Deck();
     let deal = deck.deal();
-    console.log("Player 1:", deal.p1.toUnicodeString());
-    console.log("Player 2:", deal.p2.toUnicodeString());
-    console.log("Player 3:", deal.p3.toUnicodeString());
+    console.log("Hand 1:", deal.h1.toUnicodeString());
+    console.log("Hand 2:", deal.h2.toUnicodeString());
+    console.log("Hand 3:", deal.h3.toUnicodeString());
     console.log("Talon:", deal.t.toUnicodeString());
 
-    // Player 1: 7♠8♠9♠X♠J♠8♥9♥X♥J♥Q♥
-    // Player 2: Q♠K♠A♠7♦8♦K♥A♥7♣8♣9♣
-    // Player 3: 9♦X♦J♦Q♦K♦X♣J♣Q♣K♣A♣
+    // Hand 1: 7♠8♠9♠X♠J♠8♥9♥X♥J♥Q♥
+    // Hand 2: Q♠K♠A♠7♦8♦K♥A♥7♣8♣9♣
+    // Hand 3: 9♦X♦J♦Q♦K♦X♣J♣Q♣K♣A♣
     // Talon: A♦7♥
 
 ### Labels and meaning

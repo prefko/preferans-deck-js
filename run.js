@@ -25,18 +25,18 @@ console.log("Shuffled deck:", deck.shuffle().toUnicodeString());
 
 let deal = deck.deal();
 console.log("Deal:",
-	deal.p1.sort().toUnicodeString(), "| ",
-	deal.p2.sort().toUnicodeString(), "| ",
-	deal.p3.sort().toUnicodeString(), "| ",
+	deal.h1.sort().toUnicodeString(), "| ",
+	deal.h2.sort().toUnicodeString(), "| ",
+	deal.h3.sort().toUnicodeString(), "| ",
 	deal.t.toUnicodeString());
 
 console.log("\n");
 
 deck.restore(
 	_.concat(
-		deal.p1.all(),
-		deal.p2.all(),
-		deal.p3.all(),
+		deal.h1.all(),
+		deal.h2.all(),
+		deal.h3.all(),
 		deal.t.all()
 	)
 );
