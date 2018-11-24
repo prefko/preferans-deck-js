@@ -18,85 +18,85 @@ const goodSuits = Object.freeze([
 ]);
 const goodUnicodes = Object.freeze({spade: "♠", diamond: "♦", heart: "♥", club: "♣"});
 
-describe("Suit tests", function () {
-	it("Suit should exist", function () {
+describe("Suit tests", () => {
+	it("Suit should exist", () => {
 		expect(Suit).to.exist;
 	});
 
-	it("Suit.suit should exist", function () {
+	it("Suit.suit should exist", () => {
 		expect(Suit.suit).to.exist;
 	});
 
-	it("Suit.isValid should exist", function () {
+	it("Suit.isValid should exist", () => {
 		expect(Suit.isValid).to.exist;
 	});
 
-	it("Suit.toUnicode should exist", function () {
+	it("Suit.toUnicode should exist", () => {
 		expect(Suit.toUnicode).to.exist;
 	});
 
-	it("Suit.all should exist", function () {
+	it("Suit.all should exist", () => {
 		expect(Suit.all).to.exist;
 	});
 
-	describe("Get suit tests", function () {
+	describe("Get suit tests", () => {
 		_.forEach(__suits, (suit, suitLabel) => {
-			it(suitLabel + " Suit.suit should return " + suit, function () {
+			it(suitLabel + " Suit.suit should return " + suit, () => {
 				expect(Suit.suit(suitLabel)).to.be.equal(suit);
 			});
 		});
 	});
 
-	describe("isValid suit tests should be valid", function () {
+	describe("isValid suit tests should be valid", () => {
 		_.forEach(goodSuits, (value) => {
 			if (_.isInteger(value)) {
-				it("Integer " + value + " should be valid", function () {
+				it("Integer " + value + " should be valid", () => {
 					expect(Suit.isValid(value)).to.be.true;
 				});
 				value = "" + value;
 			}
-			it("String |" + value + "| should be valid", function () {
+			it("String |" + value + "| should be valid", () => {
 				expect(Suit.isValid(value)).to.be.true;
 			});
 		});
 	});
 
-	describe("isValid suit tests should not be valid", function () {
-		_.forEach(badSuits,(value) => {
-			it(value + " should not be valid", function () {
+	describe("isValid suit tests should not be valid", () => {
+		_.forEach(badSuits, (value) => {
+			it(value + " should not be valid", () => {
 				expect(Suit.isValid(value)).to.be.false;
 			});
 		});
 	});
 
-	describe("toUnicode suit tests should pass", function () {
+	describe("toUnicode suit tests should pass", () => {
 		_.forEach(goodUnicodes, (unicode, suit) => {
-			it(suit + " Suit.toUnicode should return " + unicode, function () {
+			it(suit + " Suit.toUnicode should return " + unicode, () => {
 				expect(Suit.toUnicode(suit)).to.be.equal(unicode);
 			});
 		});
 	});
 
-	describe("toUnicode suit tests should fail", function () {
+	describe("toUnicode suit tests should fail", () => {
 		_.forEach(badSuits, (suit) => {
-			it(suit + " should be undefined", function () {
+			it(suit + " should be undefined", () => {
 				expect(Suit.toUnicode(suit)).to.be.undefined;
 			});
 		});
 	});
 
-	describe("test method all", function () {
-		it("should be a non-empty array", function () {
+	describe("test method all", () => {
+		it("should be a non-empty array", () => {
 			expect(Suit.all()).to.be.an("array").that.is.not.empty;
 		});
 	});
 
-	describe("should have exact values", function () {
+	describe("should have exact values", () => {
 		let vals = _.join(_.keys(goodUnicodes), ",");
-		it("response should include all values: " + vals, function () {
+		it("response should include all values: " + vals, () => {
 			expect(Suit.all()).to.include.members(_.keys(goodUnicodes));
 		});
-		it(vals + " should include all from response", function () {
+		it(vals + " should include all from response", () => {
 			expect(_.keys(goodUnicodes)).to.include.members(Suit.all());
 		});
 	});

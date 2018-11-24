@@ -546,13 +546,13 @@ let tests = [
 	}
 ];
 
-describe("Pile tests", function () {
-	it("Pile should exist", function () {
+describe("Pile tests", () => {
+	it("Pile should exist", () => {
 		expect(Pile).to.exist;
 	});
 
 	_.forEach(tests, (test) => {
-		describe("Pile tests", function () {
+		describe("Pile tests", () => {
 			let sorting = test.sorting;
 			let __cards = test.__cards;
 			let size = test.size;
@@ -563,68 +563,68 @@ describe("Pile tests", function () {
 			let fullString = test.fullString;
 			let fullSortedString = test.fullSortedString;
 
-			describe("Pile constructor/getters tests", function () {
+			describe("Pile constructor/getters tests", () => {
 				let pile = new Pile(__cards);
-				it("contructor should create object", function () {
+				it("contructor should create object", () => {
 					expect(() => new Pile(__cards)).to.not.throw();
 					expect(pile).to.be.a("object");
 				});
-				it("Pile getPPN should equal to " + ppnString, function () {
+				it("Pile getPPN should equal to " + ppnString, () => {
 					expect(pile.getPPN()).to.be.equal(ppnString);
 				});
-				it("Pile toUnicodeString should equal to " + unicodeString, function () {
+				it("Pile toUnicodeString should equal to " + unicodeString, () => {
 					expect(pile.toUnicodeString()).to.be.equal(unicodeString);
 				});
-				it("Pile toString should equal to " + fullString, function () {
+				it("Pile toString should equal to " + fullString, () => {
 					expect(pile.toString()).to.be.equal(fullString);
 				});
-				it("Pile all should return array", function () {
+				it("Pile all should return array", () => {
 					expect(pile.all()).to.be.an("array");
 				});
-				it("Pile all should return " + size + " cards", function () {
+				it("Pile all should return " + size + " cards", () => {
 					expect(pile.all()).to.have.lengthOf(size);
 				});
 			});
 
-			describe("Pile sort tests", function () {
+			describe("Pile sort tests", () => {
 				let pile = new Pile(__cards);
 				pile.sort(sorting);
-				it("sort should create object", function () {
+				it("sort should create object", () => {
 					expect(pile).to.be.a("object");
 				});
-				it("Pile sort getPPN should equal to " + ppnSortedString, function () {
+				it("Pile sort getPPN should equal to " + ppnSortedString, () => {
 					expect(pile.getPPN()).to.be.equal(ppnSortedString);
 				});
-				it("Pile sort toUnicodeString should equal to " + unicodeSortedString, function () {
+				it("Pile sort toUnicodeString should equal to " + unicodeSortedString, () => {
 					expect(pile.toUnicodeString()).to.be.equal(unicodeSortedString);
 				});
-				it("Pile sort toString should equal to " + fullSortedString, function () {
+				it("Pile sort toString should equal to " + fullSortedString, () => {
 					expect(pile.toString()).to.be.equal(fullSortedString);
 				});
-				it("Pile sort cards should return array", function () {
+				it("Pile sort cards should return array", () => {
 					expect(pile.all()).to.be.an("array");
 				});
-				it("Pile sort cards should return " + size + " cards", function () {
+				it("Pile sort cards should return " + size + " cards", () => {
 					expect(pile.all()).to.have.lengthOf(size);
 				});
 			});
 
-			describe("Pile sort original tests", function () {
+			describe("Pile sort original tests", () => {
 				let pile = new Pile(__cards);
 				pile.sort(sorting);
-				it("Pile getOriginalPPN should equal to " + ppnString, function () {
+				it("Pile getOriginalPPN should equal to " + ppnString, () => {
 					expect(pile.getOriginalPPN()).to.be.equal(ppnString);
 				});
-				it("Pile toOriginalUnicodeString should equal to " + unicodeString, function () {
+				it("Pile toOriginalUnicodeString should equal to " + unicodeString, () => {
 					expect(pile.toOriginalUnicodeString()).to.be.equal(unicodeString);
 				});
-				it("Pile toOriginalString should equal to " + fullString, function () {
+				it("Pile toOriginalString should equal to " + fullString, () => {
 					expect(pile.toOriginalString()).to.be.equal(fullString);
 				});
-				it("Pile getOriginal should return array", function () {
+				it("Pile getOriginal should return array", () => {
 					expect(pile.getOriginal()).to.be.an("array");
 				});
-				it("Pile getOriginal should return " + size + " cards", function () {
+				it("Pile getOriginal should return " + size + " cards", () => {
 					expect(pile.getOriginal()).to.have.lengthOf(size);
 				});
 			});
