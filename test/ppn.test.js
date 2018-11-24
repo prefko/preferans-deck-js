@@ -2,7 +2,7 @@ const _ = require("lodash");
 const expect = require("chai").expect;
 
 const PPN = require("../lib/ppn");
-const __ppns = Object.freeze({
+const __PPNS = Object.freeze({
 	"7spade": "1",
 	"8spade": "2",
 	"9spade": "3",
@@ -40,8 +40,8 @@ const __ppns = Object.freeze({
 	"aclub": "W"
 });
 const make = (key) => ({value: _.first(key), suit: _.join(_.drop(key), "")});
-const __cards = Object.freeze(_.transform(__ppns, (result, value, key) => _.set(result, value, make(key)), {}));
-const badLabels = Object.freeze([1, 2, 3, 4, 5, 6, 11, 16, "z", "Z"]);
+const __CARDS = Object.freeze(_.transform(__PPNS, (result, value, key) => _.set(result, value, make(key)), {}));
+const LABELS_BAD = Object.freeze([1, 2, 3, 4, 5, 6, 11, 16, "z", "Z"]);
 
 describe("PPN tests", () => {
 	it("PPN should exist", () => {
@@ -75,7 +75,7 @@ describe("PPN tests", () => {
 	});
 
 	describe("Get ppn tests", () => {
-		_.forEach(__ppns, (ppn, label) => {
+		_.forEach(__PPNS, (ppn, label) => {
 			it(label + " PPN.ppn should return " + ppn, () => {
 				expect(PPN.ppn(label)).to.be.equal(ppn);
 			});
@@ -83,7 +83,7 @@ describe("PPN tests", () => {
 	});
 
 	describe("Get ppn tests should fail", () => {
-		_.forEach(badLabels, (label) => {
+		_.forEach(LABELS_BAD, (label) => {
 			it(label + " PPN.ppn should fail", () => {
 				expect(PPN.ppn(label)).to.be.undefined;
 			});
@@ -91,13 +91,13 @@ describe("PPN tests", () => {
 	});
 
 	describe("Get ppns tests", () => {
-		it("PPN.ppns should return " + JSON.stringify(_.values(__ppns)), () => {
-			expect(PPN.ppns(_.keys(__ppns))).to.deep.equal(_.values(__ppns));
+		it("PPN.ppns should return " + JSON.stringify(_.values(__PPNS)), () => {
+			expect(PPN.ppns(_.keys(__PPNS))).to.deep.equal(_.values(__PPNS));
 		});
 	});
 
 	describe("should have exact values", () => {
-		let check = _.uniq(_.values(__ppns));
+		let check = _.uniq(_.values(__PPNS));
 		let vals = _.join(check, ",");
 		it("response should include all values: " + vals, () => {
 			expect(PPN.all()).to.include.members(check);
@@ -108,7 +108,7 @@ describe("PPN tests", () => {
 	});
 
 	describe("card ppn tests", () => {
-		_.forEach(__cards, (card, ppn) => {
+		_.forEach(__CARDS, (card, ppn) => {
 			it(ppn + " PPN.card should return " + JSON.stringify(card), () => {
 				expect(PPN.card(ppn)).to.deep.equal(card);
 			});
@@ -116,8 +116,8 @@ describe("PPN tests", () => {
 	});
 
 	describe("cards ppn tests", () => {
-		it("PPN.cards should return " + JSON.stringify(_.values(__cards)), () => {
-			expect(PPN.cards(_.values(__ppns))).to.deep.equal(_.values(__cards));
+		it("PPN.cards should return " + JSON.stringify(_.values(__CARDS)), () => {
+			expect(PPN.cards(_.values(__PPNS))).to.deep.equal(_.values(__CARDS));
 		});
 	});
 

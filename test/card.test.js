@@ -50,7 +50,7 @@ let __cards = [
 		ppn: "U"
 	}
 ];
-const __ppns = Object.freeze(["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W"]);
+const __PPNS = Object.freeze(["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W"]);
 
 describe("Card tests", () => {
 	it("Card should exist", () => {
@@ -58,7 +58,7 @@ describe("Card tests", () => {
 	});
 
 	describe("Contructor PPN tests", () => {
-		_.forEach(__ppns, (ppn) => {
+		_.forEach(__PPNS, (ppn) => {
 			it("contructor should create card for " + ppn, () => {
 				expect(() => new Card(ppn)).to.not.throw();
 				expect(new Card(ppn)).to.be.a("object");
