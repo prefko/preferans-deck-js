@@ -6,11 +6,11 @@ let Cards = require("../lib/cards");
 
 let tmpCards = [];
 _.forEach(_.values(PPN.all()), (ppn) => tmpCards.push(new Card(PPN.card(ppn))));
-const fullDeck = Object.freeze(tmpCards);
+const FULL_DECK = Object.freeze(tmpCards);
 
-const ppnString = "123456789ABCDEFGHIJKLMNOPQRSTUVW";
-const unicodeString = "7♠8♠9♠X♠J♠Q♠K♠A♠7♦8♦9♦X♦J♦Q♦K♦A♦7♥8♥9♥X♥J♥Q♥K♥A♥7♣8♣9♣X♣J♣Q♣K♣A♣";
-const fullString = "7Spade8Spade9SpadeXSpadeJSpadeQSpadeKSpadeASpade7Diamond8Diamond9DiamondXDiamondJDiamondQDiamondKDiamondADiamond7Heart8Heart9HeartXHeartJHeartQHeartKHeartAHeart7Club8Club9ClubXClubJClubQClubKClubAClub";
+const PPN_STRING = "123456789ABCDEFGHIJKLMNOPQRSTUVW";
+const UNICODE_STRING = "7♠8♠9♠X♠J♠Q♠K♠A♠7♦8♦9♦X♦J♦Q♦K♦A♦7♥8♥9♥X♥J♥Q♥K♥A♥7♣8♣9♣X♣J♣Q♣K♣A♣";
+const FULL_STRING = "7Spade8Spade9SpadeXSpadeJSpadeQSpadeKSpadeASpade7Diamond8Diamond9DiamondXDiamondJDiamondQDiamondKDiamondADiamond7Heart8Heart9HeartXHeartJHeartQHeartKHeartAHeart7Club8Club9ClubXClubJClubQClubKClubAClub";
 
 describe("Cards tests", function () {
 	it("Cards should exist", function () {
@@ -18,9 +18,9 @@ describe("Cards tests", function () {
 	});
 
 	describe("Cards constructor/getters tests", function () {
-		let cards = new Cards(fullDeck);
+		let cards = new Cards(FULL_DECK);
 		it("contructor should create object", function () {
-			expect(() => new Cards(fullDeck)).to.not.throw();
+			expect(() => new Cards(FULL_DECK)).to.not.throw();
 			expect(cards).to.be.a("object");
 		});
 		it("Cards all should return array", function () {
@@ -29,19 +29,19 @@ describe("Cards tests", function () {
 		it("Cards all should return 32 cards", function () {
 			expect(cards.all()).to.have.lengthOf(32);
 		});
-		it("Cards getPPN should equal to " + ppnString, function () {
-			expect(cards.getPPN()).to.be.equal(ppnString);
+		it("Cards getPPN should equal to " + PPN_STRING, function () {
+			expect(cards.getPPN()).to.be.equal(PPN_STRING);
 		});
-		it("Cards toString should equal to " + fullString, function () {
-			expect(cards.toString()).to.be.equal(fullString);
+		it("Cards toString should equal to " + FULL_STRING, function () {
+			expect(cards.toString()).to.be.equal(FULL_STRING);
 		});
-		it("Cards toUnicodeString should equal to " + unicodeString, function () {
-			expect(cards.toUnicodeString()).to.be.equal(unicodeString);
+		it("Cards toUnicodeString should equal to " + UNICODE_STRING, function () {
+			expect(cards.toUnicodeString()).to.be.equal(UNICODE_STRING);
 		});
 	});
 
 	describe("Cards original tests", function () {
-		let cards = new Cards(fullDeck);
+		let cards = new Cards(FULL_DECK);
 		let original = cards.getOriginal();
 		it("Cards original should be an array", function () {
 			expect(original).to.be.an("array");
@@ -49,14 +49,14 @@ describe("Cards tests", function () {
 		it("Cards original should return 32 cards", function () {
 			expect(original).to.have.lengthOf(32);
 		});
-		it("Cards getOriginalPPN should equal to " + ppnString, function () {
-			expect(cards.getOriginalPPN()).to.be.equal(ppnString);
+		it("Cards getOriginalPPN should equal to " + PPN_STRING, function () {
+			expect(cards.getOriginalPPN()).to.be.equal(PPN_STRING);
 		});
-		it("Cards toOriginalString should equal to " + fullString, function () {
-			expect(cards.toOriginalString()).to.be.equal(fullString);
+		it("Cards toOriginalString should equal to " + FULL_STRING, function () {
+			expect(cards.toOriginalString()).to.be.equal(FULL_STRING);
 		});
-		it("Cards toOriginalUnicodeString should equal to " + unicodeString, function () {
-			expect(cards.toOriginalUnicodeString()).to.be.equal(unicodeString);
+		it("Cards toOriginalUnicodeString should equal to " + UNICODE_STRING, function () {
+			expect(cards.toOriginalUnicodeString()).to.be.equal(UNICODE_STRING);
 		});
 	});
 

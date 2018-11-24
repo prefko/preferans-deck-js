@@ -28,7 +28,7 @@ let tests = [
 	},
 	// 4 suits, BLACK:
 	{
-		sorting: {sorting: Pile.SORTING.BLACK},
+		sorting: {type: Pile.SORTING.BLACK},
 		__cards: _.map(_.split("G2719MRU4H", ""), (c) => new Card(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
@@ -38,7 +38,7 @@ let tests = [
 		fullString: "ADiamond8SpadeKSpade7Spade7DiamondQHeart9ClubQClubXSpade7Heart",
 		fullSortedString: "7Spade8SpadeXSpadeKSpade7DiamondADiamond9ClubQClub7HeartQHeart"
 	}, {
-		sorting: {sorting: Pile.SORTING.BLACK, reverse: true},
+		sorting: {type: Pile.SORTING.BLACK, reverse: true},
 		__cards: _.map(_.split("G2719MRU4H", ""), (c) => new Card(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
@@ -50,7 +50,7 @@ let tests = [
 	},
 	// 4 suits, RED:
 	{
-		sorting: {sorting: Pile.SORTING.RED},
+		sorting: {type: Pile.SORTING.RED},
 		__cards: _.map(_.split("G2719MRU4H", ""), (c) => new Card(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
@@ -60,7 +60,7 @@ let tests = [
 		fullString: "ADiamond8SpadeKSpade7Spade7DiamondQHeart9ClubQClubXSpade7Heart",
 		fullSortedString: "7DiamondADiamond7Spade8SpadeXSpadeKSpade7HeartQHeart9ClubQClub"
 	}, {
-		sorting: {sorting: Pile.SORTING.RED, reverse: true},
+		sorting: {type: Pile.SORTING.RED, reverse: true},
 		__cards: _.map(_.split("G2719MRU4H", ""), (c) => new Card(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
@@ -72,7 +72,7 @@ let tests = [
 	},
 	// 4 suits, SUITS:
 	{
-		sorting: {sorting: Pile.SORTING.SUITS},
+		sorting: {type: Pile.SORTING.SUITS},
 		__cards: _.map(_.split("G2719MRU4H", ""), (c) => new Card(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
@@ -82,7 +82,7 @@ let tests = [
 		fullString: "ADiamond8SpadeKSpade7Spade7DiamondQHeart9ClubQClubXSpade7Heart",
 		fullSortedString: "7Spade8SpadeXSpadeKSpade7DiamondADiamond7HeartQHeart9ClubQClub"
 	}, {
-		sorting: {sorting: Pile.SORTING.SUITS, reverse: true},
+		sorting: {type: Pile.SORTING.SUITS, reverse: true},
 		__cards: _.map(_.split("G2719MRU4H", ""), (c) => new Card(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
@@ -94,7 +94,7 @@ let tests = [
 	},
 	// 4 suits, NONE:
 	{
-		sorting: {sorting: Pile.SORTING.NONE},
+		sorting: {type: Pile.SORTING.NONE},
 		__cards: _.map(_.split("G2719MRU4H", ""), (c) => new Card(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
@@ -104,7 +104,7 @@ let tests = [
 		fullString: "ADiamond8SpadeKSpade7Spade7DiamondQHeart9ClubQClubXSpade7Heart",
 		fullSortedString: "ADiamond8SpadeKSpade7Spade7DiamondQHeart9ClubQClubXSpade7Heart"
 	}, {
-		sorting: {sorting: Pile.SORTING.NONE, reverse: true},
+		sorting: {type: Pile.SORTING.NONE, reverse: true},
 		__cards: _.map(_.split("G2719MRU4H", ""), (c) => new Card(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
@@ -223,7 +223,7 @@ let tests = [
 	},
 	// 2 suits, spade-diamond, BLACK:
 	{
-		sorting: {sorting: Pile.SORTING.BLACK},
+		sorting: {type: Pile.SORTING.BLACK},
 		__cards: _.map(_.split("BC42A96G", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "BC42A96G",
@@ -233,7 +233,7 @@ let tests = [
 		fullString: "9DiamondXDiamondXSpade8Spade8Diamond7DiamondQSpadeADiamond",
 		fullSortedString: "8SpadeXSpadeQSpade7Diamond8Diamond9DiamondXDiamondADiamond"
 	}, {
-		sorting: {sorting: Pile.SORTING.BLACK, reverse: true},
+		sorting: {type: Pile.SORTING.BLACK, reverse: true},
 		__cards: _.map(_.split("BC42A96G", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "BC42A96G",
@@ -245,7 +245,7 @@ let tests = [
 	},
 	// 2 suits, spade-diamond, RED:
 	{
-		sorting: {sorting: Pile.SORTING.RED},
+		sorting: {type: Pile.SORTING.RED},
 		__cards: _.map(_.split("BC42A96G", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "BC42A96G",
@@ -255,7 +255,7 @@ let tests = [
 		fullString: "9DiamondXDiamondXSpade8Spade8Diamond7DiamondQSpadeADiamond",
 		fullSortedString: "7Diamond8Diamond9DiamondXDiamondADiamond8SpadeXSpadeQSpade"
 	}, {
-		sorting: {sorting: Pile.SORTING.RED, reverse: true},
+		sorting: {type: Pile.SORTING.RED, reverse: true},
 		__cards: _.map(_.split("BC42A96G", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "BC42A96G",
@@ -267,7 +267,7 @@ let tests = [
 	},
 	// 2 suits, spade-diamond, SUITS:
 	{
-		sorting: {sorting: Pile.SORTING.SUITS},
+		sorting: {type: Pile.SORTING.SUITS},
 		__cards: _.map(_.split("BC42A96G", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "BC42A96G",
@@ -277,7 +277,7 @@ let tests = [
 		fullString: "9DiamondXDiamondXSpade8Spade8Diamond7DiamondQSpadeADiamond",
 		fullSortedString: "8SpadeXSpadeQSpade7Diamond8Diamond9DiamondXDiamondADiamond"
 	}, {
-		sorting: {sorting: Pile.SORTING.SUITS, reverse: true},
+		sorting: {type: Pile.SORTING.SUITS, reverse: true},
 		__cards: _.map(_.split("BC42A96G", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "BC42A96G",
@@ -373,7 +373,7 @@ let tests = [
 	},
 	// 2 suits, diamond-club, RED:
 	{
-		sorting: {sorting: Pile.SORTING.RED},
+		sorting: {type: Pile.SORTING.RED},
 		__cards: _.map(_.split("QA9PRCDU", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
@@ -383,7 +383,7 @@ let tests = [
 		fullString: "8Club8Diamond7Diamond7Club9ClubXDiamondJDiamondQClub",
 		fullSortedString: "7Diamond8DiamondXDiamondJDiamond7Club8Club9ClubQClub"
 	}, {
-		sorting: {sorting: Pile.SORTING.RED, reverse: true},
+		sorting: {type: Pile.SORTING.RED, reverse: true},
 		__cards: _.map(_.split("QA9PRCDU", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
@@ -395,7 +395,7 @@ let tests = [
 	},
 	// 2 suits, diamond-club, BLACK:
 	{
-		sorting: {sorting: Pile.SORTING.BLACK},
+		sorting: {type: Pile.SORTING.BLACK},
 		__cards: _.map(_.split("QA9PRCDU", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
@@ -405,7 +405,7 @@ let tests = [
 		fullString: "8Club8Diamond7Diamond7Club9ClubXDiamondJDiamondQClub",
 		fullSortedString: "7Club8Club9ClubQClub7Diamond8DiamondXDiamondJDiamond"
 	}, {
-		sorting: {sorting: Pile.SORTING.BLACK, reverse: true},
+		sorting: {type: Pile.SORTING.BLACK, reverse: true},
 		__cards: _.map(_.split("QA9PRCDU", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
@@ -417,7 +417,7 @@ let tests = [
 	},
 	// 2 suits, diamond-club, SUITS:
 	{
-		sorting: {sorting: Pile.SORTING.SUITS},
+		sorting: {type: Pile.SORTING.SUITS},
 		__cards: _.map(_.split("QA9PRCDU", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
@@ -427,7 +427,7 @@ let tests = [
 		fullString: "8Club8Diamond7Diamond7Club9ClubXDiamondJDiamondQClub",
 		fullSortedString: "7Diamond8DiamondXDiamondJDiamond7Club8Club9ClubQClub"
 	}, {
-		sorting: {sorting: Pile.SORTING.SUITS, reverse: true},
+		sorting: {type: Pile.SORTING.SUITS, reverse: true},
 		__cards: _.map(_.split("QA9PRCDU", ""), (c) => new Card(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
