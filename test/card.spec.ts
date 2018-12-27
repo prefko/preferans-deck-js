@@ -1,7 +1,7 @@
 const _ = require("lodash");
 const expect = require("chai").expect;
 
-let Card = require("../lib/card");
+let Card = require("../_deprecated/card");
 let __cards = [
 	{
 		card: new Card({value: 7, suit: "spade"}),

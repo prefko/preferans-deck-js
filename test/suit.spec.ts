@@ -1,7 +1,7 @@
 const _ = require("lodash");
 const expect = require("chai").expect;
 
-const Suit = require("../lib/suit");
+const Suit = require("../_deprecated/suit");
 
 const __SUITS = Object.freeze({
 	spade: "spade", s: "spade", "♠": "spade",

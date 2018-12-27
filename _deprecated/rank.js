@@ -12,3 +12,5 @@ module.exports = {
 	isValid: (value) => !!_getRank(value),
 	all: () => _.values(RANKS)
 };
+
+// This is no longer needed - Value is now numeric and thus has the rank in it.

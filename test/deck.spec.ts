@@ -1,7 +1,7 @@
 const _ = require("lodash");
 const expect = require("chai").expect;
 
-let Deck = require("../lib/deck");
+let Deck = require("../_deprecated/deck");
 const ppnString = "123456789ABCDEFGHIJKLMNOPQRSTUVW";
 const unicodeString = "7♠8♠9♠X♠J♠Q♠K♠A♠7♦8♦9♦X♦J♦Q♦K♦A♦7♥8♥9♥X♥J♥Q♥K♥A♥7♣8♣9♣X♣J♣Q♣K♣A♣";
 const fullString = "7Spade8Spade9SpadeXSpadeJSpadeQSpadeKSpadeASpade7Diamond8Diamond9DiamondXDiamondJDiamondQDiamondKDiamondADiamond7Heart8Heart9HeartXHeartJHeartQHeartKHeartAHeart7Club8Club9ClubXClubJClubQClubKClubAClub";

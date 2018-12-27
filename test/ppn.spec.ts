@@ -1,7 +1,7 @@
 const _ = require("lodash");
 const expect = require("chai").expect;
 
-const PPN = require("../lib/ppn");
+const PPN = require("../_deprecated/ppn");
 const __PPNS = Object.freeze({
 	"7spade": "1",
 	"8spade": "2",

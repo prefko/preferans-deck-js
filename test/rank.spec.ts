@@ -1,7 +1,7 @@
 const _ = require("lodash");
 const expect = require("chai").expect;
 
-const Rank = require("../lib/rank");
+const Rank = require("../_deprecated/rank");
 const __RANKS = Object.freeze({"7": 7, "8": 8, "9": 9, "x": 10, "j": 12, "q": 13, "k": 14, "a": 15});
 const VALUES_BAD = Object.freeze([1, 2, 3, 4, 5, 6, 11, 16, "z", "Z"]);
 const VALUES_GOOD = Object.freeze([7, 8, 9, "x", "X", "j", "J", "q", "Q", "k", "K", "a", "A"]);
