@@ -2,7 +2,7 @@ const _ = require("lodash");
 const expect = require("chai").expect;
 
 let Card = require("../_deprecated/card");
-let Pile = require("../_deprecated/pile");
+let Pile = require("../src/pile");
 
 let tests = [
 	// 4 suits:

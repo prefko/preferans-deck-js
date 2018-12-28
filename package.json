@@ -5,7 +5,7 @@
 	"engines": {
 		"node": ">=8.9"
 	},
-	"main": "_deprecated/deck.js",
+	"main": "src/deck.js",
 	"scripts": {
 		"build": "tsc",
 		"build:watch": "tsc --watch",

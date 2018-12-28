@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 "use strict";
 
+import PrefDeckPile from "./prefDeckPile";
+
 const _ = require("lodash");
 const PPN = require("./ppn");
-const Cards = require("./cards");
-const Card = require("./card");
-const Pile = require("./pile");
+const Cards = require("../_deprecated/cards");
+const Card = require("../_deprecated/card");
+const Pile = require("../src/pile");
 
 let tmpCards = [];
 _.forEach(_.values(PPN.all()), (ppn) => tmpCards.push(new Card(PPN.card(ppn))));
-const CONTROL_DECK = Object.freeze(tmpCards);
+const CONTROL_DECK = tmpCards;
 
 let tmpCuts = [2, 3], i, j;
 for (i = 0; i < 2; i++) for (j = 4; j <= 6; j++) tmpCuts.push(j);
@@ -64,7 +66,7 @@ const _humanSimpleShuffle = (cards) => {
 	return cards;
 };
 
-class Deck extends Cards {
+export default class PrefDeck extends PrefDeckPile {
 	constructor() {
 		super(CONTROL_DECK);
 		return this;
