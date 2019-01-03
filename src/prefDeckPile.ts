@@ -74,13 +74,16 @@ const sort = (cards: PrefDeckCard[], sorting: PrefDeckPileSorting): PrefDeckCard
 };
 
 export default class PrefDeckPile {
-	private _cards: PrefDeckCard[];
-	private _original: PrefDeckCard[];
+	protected _cards: PrefDeckCard[];
+	private readonly _original: PrefDeckCard[];
 
 	constructor(cards: PrefDeckCard[]) {
-		this._cards = cards;
+		this._cards = [];
 		this._original = [];
-		_.each(cards, (card) => this._original.push(card));
+		_.forEach(cards, (card) => {
+			this._cards.push(card);
+			this._original.push(card);
+		});
 	}
 
 	public sort(sorting: PrefDeckPileSorting = PrefDeckPileSorting.BLACK): PrefDeckPile {

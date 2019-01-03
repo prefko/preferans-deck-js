@@ -1,68 +1,78 @@
 #!/usr/bin/env node
 "use strict";
 
+import * as _ from "lodash";
 import PrefDeckPile from "./prefDeckPile";
+import {PrefDeckCardSuit, PrefDeckCardValue} from "./prefDeckCard";
+import PrefDeckCard from "./prefDeckCard";
 
-const _ = require("lodash");
-const PPN = require("./ppn");
-const Cards = require("../_deprecated/cards");
-const Card = require("../_deprecated/card");
-const Pile = require("../src/pile");
+const createControlDeck = (): PrefDeckCard[] => {
+	let tmpCards: PrefDeckCard[] = [];
+	let tmpSuits = [PrefDeckCardSuit.SPADE, PrefDeckCardSuit.DIAMOND, PrefDeckCardSuit.HEART, PrefDeckCardSuit.CLUB];
+	let tmpValues = [PrefDeckCardValue.SEVEN, PrefDeckCardValue.EIGHT, PrefDeckCardValue.NINE, PrefDeckCardValue.TEN,
+		PrefDeckCardValue.JACK, PrefDeckCardValue.QUEEN, PrefDeckCardValue.KING, PrefDeckCardValue.ACE];
+	_.forEach(tmpSuits, (suit) => {
+		_.forEach(tmpValues, (value) => {
+			tmpCards.push(new PrefDeckCard(suit, value));
+		});
+	});
+	return tmpCards;
+};
 
-let tmpCards = [];
-_.forEach(_.values(PPN.all()), (ppn) => tmpCards.push(new Card(PPN.card(ppn))));
-const CONTROL_DECK = tmpCards;
+const createWeightedCuts = (): number[] => {
+	let tmpCuts = [2, 3], i, j;
+	for (i = 0; i < 2; i++) for (j = 4; j <= 6; j++) tmpCuts.push(j);
+	for (i = 0; i < 5; i++) for (j = 7; j <= 10; j++) tmpCuts.push(j);
+	for (i = 0; i < 8; i++) for (j = 11; j <= 15; j++) tmpCuts.push(j);
+	return _.sortBy(_.concat(tmpCuts, _.map(tmpCuts, (t) => 31 - t)));
+};
 
-let tmpCuts = [2, 3], i, j;
-for (i = 0; i < 2; i++) for (j = 4; j <= 6; j++) tmpCuts.push(j);
-for (i = 0; i < 5; i++) for (j = 7; j <= 10; j++) tmpCuts.push(j);
-for (i = 0; i < 8; i++) for (j = 11; j <= 15; j++) tmpCuts.push(j);
-const WEIGHTED_CUTS = Object.freeze(_.sortBy(_.concat(tmpCuts, _.map(tmpCuts, (t) => 31 - t))));
+const CONTROL_DECK: PrefDeckCard[] = createControlDeck();
+const WEIGHTED_CUTS: number[] = createWeightedCuts();
 
-const _count123Weighted = () => {
+const weighted123 = (): 1 | 2 | 3 => {
 	let cnt = _.random(1, 25);
 	return cnt <= 20 ? 1 : (cnt <= 24 ? 2 : 3);
 };
 
-const _containsAll = (a, b) => {
+const containsAll = (a: PrefDeckCard[], b: PrefDeckCard[]): boolean => {
 	let c = true;
 	_.forEach(a, (i) => c = _.includes(b, i));
 	return c;
 };
-const _same = (a, b) => a.length === b.length && (a === b || (_containsAll(a, b) && _containsAll(b, a)));
+const sameCards = (a: PrefDeckCard[], b: PrefDeckCard[]): boolean => {
+	return a.length === b.length && (a === b || (containsAll(a, b) && containsAll(b, a)));
+};
 
-const _isValidDeck = (cards) => _same(cards, CONTROL_DECK);
-const _randomRange = () => _.range(0, _.random(1, 3));
-const _randomRangeWeighted = () => _.range(0, _count123Weighted());
+const isValidDeck = (cards: PrefDeckCard[]): boolean => sameCards(cards, CONTROL_DECK);
+const randomRange = (): number[] => _.range(0, _.random(1, 3));
+const weightedRange = (): number[] => _.range(0, weighted123());
 
-const _humanShuffle = (cards) => {
-	let left = cards.splice(0, _.sample(WEIGHTED_CUTS));
-	let right = _.clone(cards);
+const shuffleHuman = (cards: PrefDeckCard[]): PrefDeckCard[] => {
+	let left: PrefDeckCard[] = cards.splice(0, _.sample(WEIGHTED_CUTS));
+	let right: PrefDeckCard[] = _.clone(cards);
 
 	cards = [];
 	while (!_.isEmpty(_.concat(left, right))) {
-		cards = _.isEmpty(left) ? cards : cards.concat(left.splice(0, _count123Weighted()));
-		cards = _.isEmpty(right) ? cards : cards.concat(right.splice(0, _count123Weighted()));
+		cards = _.isEmpty(left) ? cards : cards.concat(left.splice(0, weighted123()));
+		cards = _.isEmpty(right) ? cards : cards.concat(right.splice(0, weighted123()));
 	}
 	return cards;
 };
 
-const _humanSimpleShuffle = (cards) => {
-	let left = cards.splice(0, _.random(1, 9));
-	let right = _.clone(cards);
-	let toFront = true;
+const shuffleSimple = (cards: PrefDeckCard[]): PrefDeckCard[] => {
+	let left: PrefDeckCard[] = cards.splice(0, _.random(1, 9));
+	let right: PrefDeckCard[] = _.clone(cards);
+	let front = true;
 
-	cards = [].concat(left);
+	cards = left;
 	while (!_.isEmpty(right)) {
 		let cut = _.min([_.random(1, 9), _.size(right)]);
 		let swap1 = right.splice(0, cut);
 
-		if (toFront) cards = swap1.concat(cards);
-		else cards = cards.concat(swap1);
-
-		toFront = !toFront;
+		cards = front ? swap1.concat(cards) : cards.concat(swap1);
+		front = !front;
 	}
-
 	return cards;
 };
 
@@ -72,50 +82,46 @@ export default class PrefDeck extends PrefDeckPile {
 		return this;
 	}
 
-	static validate(cards) {
-		return _isValidDeck(cards);
+	static validate(cards: PrefDeckCard[]) {
+		return isValidDeck(cards);
 	}
 
 	isValid() {
-		return _isValidDeck(this.cards);
+		return isValidDeck(this.cards);
 	}
 
-	restore(cards) {
-		if (!_isValidDeck(cards)) throw new Error("Deck::restore:Invalid cards to restore from: " + cards);
-		this.cards = _.clone(cards);
+	restore(cards: PrefDeckCard[]) {
+		if (!isValidDeck(cards)) throw new Error("Deck::restore:Invalid cards to restore from: " + cards);
+		this._cards = _.clone(cards);
 		return this;
 	}
 
 	cut() {
-		this.cards = this.cards.concat(this.cards.splice(0, _.sample(WEIGHTED_CUTS)));
+		this._cards = this._cards.concat(this._cards.splice(0, _.sample(WEIGHTED_CUTS)));
 		return this;
 	}
 
 	shuffle() {
-		_.forEach(_randomRange(), () => this.cards = _humanShuffle(this.cards));
-		_.forEach(_randomRangeWeighted(), () => this.cards = _humanSimpleShuffle(this.cards));
+		_.forEach(randomRange(), () => this._cards = shuffleHuman(this._cards));
+		_.forEach(weightedRange(), () => this._cards = shuffleSimple(this._cards));
 		this.cut();
 		return this;
 	}
 
 	deal() {
-		let h1a = _.slice(this.cards, 0, 5);
-		let h2a = _.slice(this.cards, 5, 10);
-		let h3a = _.slice(this.cards, 10, 15);
-		let t = _.slice(this.cards, 15, 17);
-		let h1b = _.slice(this.cards, 17, 22);
-		let h2b = _.slice(this.cards, 22, 27);
-		let h3b = _.slice(this.cards, 27, 32);
+		let h1a = _.slice(this._cards, 0, 5);
+		let h2a = _.slice(this._cards, 5, 10);
+		let h3a = _.slice(this._cards, 10, 15);
+		let t = _.slice(this._cards, 15, 17);
+		let h1b = _.slice(this._cards, 17, 22);
+		let h2b = _.slice(this._cards, 22, 27);
+		let h3b = _.slice(this._cards, 27, 32);
 
 		return {
-			h1: new Pile(_.concat(h1a, h1b)),
-			h2: new Pile(_.concat(h2a, h2b)),
-			h3: new Pile(_.concat(h3a, h3b)),
-			t: new Pile(t)
+			h1: new PrefDeckPile(_.concat(h1a, h1b)),
+			h2: new PrefDeckPile(_.concat(h2a, h2b)),
+			h3: new PrefDeckPile(_.concat(h3a, h3b)),
+			t: new PrefDeckPile(t)
 		};
 	}
 }
-
-module.exports = Deck;
-module.exports.Card = Card;
-module.exports.Pile = Pile;
