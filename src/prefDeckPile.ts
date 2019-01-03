@@ -83,7 +83,7 @@ export default class PrefDeckPile {
 		_.each(cards, (card) => this._original.push(card));
 	}
 
-	sort(sorting: PrefDeckPileSorting = PrefDeckPileSorting.BLACK): PrefDeckPile {
+	public sort(sorting: PrefDeckPileSorting = PrefDeckPileSorting.BLACK): PrefDeckPile {
 		if (sorting === PrefDeckPileSorting.NONE) return this;
 
 		this._cards = sortSuits(this._cards, isReverseSorting(sorting));
