@@ -1,8 +1,8 @@
 const _ = require("lodash");
 const expect = require("chai").expect;
-let PPN = require("../_deprecated/ppn");
-let Card = require("../_deprecated/card");
-let Cards = require("../_deprecated/cards");
+let PPN = require("../lib/ppn");
+let Card = require("../lib/card");
+let Cards = require("../lib/cards");
 
 let tmpCards = [];
 _.forEach(_.values(PPN.all()), (ppn) => tmpCards.push(new Card(PPN.card(ppn))));
