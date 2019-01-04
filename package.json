@@ -5,7 +5,7 @@
 	"engines": {
 		"node": ">=8.9"
 	},
-	"main": "src/deck.js",
+	"main": "lib/prefDeck.js",
 	"scripts": {
 		"build": "tsc",
 		"build:watch": "tsc --watch",

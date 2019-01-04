@@ -1,16 +1,21 @@
 {
 	"compilerOptions": {
-		"target": "es5",
+		"target": "es6",
 		"module": "commonjs",
 		"declaration": true,
-		"outDir": "./_deprecated",
+		"outDir": "./lib",
 		"strict": true
 	},
 	"include": [
 		"src"
 	],
 	"exclude": [
+		".idea",
+		".sonarlint",
+		".nyc_output",
+		"coverage",
+		"docs",
 		"node_modules",
-		"**/__tests__/*"
+		"test"
 	]
 }
