@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import PrefDeckPile, {PrefDeckPileSorting} from "../src/prefDeckPile";
 import PrefDeckCard from "../src/prefDeckCard";
 
-let tests = [
+const tests = [
 	// 4 suits, BLACK:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
@@ -534,18 +534,18 @@ let tests = [
 describe("PrefDeckPile tests", () => {
 	_.forEach(tests, (test) => {
 		describe("PrefDeckPile tests", () => {
-			let sorting = test.sorting;
-			let __cards = test.__cards;
-			let size = test.size;
-			let ppnString = test.ppnString;
-			let ppnSortedString = test.ppnSortedString;
-			let unicodeString = test.unicodeString;
-			let unicodeSortedString = test.unicodeSortedString;
-			let fullString = test.fullString;
-			let fullSortedString = test.fullSortedString;
+			const sorting = test.sorting;
+			const __cards = test.__cards;
+			const size = test.size;
+			const ppnString = test.ppnString;
+			const ppnSortedString = test.ppnSortedString;
+			const unicodeString = test.unicodeString;
+			const unicodeSortedString = test.unicodeSortedString;
+			const fullString = test.fullString;
+			const fullSortedString = test.fullSortedString;
 
 			describe("PrefDeckPile constructor/getters tests", () => {
-				let pile = new PrefDeckPile(__cards);
+				const pile = new PrefDeckPile(__cards);
 				it("contructor should create object", () => {
 					expect(() => new PrefDeckPile(__cards)).to.not.throw();
 					expect(pile).to.be.a("object");
@@ -568,10 +568,8 @@ describe("PrefDeckPile tests", () => {
 			});
 
 			describe("PrefDeckPile sort tests", () => {
-				let pile = new PrefDeckPile(__cards);
-				console.log(' - ', pile.ppn, pile.unicode);
+				const pile = new PrefDeckPile(__cards);
 				pile.sort(sorting);
-				console.log(' - ', sorting, pile.ppn, pile.unicode);
 				it("sort should create object", () => {
 					expect(pile).to.be.a("object");
 				});
@@ -593,7 +591,7 @@ describe("PrefDeckPile tests", () => {
 			});
 
 			describe("PrefDeckPile sort original tests", () => {
-				let pile = new PrefDeckPile(__cards);
+				const pile = new PrefDeckPile(__cards);
 				pile.sort(sorting);
 				it("PrefDeckPile originalPPN should equal to " + ppnString, () => {
 					expect(pile.originalPPN).to.be.equal(ppnString);

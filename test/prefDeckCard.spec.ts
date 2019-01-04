@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import * as _ from "lodash";
 import PrefDeckCard, {PrefDeckCardSuit, PrefDeckCardValue} from "../src/prefDeckCard";
 
-let __cards = [
+const __cards = [
 	{
 		card: new PrefDeckCard(PrefDeckCardSuit.SPADE, PrefDeckCardValue.SEVEN),
 		label: "7Spade",
@@ -100,58 +100,57 @@ describe("PrefDeckCard tests", () => {
 
 	describe("Compare cards tests", () => {
 		it("7Club should equal 7Club", () => {
-			let c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
-			let c2 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
-			console.log(PrefDeckCard.winner(c1, c2));
+			const c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
+			const c2 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
 			expect(c1.beats(c2)).to.equal(false);
 			expect(PrefDeckCard.compare(c1, c2)).to.equal(0);
 			expect(PrefDeckCard.winner(c1, c2)).to.deep.equal(c1);
 		});
 		it("7Club should beat 8Heart", () => {
-			let c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
-			let c2 = new PrefDeckCard(PrefDeckCardSuit.HEART, PrefDeckCardValue.EIGHT);
+			const c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
+			const c2 = new PrefDeckCard(PrefDeckCardSuit.HEART, PrefDeckCardValue.EIGHT);
 			expect(c1.beats(c2)).to.equal(true);
 			expect(PrefDeckCard.compare(c1, c2)).to.equal(-1);
 			expect(PrefDeckCard.winner(c1, c2)).to.deep.equal(c1);
 		});
 		it("7Club should not beat 8Club", () => {
-			let c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
-			let c2 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.EIGHT);
+			const c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
+			const c2 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.EIGHT);
 			expect(c1.beats(c2)).to.equal(false);
 			expect(PrefDeckCard.compare(c1, c2)).to.equal(1);
 			expect(PrefDeckCard.winner(c1, c2)).to.deep.equal(c2);
 		});
 		it("9Club should not beat 8Heart for trump h", () => {
-			let c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.NINE);
-			let c2 = new PrefDeckCard(PrefDeckCardSuit.HEART, PrefDeckCardValue.EIGHT);
+			const c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.NINE);
+			const c2 = new PrefDeckCard(PrefDeckCardSuit.HEART, PrefDeckCardValue.EIGHT);
 			expect(c1.beats(c2, PrefDeckCardSuit.HEART)).to.equal(false);
 			expect(PrefDeckCard.compare(c1, c2, PrefDeckCardSuit.HEART)).to.equal(1);
 			expect(PrefDeckCard.winner(c1, c2, PrefDeckCardSuit.HEART)).to.deep.equal(c2);
 		});
 		it("9Club should not beat 8Heart for trump Heart", () => {
-			let c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.NINE);
-			let c2 = new PrefDeckCard(PrefDeckCardSuit.HEART, PrefDeckCardValue.EIGHT);
+			const c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.NINE);
+			const c2 = new PrefDeckCard(PrefDeckCardSuit.HEART, PrefDeckCardValue.EIGHT);
 			expect(c1.beats(c2, PrefDeckCardSuit.HEART)).to.equal(false);
 			expect(PrefDeckCard.compare(c1, c2, PrefDeckCardSuit.HEART)).to.equal(1);
 			expect(PrefDeckCard.winner(c1, c2, PrefDeckCardSuit.HEART)).to.deep.equal(c2);
 		});
 		it("9Club should not beat 8Heart for trump ♥", () => {
-			let c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.NINE);
-			let c2 = new PrefDeckCard(PrefDeckCardSuit.HEART, PrefDeckCardValue.EIGHT);
+			const c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.NINE);
+			const c2 = new PrefDeckCard(PrefDeckCardSuit.HEART, PrefDeckCardValue.EIGHT);
 			expect(c1.beats(c2, PrefDeckCardSuit.HEART)).to.equal(false);
 			expect(PrefDeckCard.compare(c1, c2, PrefDeckCardSuit.HEART)).to.equal(1);
 			expect(PrefDeckCard.winner(c1, c2, PrefDeckCardSuit.HEART)).to.deep.equal(c2);
 		});
 		it("KClub should beat JClub for trump Club", () => {
-			let c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.KING);
-			let c2 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.JACK);
+			const c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.KING);
+			const c2 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.JACK);
 			expect(c1.beats(c2, PrefDeckCardSuit.CLUB)).to.equal(true);
 			expect(PrefDeckCard.compare(c1, c2, PrefDeckCardSuit.CLUB)).to.equal(-1);
 			expect(PrefDeckCard.winner(c1, c2, PrefDeckCardSuit.CLUB)).to.deep.equal(c1);
 		});
 		it("7Club should not beat 8Club for trump Club", () => {
-			let c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
-			let c2 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.EIGHT);
+			const c1 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.SEVEN);
+			const c2 = new PrefDeckCard(PrefDeckCardSuit.CLUB, PrefDeckCardValue.EIGHT);
 			expect(c1.beats(c2, PrefDeckCardSuit.CLUB)).to.equal(false);
 			expect(PrefDeckCard.compare(c1, c2, PrefDeckCardSuit.CLUB)).to.equal(1);
 			expect(PrefDeckCard.winner(c1, c2, PrefDeckCardSuit.CLUB)).to.deep.equal(c2);

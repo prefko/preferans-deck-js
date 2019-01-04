@@ -91,20 +91,21 @@ export default class PrefDeck extends PrefDeckPile {
 	}
 
 	public restore(cards: PrefDeckCard[]): PrefDeck {
-		if (!isValidDeck(cards)) throw new Error("Deck::restore:Invalid cards to restore from: " + cards);
+		if (!isValidDeck(cards)) throw new Error("Deck::restore:Invalid cards to restore from: " + _.size(cards) + ' ' + new PrefDeckPile(cards).unicode);
 		this._cards = _.clone(cards);
 		return this;
 	}
 
-	public cut(): PrefDeck {
-		this._cards = this._cards.concat(this._cards.splice(0, _.sample(WEIGHTED_CUTS)));
+	get cut(): PrefDeck {
+		let sample = _.sample(WEIGHTED_CUTS);
+		this._cards = this._cards.concat(this._cards.splice(0, sample));
 		return this;
 	}
 
-	public shuffle(): PrefDeck {
+	get shuffle(): PrefDeck {
 		_.forEach(randomRange(), () => this._cards = shuffleHuman(this._cards));
 		_.forEach(weightedRange(), () => this._cards = shuffleSimple(this._cards));
-		this.cut();
+		this.cut;
 		return this;
 	}
 
