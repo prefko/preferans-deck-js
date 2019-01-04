@@ -202,6 +202,7 @@ export default class PrefDeckCard {
 	private readonly _value: PrefDeckCardValue;
 	private readonly _rank: number;
 	private readonly _label: string;
+	private readonly _unicode: string;
 	private readonly _ppn: string;
 
 	public static valueLabel(value: PrefDeckCardValue): string {
@@ -229,7 +230,6 @@ export default class PrefDeckCard {
 			case PrefDeckCardSuit.CLUB:
 				return "♣";
 		}
-		throw new Error("PrefDeckCard::suitToUnicode:Invalid suit: " + suit);
 	}
 
 	public static cardToPPN(suit: PrefDeckCardSuit, value: PrefDeckCardValue): string {
@@ -243,7 +243,6 @@ export default class PrefDeckCard {
 			case PrefDeckCardSuit.CLUB:
 				return clubCardToPPN(value);
 		}
-		throw new Error("PrefDeckCard::cardToPPN:Invalid suit: " + suit);
 	}
 
 	public static ppnToCard(ppn: string): PrefDeckCard {
@@ -256,7 +255,8 @@ export default class PrefDeckCard {
 		this._rank = value;
 
 		this._label = PrefDeckCard.valueLabel(this._value) + "" + this._suit;
-		this._ppn = PrefDeckCard.cardToPPN(suit, value);
+		this._unicode = PrefDeckCard.valueLabel(this._value) + "" + PrefDeckCard.suitToUnicode(this._suit);
+		this._ppn = PrefDeckCard.cardToPPN(this._suit, this._value);
 	}
 
 	public beats(c: PrefDeckCard, t?: PrefDeckCardSuit): boolean {
@@ -277,6 +277,10 @@ export default class PrefDeckCard {
 
 	get label(): string {
 		return this._label;
+	}
+
+	get unicode(): string {
+		return this._unicode;
 	}
 
 	get ppn(): string {
