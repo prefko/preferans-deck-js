@@ -4,6 +4,11 @@
 		"tslint-config-prettier"
 	],
 	"rules": {
+		"one-variable-per-declaration": false,
+		"curly": [
+			true,
+			"ignore-same-line"
+		],
 		"max-classes-per-file": [
 			true,
 			5
@@ -19,6 +24,7 @@
 			{
 				"named-imports-order": "any"
 			}
-		]
+		],
+		"object-literal-sort-keys": false
 	}
 }

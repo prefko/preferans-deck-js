@@ -36,22 +36,22 @@ const spreadSuits = (cards: PrefDeckCard[], reverse: boolean = false): PrefDeckP
 };
 
 const sortSuits = (cards: PrefDeckCard[], reverse: boolean = false): PrefDeckCard[] => {
-	let {spade, diamond, heart, club} = spreadSuits(cards, reverse);
+	const {spade, diamond, heart, club} = spreadSuits(cards, reverse);
 	cards = _.concat(spade, diamond, heart, club);
 	return cards;
 };
 
 const _sort2 = (cards: PrefDeckCard[], sorting: PrefDeckPileSorting): PrefDeckCard[] => {
-	let {spade, diamond, heart, club} = spreadSuits(cards, isReverseSorting(sorting));
-	let red = _.concat(diamond, heart);
-	let black = _.concat(spade, club);
+	const {spade, diamond, heart, club} = spreadSuits(cards, isReverseSorting(sorting));
+	const red = _.concat(diamond, heart);
+	const black = _.concat(spade, club);
 	cards = isRedSorting(sorting) ? _.concat(red, black) : _.concat(black, red);
 	return cards;
 };
 
 const _sort3 = (cards: PrefDeckCard[]): PrefDeckCard[] => {
-	let {spade, diamond, heart, club} = spreadSuits(cards);
-	let black = getSingleOrNull(spade, club);
+	const {spade, diamond, heart, club} = spreadSuits(cards);
+	const black = getSingleOrNull(spade, club);
 	if (black) cards = _.concat(diamond, black, heart);
 	let red = getSingleOrNull(diamond, heart);
 	if (red) cards = _.concat(spade, red, club);
@@ -59,17 +59,17 @@ const _sort3 = (cards: PrefDeckCard[]): PrefDeckCard[] => {
 };
 
 const _sort4 = (cards: PrefDeckCard[], sorting: PrefDeckPileSorting): PrefDeckCard[] => {
-	let {spade, diamond, heart, club} = spreadSuits(cards, isReverseSorting(sorting));
+	const {spade, diamond, heart, club} = spreadSuits(cards, isReverseSorting(sorting));
 	if (isRedSorting(sorting)) cards = _.concat(diamond, spade, heart, club);
 	if (isBlackSorting(sorting)) cards = _.concat(spade, diamond, club, heart);
 	return cards;
 };
 
 const sort = (cards: PrefDeckCard[], sorting: PrefDeckPileSorting): PrefDeckCard[] => {
-	let suits = countSuits(cards);
-	if (suits === 2) return _sort2(cards, sorting);
-	if (suits === 3) return _sort3(cards);
-	if (suits === 4) return _sort4(cards, sorting);
+	const count = countSuits(cards);
+	if (count === 2) return _sort2(cards, sorting);
+	if (count === 3) return _sort3(cards);
+	if (count === 4) return _sort4(cards, sorting);
 	return cards;
 };
 
