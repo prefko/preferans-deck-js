@@ -6,3 +6,4 @@ duplication:
 exclude_paths:
   - 'node_modules/**'
   - 'run.js'
+  - 'run.ts'
