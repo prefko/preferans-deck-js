@@ -1,11 +1,12 @@
 {
 	"name": "preferans-deck-js",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"description": "nodejs deck of cards for preferans",
 	"engines": {
 		"node": ">=8.9"
 	},
-	"main": "lib/prefDeck.js",
+	"main": "./lib/prefDeck.js",
+	"types": "./lib/prefDeck.d.ts",
 	"scripts": {
 		"build": "tsc",
 		"build:watch": "tsc --watch",
