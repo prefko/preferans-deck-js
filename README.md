@@ -8,10 +8,11 @@
 nodejs deck of cards for preferans
 
 ### Install
-#### npm
-    npm i preferans-deck-js
-#### yarn
     yarn add preferans-deck-js
+
+### Documentation
+
+[TypeDoc documentation](https://prefko.github.io/preferans-deck-js/docs/)
 
 ### Usage
 
@@ -54,4 +55,4 @@ Mostly from [Wikipedia](https://en.wikipedia.org/wiki/Glossary_of_card_game_term
 
 ### API
 
-https://github.com/cope/preferans-deck-js/wiki/API
+[Wiki API](https://github.com/cope/preferans-deck-js/wiki/API)
