@@ -1,8 +1,0 @@
-theme: jekyll-theme-minimal
-logo: http://prefko.com/img/logo.gif
-title: preferans-deck-js
-description: preferans deck of cards
-show_downloads: "true"
-include:
-  - "_*_.html"
-  - "_*_.*.html"
