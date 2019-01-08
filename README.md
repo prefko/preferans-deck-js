@@ -1,3 +1,7 @@
+<a href="http://stojadinovic.net">
+  <img alt="Predrag Stojadinovic" src="https://en.stojadinovic.net/assets/images/logo-128x128-88.jpg" width="100">
+</a>
+
 # preferans-deck-js
 [![build status](https://img.shields.io/travis/cope/preferans-deck-js.svg?branch=master)](https://travis-ci.org/cope/preferans-deck-js)
 [![codacy](https://img.shields.io/codacy/grade/e8fd65d33fed4145968fae5cbb477145.svg)](https://www.codacy.com/project/cope/preferans-deck-js/dashboard)
@@ -5,7 +9,7 @@
 [![dependencies](https://david-dm.org/cope/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js)
 [![npm](https://img.shields.io/npm/dt/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js)
 
-nodejs deck of cards for preferans
+preferans deck of cards
 
 ### Install
     yarn add preferans-deck-js
