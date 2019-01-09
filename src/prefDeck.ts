@@ -4,7 +4,7 @@
 import * as _ from "lodash";
 import PrefDeckCard from "./prefDeckCard";
 import PrefDeckPile from "./prefDeckPile";
-import {PrefDeckCardSuit, PrefDeckCardValue} from "./prefDeckCard";
+import { PrefDeckCardSuit, PrefDeckCardValue } from "./prefDeckCard";
 
 export type PrefDeckDeal = { h1: PrefDeckPile, h2: PrefDeckPile, h3: PrefDeckPile, t: PrefDeckPile }
 
@@ -91,22 +91,20 @@ export default class PrefDeck extends PrefDeckPile {
 	}
 
 	public restore(cards: PrefDeckCard[]): PrefDeck {
-		if (!isValidDeck(cards)) throw new Error("Deck::restore:Invalid cards to restore from: " + _.size(cards) + ' ' + new PrefDeckPile(cards).unicode);
+		if (!isValidDeck(cards)) throw new Error("Deck::restore:Invalid cards to restore from: " + _.size(cards) + " " + new PrefDeckPile(cards).unicode);
 		this._cards = _.clone(cards);
 		return this;
 	}
 
 	get cut(): PrefDeck {
-		let sample = _.sample(WEIGHTED_CUTS);
-		this._cards = this._cards.concat(this._cards.splice(0, sample));
+		this._cards = this._cards.concat(this._cards.splice(0, _.sample(WEIGHTED_CUTS)));
 		return this;
 	}
 
 	get shuffle(): PrefDeck {
 		_.forEach(randomRange(), () => this._cards = shuffleHuman(this._cards));
 		_.forEach(weightedRange(), () => this._cards = shuffleSimple(this._cards));
-		this.cut;
-		return this;
+		return this.cut;
 	}
 
 	get valid(): boolean {
@@ -126,7 +124,7 @@ export default class PrefDeck extends PrefDeckPile {
 			h1: new PrefDeckPile(_.concat(h1a, h1b)),
 			h2: new PrefDeckPile(_.concat(h2a, h2b)),
 			h3: new PrefDeckPile(_.concat(h3a, h3b)),
-			t: new PrefDeckPile(t)
+			t: new PrefDeckPile(t),
 		};
 	}
 }

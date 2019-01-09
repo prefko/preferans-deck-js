@@ -16,21 +16,21 @@ export enum PrefDeckCardSuit {
 const valueLabel = (value: PrefDeckCardValue): string => {
 	switch (value) {
 		case PrefDeckCardValue.SEVEN:
-			return '7';
+			return "7";
 		case PrefDeckCardValue.EIGHT:
-			return '8';
+			return "8";
 		case PrefDeckCardValue.NINE:
-			return '9';
+			return "9";
 		case PrefDeckCardValue.TEN:
-			return 'X';
+			return "X";
 		case PrefDeckCardValue.JACK:
-			return 'J';
+			return "J";
 		case PrefDeckCardValue.QUEEN:
-			return 'Q';
+			return "Q";
 		case PrefDeckCardValue.KING:
-			return 'K';
+			return "K";
 		case PrefDeckCardValue.ACE:
-			return 'A';
+			return "A";
 	}
 };
 
@@ -191,26 +191,20 @@ const ppnToCard = (ppn: string): PrefDeckCard => {
 	throw new Error("PrefDeckCard::ppnToCard:Invalid ppn: " + ppn);
 };
 
-const reduce = (n: number): -1 | 0 | 1 => {
+const scale = (n: number): -1 | 0 | 1 => {
 	if (n < 0) return -1;
 	if (n > 0) return 1;
 	return 0;
 };
 
 export default class PrefDeckCard {
-	private readonly _suit: PrefDeckCardSuit;
-	private readonly _value: PrefDeckCardValue;
-	private readonly _rank: number;
-	private readonly _label: string;
-	private readonly _unicode: string;
-	private readonly _ppn: string;
 
 	public static valueLabel(value: PrefDeckCardValue): string {
 		return valueLabel(value);
 	}
 
 	public static compare(c1: PrefDeckCard, c2: PrefDeckCard, t?: PrefDeckCardSuit): -1 | 0 | 1 {
-		if (c1.suit === c2.suit) return reduce(c2.rank - c1.rank);
+		if (c1.suit === c2.suit) return scale(c2.rank - c1.rank);
 		if (t && c2.suit === t) return 1;
 		return -1;
 	}
@@ -248,6 +242,13 @@ export default class PrefDeckCard {
 	public static ppnToCard(ppn: string): PrefDeckCard {
 		return ppnToCard(ppn);
 	}
+
+	private readonly _suit: PrefDeckCardSuit;
+	private readonly _value: PrefDeckCardValue;
+	private readonly _rank: number;
+	private readonly _label: string;
+	private readonly _unicode: string;
+	private readonly _ppn: string;
 
 	constructor(suit: PrefDeckCardSuit, value: PrefDeckCardValue) {
 		this._suit = suit;
