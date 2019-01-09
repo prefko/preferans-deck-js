@@ -1,6 +1,6 @@
 {
 	"name": "preferans-deck-js",
-	"version": "2.2.1",
+	"version": "2.2.2",
 	"description": "nodejs deck of cards for preferans",
 	"engines": {
 		"node": ">=8.9"
@@ -8,6 +8,7 @@
 	"main": "./lib/prefDeck.js",
 	"types": "./lib/prefDeck.d.ts",
 	"scripts": {
+		"all": "yarn & yarn build & yarn test & yarn docs",
 		"build": "tsc",
 		"build:watch": "tsc --watch",
 		"lint": "tslint -p tsconfig.json",
