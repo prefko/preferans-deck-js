@@ -192,7 +192,7 @@ const ppnToCard = (ppn: string): PrefDeckCard => {
 };
 
 // @ts-ignore
-const clamp = (n: number): -1 | 0 | 1 => n === 0 ? 0 : n / Math.abs(n);
+const norm = (n: number): -1 | 0 | 1 => n === 0 ? 0 : n / Math.abs(n);
 
 export default class PrefDeckCard {
 
@@ -201,7 +201,7 @@ export default class PrefDeckCard {
 	}
 
 	public static compare(c1: PrefDeckCard, c2: PrefDeckCard, t?: PrefDeckCardSuit): -1 | 0 | 1 {
-		if (c1.suit === c2.suit) return clamp(c2.rank - c1.rank);
+		if (c1.suit === c2.suit) return norm(c2.rank - c1.rank);
 		if (t && c2.suit === t) return 1;
 		return -1;
 	}
