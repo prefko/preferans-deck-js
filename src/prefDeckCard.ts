@@ -223,16 +223,16 @@ export default class PrefDeckCard {
 		}
 	}
 
-	public static cardToPPN(suit: PrefDeckCardSuit, value: PrefDeckCardValue): string {
-		switch (suit) {
+	public static cardToPPN(c: PrefDeckCard): string {
+		switch (c.suit) {
 			case PrefDeckCardSuit.SPADE:
-				return spadeCardToPPN(value);
+				return spadeCardToPPN(c.value);
 			case PrefDeckCardSuit.DIAMOND:
-				return diamondCardToPPN(value);
+				return diamondCardToPPN(c.value);
 			case PrefDeckCardSuit.HEART:
-				return heartCardToPPN(value);
+				return heartCardToPPN(c.value);
 			case PrefDeckCardSuit.CLUB:
-				return clubCardToPPN(value);
+				return clubCardToPPN(c.value);
 		}
 	}
 
@@ -254,7 +254,7 @@ export default class PrefDeckCard {
 
 		this._label = PrefDeckCard.valueLabel(this._value) + "" + this._suit;
 		this._unicode = PrefDeckCard.valueLabel(this._value) + "" + PrefDeckCard.suitToUnicode(this._suit);
-		this._ppn = PrefDeckCard.cardToPPN(this._suit, this._value);
+		this._ppn = PrefDeckCard.cardToPPN(this);
 	}
 
 	public beats(c: PrefDeckCard, t?: PrefDeckCardSuit): boolean {
