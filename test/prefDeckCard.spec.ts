@@ -59,7 +59,7 @@ describe("PrefDeckCard tests", () => {
 	});
 
 	describe("Basic ppnToCard tests", () => {
-		_.forEach(__PPNS, (ppn) => {
+		_.forEach(__PPNS, (ppn: string): void => {
 			it("ppnToCard should create card for " + ppn, () => {
 				expect(() => PrefDeckCard.ppnToCard("-")).to.throw();
 				expect(() => PrefDeckCard.ppnToCard("Z")).to.throw();
@@ -70,7 +70,7 @@ describe("PrefDeckCard tests", () => {
 	});
 
 	describe("Single card tests", () => {
-		_.forEach(__cards, (card) => {
+		_.forEach(__cards, (card: any): void => {
 			it("should exist", () => {
 				expect(card.card).to.be.an("object");
 			});

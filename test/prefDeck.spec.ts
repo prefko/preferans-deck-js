@@ -61,7 +61,7 @@ describe("PrefDeck tests", () => {
 
 	describe("PrefDeck cut stress test", () => {
 		const deck = new PrefDeck();
-		_.forEach(_.times(1000), () => deck.cut);
+		_.forEach(_.times(1000), (): PrefDeck => deck.cut);
 		it("PrefDeck 1000 cuts should return array of length 32", () => {
 			expect(deck.cards).to.be.an("array");
 			expect(deck.cards).to.have.lengthOf(32);
@@ -81,7 +81,7 @@ describe("PrefDeck tests", () => {
 			expect(shuffle.cards).to.be.an("array");
 			expect(shuffle.cards).to.have.lengthOf(32);
 		});
-		_.forEach(_.times(1000), () => shuffle = deck.shuffle);
+		_.forEach(_.times(1000), (): PrefDeck => shuffle = deck.shuffle);
 		it("PrefDeck 1000 shuffles should return array of length 32", () => {
 			expect(shuffle.cards).to.be.an("array");
 			expect(shuffle.cards).to.have.lengthOf(32);

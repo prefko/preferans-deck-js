@@ -2,7 +2,7 @@
 "use strict";
 
 import * as _ from "lodash";
-import PrefDeckCard, { PrefDeckCardSuit } from "./prefDeckCard";
+import PrefDeckCard, {PrefDeckCardSuit} from "./prefDeckCard";
 
 export enum PrefDeckPileSorting {
 	NONE = 0,
@@ -40,13 +40,13 @@ const spreadSuits = (cards: PrefDeckCard[], reverse: boolean): PrefDeckPileSuits
 };
 
 const sortBySuits = (cards: PrefDeckCard[], reverse: boolean): PrefDeckCard[] => {
-	const { spade, diamond, heart, club } = spreadSuits(cards, reverse);
+	const {spade, diamond, heart, club} = spreadSuits(cards, reverse);
 	cards = _.concat(spade, diamond, heart, club);
 	return cards;
 };
 
 const sort2suits = (cards: PrefDeckCard[], sorting: PrefDeckPileSorting): PrefDeckCard[] => {
-	const { spade, diamond, heart, club } = spreadSuits(cards, isReverseSorting(sorting));
+	const {spade, diamond, heart, club} = spreadSuits(cards, isReverseSorting(sorting));
 	const red = _.concat(diamond, heart);
 	const black = _.concat(spade, club);
 	cards = isRedSorting(sorting) ? _.concat(red, black) : _.concat(black, red);
@@ -54,7 +54,7 @@ const sort2suits = (cards: PrefDeckCard[], sorting: PrefDeckPileSorting): PrefDe
 };
 
 const sort3suits = (cards: PrefDeckCard[], sorting: PrefDeckPileSorting): PrefDeckCard[] => {
-	const { spade, diamond, heart, club } = spreadSuits(cards, isReverseSorting(sorting));
+	const {spade, diamond, heart, club} = spreadSuits(cards, isReverseSorting(sorting));
 	const black = getSingleOrNull(spade, club);
 	if (black) cards = _.concat(diamond, black, heart);
 	const red = getSingleOrNull(diamond, heart);
@@ -63,7 +63,7 @@ const sort3suits = (cards: PrefDeckCard[], sorting: PrefDeckPileSorting): PrefDe
 };
 
 const sort4suits = (cards: PrefDeckCard[], sorting: PrefDeckPileSorting): PrefDeckCard[] => {
-	const { spade, diamond, heart, club } = spreadSuits(cards, isReverseSorting(sorting));
+	const {spade, diamond, heart, club} = spreadSuits(cards, isReverseSorting(sorting));
 	if (isRedSorting(sorting)) cards = _.concat(diamond, spade, heart, club);
 	if (isBlackSorting(sorting)) cards = _.concat(spade, diamond, club, heart);
 	return cards;
@@ -88,7 +88,7 @@ export default class PrefDeckPile {
 	constructor(cards: PrefDeckCard[]) {
 		this._cards = [];
 		this._original = [];
-		_.forEach(cards, (card) => {
+		_.forEach(cards, (card: PrefDeckCard): void => {
 			this._cards.push(card);
 			this._original.push(card);
 		});

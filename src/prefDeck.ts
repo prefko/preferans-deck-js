@@ -4,7 +4,7 @@
 import * as _ from "lodash";
 import PrefDeckCard from "./prefDeckCard";
 import PrefDeckPile from "./prefDeckPile";
-import { PrefDeckCardSuit, PrefDeckCardValue } from "./prefDeckCard";
+import {PrefDeckCardSuit, PrefDeckCardValue} from "./prefDeckCard";
 
 export type PrefDeckDeal = { h1: PrefDeckPile, h2: PrefDeckPile, h3: PrefDeckPile, t: PrefDeckPile }
 
@@ -13,8 +13,8 @@ const createControlDeck = (): PrefDeckCard[] => {
 	const tmpSuits = [PrefDeckCardSuit.SPADE, PrefDeckCardSuit.DIAMOND, PrefDeckCardSuit.HEART, PrefDeckCardSuit.CLUB];
 	const tmpValues = [PrefDeckCardValue.SEVEN, PrefDeckCardValue.EIGHT, PrefDeckCardValue.NINE, PrefDeckCardValue.TEN,
 		PrefDeckCardValue.JACK, PrefDeckCardValue.QUEEN, PrefDeckCardValue.KING, PrefDeckCardValue.ACE];
-	_.forEach(tmpSuits, (suit) => {
-		_.forEach(tmpValues, (value) => {
+	_.forEach(tmpSuits, (suit: PrefDeckCardSuit): void => {
+		_.forEach(tmpValues, (value: PrefDeckCardValue): void => {
 			tmpCards.push(new PrefDeckCard(suit, value));
 		});
 	});
@@ -27,7 +27,7 @@ const createWeightedCuts = (): number[] => {
 	for (i = 0; i < 2; i++) for (j = 4; j <= 6; j++) tmpCuts.push(j);
 	for (i = 0; i < 5; i++) for (j = 7; j <= 10; j++) tmpCuts.push(j);
 	for (i = 0; i < 8; i++) for (j = 11; j <= 15; j++) tmpCuts.push(j);
-	return _.sortBy(_.concat(tmpCuts, _.map(tmpCuts, (t) => 31 - t)));
+	return _.sortBy(_.concat(tmpCuts, _.map(tmpCuts, (t: number): number => 31 - t)));
 };
 
 const CONTROL_DECK: PrefDeckCard[] = createControlDeck();
@@ -40,7 +40,7 @@ const weighted123 = (): 1 | 2 | 3 => {
 
 const containsAll = (a: PrefDeckCard[], b: PrefDeckCard[]): boolean => {
 	let c = true;
-	_.forEach(a, (i) => c = _.includes(b, i));
+	_.forEach(a, (i: PrefDeckCard): boolean => c = _.includes(b, i));
 	return c;
 };
 const sameCards = (a: PrefDeckCard[], b: PrefDeckCard[]): boolean => {
@@ -102,8 +102,8 @@ export default class PrefDeck extends PrefDeckPile {
 	}
 
 	get shuffle(): PrefDeck {
-		_.forEach(randomRange(), () => this._cards = shuffleHuman(this._cards));
-		_.forEach(weightedRange(), () => this._cards = shuffleSimple(this._cards));
+		_.forEach(randomRange(), (): PrefDeckCard[] => this._cards = shuffleHuman(this._cards));
+		_.forEach(weightedRange(), (): PrefDeckCard[] => this._cards = shuffleSimple(this._cards));
 		return this.cut;
 	}
 

@@ -7,7 +7,7 @@ const tests = [
 	// 4 suits, BLACK:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
-		__cards: _.map(_.split("G2719MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("G2719MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
 		ppnSortedString: "12479GRUHM",
@@ -17,7 +17,7 @@ const tests = [
 		fullSortedString: "7Spade8SpadeXSpadeKSpade7DiamondADiamond9ClubQClub7HeartQHeart"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("G2719MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("G2719MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
 		ppnSortedString: "7421G9URMH",
@@ -29,7 +29,7 @@ const tests = [
 	// 4 suits, RED:
 	{
 		sorting: PrefDeckPileSorting.RED,
-		__cards: _.map(_.split("G2719MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("G2719MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
 		ppnSortedString: "9G1247HMRU",
@@ -39,7 +39,7 @@ const tests = [
 		fullSortedString: "7DiamondADiamond7Spade8SpadeXSpadeKSpade7HeartQHeart9ClubQClub"
 	}, {
 		sorting: PrefDeckPileSorting.RED_REVERSE,
-		__cards: _.map(_.split("G2719MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("G2719MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
 		ppnSortedString: "G97421MHUR",
@@ -51,7 +51,7 @@ const tests = [
 	// 4 suits, SUITS:
 	{
 		sorting: PrefDeckPileSorting.SUITS,
-		__cards: _.map(_.split("G2719MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("G2719MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
 		ppnSortedString: "12479GHMRU",
@@ -61,7 +61,7 @@ const tests = [
 		fullSortedString: "7Spade8SpadeXSpadeKSpade7DiamondADiamond7HeartQHeart9ClubQClub"
 	}, {
 		sorting: PrefDeckPileSorting.SUITS_REVERSE,
-		__cards: _.map(_.split("G2719MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("G2719MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
 		ppnSortedString: "7421G9MHUR",
@@ -73,7 +73,7 @@ const tests = [
 	// 4 suits, NONE:
 	{
 		sorting: PrefDeckPileSorting.NONE,
-		__cards: _.map(_.split("G2719MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("G2719MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
 		ppnSortedString: "G2719MRU4H",
@@ -83,7 +83,7 @@ const tests = [
 		fullSortedString: "ADiamond8SpadeKSpade7Spade7DiamondQHeart9ClubQClubXSpade7Heart"
 	}, {
 		sorting: PrefDeckPileSorting.NONE,
-		__cards: _.map(_.split("G2719MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("G2719MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 10,
 		ppnString: "G2719MRU4H",
 		ppnSortedString: "G2719MRU4H",
@@ -95,7 +95,7 @@ const tests = [
 
 	// 3 suits, no spade:
 	{
-		__cards: _.map(_.split("DEKSLUAQ", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("DEKSLUAQ", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "DEKSLUAQ",
 		ppnSortedString: "ADEQSUKL",
@@ -106,7 +106,7 @@ const tests = [
 	},
 	{
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("DEKSLUAQ", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("DEKSLUAQ", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "DEKSLUAQ",
 		ppnSortedString: "EDAUSQLK",
@@ -117,7 +117,7 @@ const tests = [
 	},
 	// 3 suits, no diamond:
 	{
-		__cards: _.map(_.split("271MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("271MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "271MRU4H",
 		ppnSortedString: "1247HMRU",
@@ -127,7 +127,7 @@ const tests = [
 		fullSortedString: "7Spade8SpadeXSpadeKSpade7HeartQHeart9ClubQClub"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("271MRU4H", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("271MRU4H", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "271MRU4H",
 		ppnSortedString: "7421MHUR",
@@ -138,7 +138,7 @@ const tests = [
 	},
 	// 3 suits, no heart:
 	{
-		__cards: _.map(_.split("RA4CT12P", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("RA4CT12P", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "RA4CT12P",
 		ppnSortedString: "124ACPRT",
@@ -148,7 +148,7 @@ const tests = [
 		fullSortedString: "7Spade8SpadeXSpade8DiamondXDiamond7Club9ClubJClub"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("RA4CT12P", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("RA4CT12P", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "RA4CT12P",
 		ppnSortedString: "421CATRP",
@@ -160,7 +160,7 @@ const tests = [
 	// 3 suits, no club:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
-		__cards: _.map(_.split("DFA61MNO", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("DFA61MNO", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "DFA61MNO",
 		ppnSortedString: "ADF16MNO",
@@ -170,7 +170,7 @@ const tests = [
 		fullSortedString: "8DiamondJDiamondKDiamond7SpadeQSpadeQHeartKHeartAHeart"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("DFA61MNO", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("DFA61MNO", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "DFA61MNO",
 		ppnSortedString: "FDA61ONM",
@@ -182,7 +182,7 @@ const tests = [
 
 	// 2 suits, spade-diamond:
 	{
-		__cards: _.map(_.split("BC42A96G", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("BC42A96G", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "BC42A96G",
 		ppnSortedString: "2469ABCG",
@@ -192,7 +192,7 @@ const tests = [
 		fullSortedString: "8SpadeXSpadeQSpade7Diamond8Diamond9DiamondXDiamondADiamond"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("BC42A96G", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("BC42A96G", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "BC42A96G",
 		ppnSortedString: "642GCBA9",
@@ -204,7 +204,7 @@ const tests = [
 	// 2 suits, spade-diamond, BLACK:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
-		__cards: _.map(_.split("BC42A96G", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("BC42A96G", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "BC42A96G",
 		ppnSortedString: "2469ABCG",
@@ -214,7 +214,7 @@ const tests = [
 		fullSortedString: "8SpadeXSpadeQSpade7Diamond8Diamond9DiamondXDiamondADiamond"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("BC42A96G", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("BC42A96G", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "BC42A96G",
 		ppnSortedString: "642GCBA9",
@@ -226,7 +226,7 @@ const tests = [
 	// 2 suits, spade-diamond, RED:
 	{
 		sorting: PrefDeckPileSorting.RED,
-		__cards: _.map(_.split("BC42A96G", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("BC42A96G", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "BC42A96G",
 		ppnSortedString: "9ABCG246",
@@ -236,7 +236,7 @@ const tests = [
 		fullSortedString: "7Diamond8Diamond9DiamondXDiamondADiamond8SpadeXSpadeQSpade"
 	}, {
 		sorting: PrefDeckPileSorting.RED_REVERSE,
-		__cards: _.map(_.split("BC42A96G", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("BC42A96G", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "BC42A96G",
 		ppnSortedString: "GCBA9642",
@@ -248,7 +248,7 @@ const tests = [
 	// 2 suits, spade-diamond, SUITS:
 	{
 		sorting: PrefDeckPileSorting.SUITS,
-		__cards: _.map(_.split("BC42A96G", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("BC42A96G", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "BC42A96G",
 		ppnSortedString: "2469ABCG",
@@ -258,7 +258,7 @@ const tests = [
 		fullSortedString: "8SpadeXSpadeQSpade7Diamond8Diamond9DiamondXDiamondADiamond"
 	}, {
 		sorting: PrefDeckPileSorting.SUITS_REVERSE,
-		__cards: _.map(_.split("BC42A96G", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("BC42A96G", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "BC42A96G",
 		ppnSortedString: "642GCBA9",
@@ -269,7 +269,7 @@ const tests = [
 	},
 	// 2 suits, spade-heart:
 	{
-		__cards: _.map(_.split("J16LK42O", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("J16LK42O", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "J16LK42O",
 		ppnSortedString: "1246JKLO",
@@ -279,7 +279,7 @@ const tests = [
 		fullSortedString: "7Spade8SpadeXSpadeQSpade9HeartXHeartJHeartAHeart"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("J16LK42O", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("J16LK42O", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "J16LK42O",
 		ppnSortedString: "6421OLKJ",
@@ -290,7 +290,7 @@ const tests = [
 	},
 	// 2 suits, spade-club:
 	{
-		__cards: _.map(_.split("Q23PR85U", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("Q23PR85U", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "Q23PR85U",
 		ppnSortedString: "2358PQRU",
@@ -300,7 +300,7 @@ const tests = [
 		fullSortedString: "8Spade9SpadeJSpadeASpade7Club8Club9ClubQClub"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("Q23PR85U", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("Q23PR85U", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "Q23PR85U",
 		ppnSortedString: "8532URQP",
@@ -311,7 +311,7 @@ const tests = [
 	},
 	// 2 suits, diamond-heart:
 	{
-		__cards: _.map(_.split("OJAMBFNC", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("OJAMBFNC", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "OJAMBFNC",
 		ppnSortedString: "ABCFJMNO",
@@ -321,7 +321,7 @@ const tests = [
 		fullSortedString: "8Diamond9DiamondXDiamondKDiamond9HeartQHeartKHeartAHeart"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("OJAMBFNC", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("OJAMBFNC", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "OJAMBFNC",
 		ppnSortedString: "FCBAONMJ",
@@ -332,7 +332,7 @@ const tests = [
 	},
 	// 2 suits, diamond-club:
 	{
-		__cards: _.map(_.split("QA9PRCDU", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("QA9PRCDU", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
 		ppnSortedString: "PQRU9ACD",
@@ -342,7 +342,7 @@ const tests = [
 		fullSortedString: "7Club8Club9ClubQClub7Diamond8DiamondXDiamondJDiamond"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("QA9PRCDU", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("QA9PRCDU", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
 		ppnSortedString: "URQPDCA9",
@@ -354,7 +354,7 @@ const tests = [
 	// 2 suits, diamond-club, RED:
 	{
 		sorting: PrefDeckPileSorting.RED,
-		__cards: _.map(_.split("QA9PRCDU", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("QA9PRCDU", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
 		ppnSortedString: "9ACDPQRU",
@@ -364,7 +364,7 @@ const tests = [
 		fullSortedString: "7Diamond8DiamondXDiamondJDiamond7Club8Club9ClubQClub"
 	}, {
 		sorting: PrefDeckPileSorting.RED_REVERSE,
-		__cards: _.map(_.split("QA9PRCDU", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("QA9PRCDU", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
 		ppnSortedString: "DCA9URQP",
@@ -376,7 +376,7 @@ const tests = [
 	// 2 suits, diamond-club, BLACK:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
-		__cards: _.map(_.split("QA9PRCDU", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("QA9PRCDU", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
 		ppnSortedString: "PQRU9ACD",
@@ -386,7 +386,7 @@ const tests = [
 		fullSortedString: "7Club8Club9ClubQClub7Diamond8DiamondXDiamondJDiamond"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("QA9PRCDU", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("QA9PRCDU", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
 		ppnSortedString: "URQPDCA9",
@@ -398,7 +398,7 @@ const tests = [
 	// 2 suits, diamond-club, SUITS:
 	{
 		sorting: PrefDeckPileSorting.SUITS,
-		__cards: _.map(_.split("QA9PRCDU", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("QA9PRCDU", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
 		ppnSortedString: "9ACDPQRU",
@@ -408,7 +408,7 @@ const tests = [
 		fullSortedString: "7Diamond8DiamondXDiamondJDiamond7Club8Club9ClubQClub"
 	}, {
 		sorting: PrefDeckPileSorting.SUITS_REVERSE,
-		__cards: _.map(_.split("QA9PRCDU", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("QA9PRCDU", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "QA9PRCDU",
 		ppnSortedString: "DCA9URQP",
@@ -421,7 +421,7 @@ const tests = [
 	// 2 suits, heart-club:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
-		__cards: _.map(_.split("PKWVINQR", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("PKWVINQR", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "PKWVINQR",
 		ppnSortedString: "PQRVWIKN",
@@ -431,7 +431,7 @@ const tests = [
 		fullSortedString: "7Club8Club9ClubKClubAClub8HeartXHeartKHeart"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("PKWVINQR", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("PKWVINQR", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 8,
 		ppnString: "PKWVINQR",
 		ppnSortedString: "WVRQPNKI",
@@ -444,7 +444,7 @@ const tests = [
 	// 1 suit, spade:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
-		__cards: _.map(_.split("364251", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("364251", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 6,
 		ppnString: "364251",
 		ppnSortedString: "123456",
@@ -454,7 +454,7 @@ const tests = [
 		fullSortedString: "7Spade8Spade9SpadeXSpadeJSpadeQSpade"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("364251", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("364251", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 6,
 		ppnString: "364251",
 		ppnSortedString: "654321",
@@ -466,7 +466,7 @@ const tests = [
 	// 1 suit, diamond:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
-		__cards: _.map(_.split("DFBCAG", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("DFBCAG", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 6,
 		ppnString: "DFBCAG",
 		ppnSortedString: "ABCDFG",
@@ -476,7 +476,7 @@ const tests = [
 		fullSortedString: "8Diamond9DiamondXDiamondJDiamondKDiamondADiamond"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("DFBCAG", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("DFBCAG", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 6,
 		ppnString: "DFBCAG",
 		ppnSortedString: "GFDCBA",
@@ -488,7 +488,7 @@ const tests = [
 	// 1 suit, heart:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
-		__cards: _.map(_.split("MKILOH", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("MKILOH", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 6,
 		ppnString: "MKILOH",
 		ppnSortedString: "HIKLMO",
@@ -498,7 +498,7 @@ const tests = [
 		fullSortedString: "7Heart8HeartXHeartJHeartQHeartAHeart"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("MKILOH", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("MKILOH", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 6,
 		ppnString: "MKILOH",
 		ppnSortedString: "OMLKIH",
@@ -510,7 +510,7 @@ const tests = [
 	// 1 suit, club:
 	{
 		sorting: PrefDeckPileSorting.BLACK,
-		__cards: _.map(_.split("TRSUPW", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("TRSUPW", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 6,
 		ppnString: "TRSUPW",
 		ppnSortedString: "PRSTUW",
@@ -520,7 +520,7 @@ const tests = [
 		fullSortedString: "7Club9ClubXClubJClubQClubAClub"
 	}, {
 		sorting: PrefDeckPileSorting.BLACK_REVERSE,
-		__cards: _.map(_.split("TRSUPW", ""), (c) => PrefDeckCard.ppnToCard(c)),
+		__cards: _.map(_.split("TRSUPW", ""), (c: string): PrefDeckCard => PrefDeckCard.ppnToCard(c)),
 		size: 6,
 		ppnString: "TRSUPW",
 		ppnSortedString: "WUTSRP",
@@ -532,7 +532,7 @@ const tests = [
 ];
 
 describe("PrefDeckPile tests", () => {
-	_.forEach(tests, (test) => {
+	_.forEach(tests, (test: any): void => {
 		describe("PrefDeckPile tests", () => {
 			const sorting = test.sorting;
 			const __cards = test.__cards;
