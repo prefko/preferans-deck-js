@@ -7,7 +7,7 @@
 [![codacy](https://img.shields.io/codacy/grade/e8fd65d33fed4145968fae5cbb477145.svg)](https://www.codacy.com/project/prefko/preferans-deck-js/dashboard)
 [![coverage](https://img.shields.io/coveralls/github/prefko/preferans-deck-js/master.svg)](https://coveralls.io/github/prefko/preferans-deck-js?branch=master)
 [![dependencies](https://david-dm.org/prefko/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js)
-[![npm](https://img.shields.io/npm/dt/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js)
+[![npm](https://img.shields.io/npm/dt/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js) [![Greenkeeper badge](https://badges.greenkeeper.io/prefko/preferans-deck-js.svg)](https://greenkeeper.io/)
 
 preferans deck of cards
 
