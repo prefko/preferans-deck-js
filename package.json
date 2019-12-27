@@ -1,6 +1,6 @@
 {
 	"name": "preferans-deck-js",
-	"version": "2.2.7",
+	"version": "2.2.8",
 	"description": "nodejs deck of cards for preferans",
 	"engines": {
 		"node": ">=8.9"
@@ -75,7 +75,7 @@
 		"ts-node": "^8.5.4",
 		"tslint": "^5.20.1",
 		"tslint-config-prettier": "^1.18.0",
-		"typedoc": "^0.15.5",
+		"typedoc": "^0.15.6",
 		"typescript": "^3.7.4"
 	}
 }
