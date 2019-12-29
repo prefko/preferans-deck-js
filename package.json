@@ -1,6 +1,6 @@
 {
 	"name": "preferans-deck-js",
-	"version": "2.2.8",
+	"version": "2.2.9",
 	"description": "nodejs deck of cards for preferans",
 	"engines": {
 		"node": ">=8.9"

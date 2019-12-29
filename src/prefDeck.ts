@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-"use strict";
+'use strict';
 
-import * as _ from "lodash";
-import PrefDeckCard from "./prefDeckCard";
-import PrefDeckPile from "./prefDeckPile";
-import {PrefDeckCardSuit, PrefDeckCardValue} from "./prefDeckCard";
+import * as _ from 'lodash';
+import PrefDeckCard from './prefDeckCard';
+import PrefDeckPile from './prefDeckPile';
+import { PrefDeckCardSuit, PrefDeckCardValue } from './prefDeckCard';
 
 export type PrefDeckDeal = { h1: PrefDeckPile, h2: PrefDeckPile, h3: PrefDeckPile, t: PrefDeckPile }
 
-const createControlDeck = (): PrefDeckCard[] => {
+const _createControlDeck = (): PrefDeckCard[] => {
 	const tmpCards: PrefDeckCard[] = [];
 	const tmpSuits = [PrefDeckCardSuit.SPADE, PrefDeckCardSuit.DIAMOND, PrefDeckCardSuit.HEART, PrefDeckCardSuit.CLUB];
 	const tmpValues = [PrefDeckCardValue.SEVEN, PrefDeckCardValue.EIGHT, PrefDeckCardValue.NINE, PrefDeckCardValue.TEN,
@@ -21,7 +21,7 @@ const createControlDeck = (): PrefDeckCard[] => {
 	return tmpCards;
 };
 
-const createWeightedCuts = (): number[] => {
+const _createWeightedCuts = (): number[] => {
 	let i, j;
 	const tmpCuts = [2, 3];
 	for (i = 0; i < 2; i++) for (j = 4; j <= 6; j++) tmpCuts.push(j);
@@ -30,40 +30,38 @@ const createWeightedCuts = (): number[] => {
 	return _.sortBy(_.concat(tmpCuts, _.map(tmpCuts, (t: number): number => 31 - t)));
 };
 
-const CONTROL_DECK: PrefDeckCard[] = createControlDeck();
-const WEIGHTED_CUTS: number[] = createWeightedCuts();
+const CONTROL_DECK: PrefDeckCard[] = _createControlDeck();
+const WEIGHTED_CUTS: number[] = _createWeightedCuts();
 
-const weighted123 = (): 1 | 2 | 3 => {
+const _weighted123 = (): 1 | 2 | 3 => {
 	const cnt = _.random(1, 25);
 	return cnt <= 20 ? 1 : (cnt <= 24 ? 2 : 3);
 };
 
-const containsAll = (a: PrefDeckCard[], b: PrefDeckCard[]): boolean => {
+const _containsAll = (a: PrefDeckCard[], b: PrefDeckCard[]): boolean => {
 	let c = true;
 	_.forEach(a, (i: PrefDeckCard): boolean => c = _.includes(b, i));
 	return c;
 };
-const sameCards = (a: PrefDeckCard[], b: PrefDeckCard[]): boolean => {
-	return a.length === b.length && (a === b || (containsAll(a, b) && containsAll(b, a)));
-};
+const _sameCards = (a: PrefDeckCard[], b: PrefDeckCard[]): boolean => (a.length === b.length && (a === b || (_containsAll(a, b) && _containsAll(b, a))));
 
-const isValidDeck = (cards: PrefDeckCard[]): boolean => sameCards(cards, CONTROL_DECK);
-const randomRange = (): number[] => _.range(0, _.random(1, 3));
-const weightedRange = (): number[] => _.range(0, weighted123());
+const _isValidDeck = (cards: PrefDeckCard[]): boolean => _sameCards(cards, CONTROL_DECK);
+const _randomRange = (): number[] => _.range(0, _.random(1, 3));
+const _weightedRange = (): number[] => _.range(0, _weighted123());
 
-const shuffleHuman = (cards: PrefDeckCard[]): PrefDeckCard[] => {
+const _shuffleHuman = (cards: PrefDeckCard[]): PrefDeckCard[] => {
 	const left: PrefDeckCard[] = cards.splice(0, _.sample(WEIGHTED_CUTS));
 	const right: PrefDeckCard[] = _.clone(cards);
 
 	cards = [];
 	while (!_.isEmpty(_.concat(left, right))) {
-		cards = _.isEmpty(left) ? cards : cards.concat(left.splice(0, weighted123()));
-		cards = _.isEmpty(right) ? cards : cards.concat(right.splice(0, weighted123()));
+		cards = _.isEmpty(left) ? cards : cards.concat(left.splice(0, _weighted123()));
+		cards = _.isEmpty(right) ? cards : cards.concat(right.splice(0, _weighted123()));
 	}
 	return cards;
 };
 
-const shuffleSimple = (cards: PrefDeckCard[]): PrefDeckCard[] => {
+const _shuffleSimple = (cards: PrefDeckCard[]): PrefDeckCard[] => {
 	const left: PrefDeckCard[] = cards.splice(0, _.random(1, 9));
 	const right: PrefDeckCard[] = _.clone(cards);
 	let front = true;
@@ -82,7 +80,7 @@ const shuffleSimple = (cards: PrefDeckCard[]): PrefDeckCard[] => {
 export default class PrefDeck extends PrefDeckPile {
 
 	public static validate(cards: PrefDeckCard[]): boolean {
-		return isValidDeck(cards);
+		return _isValidDeck(cards);
 	}
 
 	constructor() {
@@ -91,7 +89,7 @@ export default class PrefDeck extends PrefDeckPile {
 	}
 
 	public restore(cards: PrefDeckCard[]): PrefDeck {
-		if (!isValidDeck(cards)) throw new Error("Deck::restore:Invalid cards to restore from: " + _.size(cards) + " " + new PrefDeckPile(cards).unicode);
+		if (!_isValidDeck(cards)) throw new Error('Deck::restore:Invalid cards to restore from: ' + _.size(cards) + ' ' + new PrefDeckPile(cards).unicode);
 		this._cards = _.clone(cards);
 		return this;
 	}
@@ -102,13 +100,13 @@ export default class PrefDeck extends PrefDeckPile {
 	}
 
 	get shuffle(): PrefDeck {
-		_.forEach(randomRange(), (): PrefDeckCard[] => this._cards = shuffleHuman(this._cards));
-		_.forEach(weightedRange(), (): PrefDeckCard[] => this._cards = shuffleSimple(this._cards));
+		_.forEach(_randomRange(), (): PrefDeckCard[] => this._cards = _shuffleHuman(this._cards));
+		_.forEach(_weightedRange(), (): PrefDeckCard[] => this._cards = _shuffleSimple(this._cards));
 		return this.cut;
 	}
 
 	get valid(): boolean {
-		return isValidDeck(this.cards);
+		return _isValidDeck(this.cards);
 	}
 
 	get deal(): PrefDeckDeal {
