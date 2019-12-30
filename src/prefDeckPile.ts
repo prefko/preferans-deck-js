@@ -2,7 +2,7 @@
 'use strict';
 
 import * as _ from 'lodash';
-import PrefDeckCard, { PrefDeckCardSuit } from './prefDeckCard';
+import PrefDeckCard, { PrefDeckSuit } from './prefDeckCard';
 
 export enum PrefDeckPileSorting {
 	NONE = 0,
@@ -22,7 +22,7 @@ const _sortSuit = (cards: PrefDeckCard[], reverse: boolean): PrefDeckCard[] => {
 	if (reverse) cards = _.reverse(cards);
 	return cards;
 };
-const _getCardsOfSuit = (cards: PrefDeckCard[], suit: PrefDeckCardSuit): PrefDeckCard[] => _.filter(cards, ['suit', suit]);
+const _getCardsOfSuit = (cards: PrefDeckCard[], suit: PrefDeckSuit): PrefDeckCard[] => _.filter(cards, ['suit', suit]);
 
 const _getSingleSuit = (a: PrefDeckCard[], b: PrefDeckCard[]): PrefDeckCard[] => {
 	if (_.isEmpty(a)) return b;
@@ -32,10 +32,10 @@ const _getSingleSuit = (a: PrefDeckCard[], b: PrefDeckCard[]): PrefDeckCard[] =>
 
 export type PrefDeckPileSuits = { spade: PrefDeckCard[], diamond: PrefDeckCard[], heart: PrefDeckCard[], club: PrefDeckCard[] }
 const _spreadSuits = (cards: PrefDeckCard[], reverse: boolean): PrefDeckPileSuits => ({
-	spade: _sortSuit(_getCardsOfSuit(cards, PrefDeckCardSuit.SPADE), reverse),
-	diamond: _sortSuit(_getCardsOfSuit(cards, PrefDeckCardSuit.DIAMOND), reverse),
-	heart: _sortSuit(_getCardsOfSuit(cards, PrefDeckCardSuit.HEART), reverse),
-	club: _sortSuit(_getCardsOfSuit(cards, PrefDeckCardSuit.CLUB), reverse),
+	spade: _sortSuit(_getCardsOfSuit(cards, PrefDeckSuit.SPADE), reverse),
+	diamond: _sortSuit(_getCardsOfSuit(cards, PrefDeckSuit.DIAMOND), reverse),
+	heart: _sortSuit(_getCardsOfSuit(cards, PrefDeckSuit.HEART), reverse),
+	club: _sortSuit(_getCardsOfSuit(cards, PrefDeckSuit.CLUB), reverse),
 });
 
 const _sortBySuits = (cards: PrefDeckCard[], reverse: boolean): PrefDeckCard[] => {

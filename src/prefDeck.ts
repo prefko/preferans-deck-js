@@ -4,17 +4,17 @@
 import * as _ from 'lodash';
 import PrefDeckCard from './prefDeckCard';
 import PrefDeckPile from './prefDeckPile';
-import { PrefDeckCardSuit, PrefDeckCardValue } from './prefDeckCard';
+import { PrefDeckSuit, PrefDeckValue } from './prefDeckCard';
 
 export type PrefDeckDeal = { h1: PrefDeckPile, h2: PrefDeckPile, h3: PrefDeckPile, t: PrefDeckPile }
 
 const _createControlDeck = (): PrefDeckCard[] => {
 	const tmpCards: PrefDeckCard[] = [];
-	const tmpSuits = [PrefDeckCardSuit.SPADE, PrefDeckCardSuit.DIAMOND, PrefDeckCardSuit.HEART, PrefDeckCardSuit.CLUB];
-	const tmpValues = [PrefDeckCardValue.SEVEN, PrefDeckCardValue.EIGHT, PrefDeckCardValue.NINE, PrefDeckCardValue.TEN,
-		PrefDeckCardValue.JACK, PrefDeckCardValue.QUEEN, PrefDeckCardValue.KING, PrefDeckCardValue.ACE];
-	_.forEach(tmpSuits, (suit: PrefDeckCardSuit): void => {
-		_.forEach(tmpValues, (value: PrefDeckCardValue): void => {
+	const tmpSuits = [PrefDeckSuit.SPADE, PrefDeckSuit.DIAMOND, PrefDeckSuit.HEART, PrefDeckSuit.CLUB];
+	const tmpValues = [PrefDeckValue.SEVEN, PrefDeckValue.EIGHT, PrefDeckValue.NINE, PrefDeckValue.TEN,
+		PrefDeckValue.JACK, PrefDeckValue.QUEEN, PrefDeckValue.KING, PrefDeckValue.ACE];
+	_.forEach(tmpSuits, (suit: PrefDeckSuit): void => {
+		_.forEach(tmpValues, (value: PrefDeckValue): void => {
 			tmpCards.push(new PrefDeckCard(suit, value));
 		});
 	});
