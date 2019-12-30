@@ -3,12 +3,6 @@
 
 import PrefDeckCard, { PrefDeckSuit } from './prefDeckCard';
 
-const _playerJsonOrEmpty = (p: PrefDeckTrickPlayer): {} | { card: string, player: 'p1' | 'p2' | 'p3' } => (p && p.card && p.player)
-	? { card: p.card.label, player: p.player }
-	: {};
-
-export enum PrefDeckTrickPosition {FIRST, SECOND, THIRD}
-
 export type PrefDeckTrickPlayer = { player: 'p1' | 'p2' | 'p3', card: PrefDeckCard };
 
 export enum PrefDeckTrump {
@@ -46,6 +40,14 @@ const suit2trump = (suit: PrefDeckSuit): PrefDeckTrump => {
 	}
 };
 
+const _playerJsonOrEmpty = (p: PrefDeckTrickPlayer): {} | { card: string, player: 'p1' | 'p2' | 'p3' } => (p && p.card && p.player)
+	? { card: p.card.label, player: p.player }
+	: {};
+
+const _firstWins = (c1: PrefDeckCard, c2: PrefDeckCard, c3?: PrefDeckCard, suit?: PrefDeckSuit): boolean => c1.beats(c2, suit) && (!c3 || c1.beats(c3, suit));
+const _secondWins = (c1: PrefDeckCard, c2: PrefDeckCard, c3?: PrefDeckCard, suit?: PrefDeckSuit): boolean => !c1.beats(c2, suit) && (!c3 || c2.beats(c3, suit));
+// const _thirdWins = (c1: PrefDeckCard, c2: PrefDeckCard, c3?: PrefDeckCard, suit?: PrefDeckSuit): boolean => !!c3 && !c1.beats(c3, suit) && !c2.beats(c3, suit);
+
 export default class PrefDeckTrick {
 	private readonly _players: 2 | 3;
 	private readonly _trump: PrefDeckTrump = PrefDeckTrump.NONE;
@@ -61,19 +63,11 @@ export default class PrefDeckTrick {
 	}
 
 	public throw(player: 'p1' | 'p2' | 'p3', card: PrefDeckCard): PrefDeckTrick {
-		console.log('throw', player,card);
-		if (!this._first) {
-			this._first = { player, card };
+		if (!this._first) this._first = { player, card };
+		else if (!this._second) this._second = { player, card };
+		else if (this._players === 3 && !this._third) this._third = { player, card };
+		else throw new Error('PrefDeckTrick::throw:Trick is already full:[' + this.string + ']');
 
-		} else if (!this._second) {
-			this._second = { player, card };
-
-		} else if (this._players === 3 && !this._third) {
-			this._third = { player, card };
-
-		} else {
-			throw new Error('PrefDeckTrick::throw:Trick is already full:[' + this.string + ']');
-		}
 		this.calculateWinner();
 		return this;
 	}
@@ -131,59 +125,22 @@ export default class PrefDeckTrick {
 		if (this._first) cnt++;
 		if (this._second) cnt++;
 		if (this._third) cnt++;
-		console.log('full', cnt, this._players, cnt === this._players);
 		return cnt === this._players;
-	}
-
-	private firstWins(): boolean {
-		if (!this._first) return false;
-		if (!this._second) return this._players === 2;
-		if (this._players === 3 && !this._third) return false;
-		const c1 = this._first.card;
-		const c2 = this._second.card;
-		const c3 = this._third ? this._third.card : null;
-		const suit = trump2suit(this._trump);
-		return c1.beats(c2, suit) && (!c3 || c1.beats(c3, suit));
-	}
-
-	private secondWins(): boolean {
-		if (!this._first) return false;
-		if (!this._second) return false;
-		if (this._players === 3 && !this._third) return false;
-		const c1 = this._first.card;
-		const c2 = this._second.card;
-		const c3 = this._third ? this._third.card : null;
-		const suit = trump2suit(this._trump);
-		return !c1.beats(c2, suit) && (!c3 || c2.beats(c3, suit));
-	}
-
-	private thirdWins(): boolean {
-		if (!this._first) return false;
-		if (!this._second) return false;
-		if (!this._third) return false;
-		const c1 = this._first.card;
-		const c2 = this._second.card;
-		const c3 = this._third.card;
-		const suit = trump2suit(this._trump);
-		return !c1.beats(c3, suit) && !c2.beats(c3, suit);
 	}
 
 	private calculateWinner(): PrefDeckTrick {
 		this._winner = undefined;
-		if (this.full) {
-			// tslint:disable-next-line:no-console
-			console.log('firstWins', this.firstWins());
-			// tslint:disable-next-line:no-console
-			console.log('secondWins', this.secondWins());
-			// tslint:disable-next-line:no-console
-			if (this._players === 3) console.log('thirdWins', this.thirdWins());
+		if (!this.full) return this;
 
-			if (this.firstWins()) this._winner = this._first.player;
-			else if (this.secondWins()) this._winner = this._second.player;
-			else if (this._players === 3 && this.thirdWins()) this._winner = this._third.player;
-			// console.error('PrefGame::calculateWinner: Unable to calculate winner! [' + this.string + ']');
-			throw new Error('PrefGame::calculateWinner: Unable to calculate winner! [' + this.string + ']');
-		}
+		const suit = trump2suit(this._trump);
+		const c1 = this._first.card;
+		const c2 = this._second.card;
+		const c3 = this._third ? this._third.card : undefined;
+
+		if (_firstWins(c1, c2, c3, suit)) this._winner = this._first.player;
+		else if (_secondWins(c1, c2, c3, suit)) this._winner = this._second.player;
+		else this._winner = this._third.player;
+
 		return this;
 	}
 
