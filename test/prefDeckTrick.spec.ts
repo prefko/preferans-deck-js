@@ -4,7 +4,7 @@
 import * as _ from 'lodash';
 import { expect } from 'chai';
 
-import PrefDeckTrick, { PrefDeckTrump } from '../src/prefDeckTrick';
+import PrefDeckTrick from '../src/prefDeckTrick';
 import PrefDeckCard, { PrefDeckSuit, PrefDeckValue } from '../src/prefDeckCard';
 
 const cope = 'p1';
@@ -21,7 +21,6 @@ describe('PrefDeckTrick tests', () => {
 			expect(new PrefDeckTrick(2).first).to.be.null;
 			expect(new PrefDeckTrick(2).second).to.be.null;
 			expect(new PrefDeckTrick(2).third).to.be.null;
-			expect(new PrefDeckTrick(2).trump).to.be.equal(PrefDeckTrump.NONE);
 			expect(new PrefDeckTrick(2).suit).to.be.undefined;
 			expect(new PrefDeckTrick(2).ppn).to.be.equal('');
 			expect(new PrefDeckTrick(2).string).to.be.equal('{"players":2,"first":{},"second":{},"third":{},"trump":""}');
@@ -33,9 +32,6 @@ describe('PrefDeckTrick tests', () => {
 		const suits = [PrefDeckSuit.SPADE, PrefDeckSuit.DIAMOND, PrefDeckSuit.HEART, PrefDeckSuit.CLUB];
 		_.forEach(suits, (suit) => {
 			it('constructor should pass for value=' + JSON.stringify(suit), () => {
-				expect(new PrefDeckTrick(2, suit).trump).to.be.not.null;
-				expect(new PrefDeckTrick(2, suit).trump).to.be.not.undefined;
-				expect(new PrefDeckTrick(2).trump).to.be.equal(PrefDeckTrump.NONE);
 				expect(new PrefDeckTrick(2, suit).suit).to.be.equal(suit);
 			});
 		});
@@ -48,7 +44,6 @@ describe('PrefDeckTrick tests', () => {
 			expect(trick.first).to.be.not.null;
 			expect(trick.second).to.be.null;
 			expect(trick.third).to.be.null;
-			expect(trick.trump).to.be.equal(PrefDeckTrump.NONE);
 			expect(trick.suit).to.be.undefined;
 			expect(() => trick.winner).to.throw();
 			expect(trick.ppn).to.be.equal('P');
@@ -64,7 +59,6 @@ describe('PrefDeckTrick tests', () => {
 			expect(trick.first).to.be.not.null;
 			expect(trick.second).to.be.not.null;
 			expect(trick.third).to.be.null;
-			expect(trick.trump).to.be.equal(PrefDeckTrump.NONE);
 			expect(trick.suit).to.be.undefined;
 			expect(() => trick.winner).to.not.throw();
 			expect(trick.winner).to.be.equal('p1');
@@ -90,7 +84,6 @@ describe('PrefDeckTrick tests', () => {
 			expect(trick.first).to.be.not.null;
 			expect(trick.second).to.be.not.null;
 			expect(trick.third).to.be.not.null;
-			expect(trick.trump).to.be.equal(PrefDeckTrump.NONE);
 			expect(trick.suit).to.be.undefined;
 			expect(() => trick.winner).to.not.throw();
 			expect(trick.winner).to.be.equal('p1');
@@ -123,8 +116,7 @@ describe('PrefDeckTrick tests', () => {
 			expect(trick.first).to.be.not.null;
 			expect(trick.second).to.be.null;
 			expect(trick.third).to.be.null;
-			expect(trick.trump).to.be.equal('Heart');
-			expect(trick.suit).to.be.equal('Heart');
+			expect(trick.suit).to.be.equal(PrefDeckSuit.HEART);
 			expect(() => trick.winner).to.throw();
 			expect(trick.ppn).to.be.equal('P');
 			expect(trick.string).to.be.equal('{"players":2,"first":{"card":"7Club","player":"p1"},"second":{},"third":{},"trump":"Heart"}');
@@ -139,7 +131,6 @@ describe('PrefDeckTrick tests', () => {
 			expect(trick.first).to.be.not.null;
 			expect(trick.second).to.be.not.null;
 			expect(trick.third).to.be.null;
-			expect(trick.trump).to.be.equal(PrefDeckTrump.HEART);
 			expect(trick.suit).to.be.equal(PrefDeckSuit.HEART);
 			expect(() => trick.winner).to.not.throw();
 			expect(trick.winner).to.be.equal('p1');
@@ -163,7 +154,6 @@ describe('PrefDeckTrick tests', () => {
 			expect(trick.first).to.be.not.null;
 			expect(trick.second).to.be.not.null;
 			expect(trick.third).to.be.null;
-			expect(trick.trump).to.be.equal(PrefDeckTrump.HEART);
 			expect(trick.suit).to.be.equal(PrefDeckSuit.HEART);
 			expect(() => trick.winner).to.not.throw();
 			expect(trick.winner).to.be.equal('p2');
@@ -188,7 +178,6 @@ describe('PrefDeckTrick tests', () => {
 			expect(trick.first).to.be.not.null;
 			expect(trick.second).to.be.not.null;
 			expect(trick.third).to.be.not.null;
-			expect(trick.trump).to.be.equal(PrefDeckTrump.SPADE);
 			expect(trick.suit).to.be.equal(PrefDeckSuit.SPADE);
 			expect(() => trick.winner).to.not.throw();
 			expect(trick.winner).to.be.equal('p3');

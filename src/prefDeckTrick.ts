@@ -3,9 +3,9 @@
 
 import PrefDeckCard, { PrefDeckSuit } from './prefDeckCard';
 
-export type PrefDeckTrickPlayer = { player: 'p1' | 'p2' | 'p3', card: PrefDeckCard };
+type _PrefDeckTrickPlayer = { player: 'p1' | 'p2' | 'p3', card: PrefDeckCard };
 
-export enum PrefDeckTrump {
+enum _PrefDeckTrump {
 	NONE = '',
 	SPADE = 'Spade',
 	DIAMOND = 'Diamond',
@@ -13,34 +13,34 @@ export enum PrefDeckTrump {
 	CLUB = 'Club'
 }
 
-const trump2suit = (trump: PrefDeckTrump): PrefDeckSuit | undefined => {
+const _trump2suit = (trump: _PrefDeckTrump): PrefDeckSuit | undefined => {
 	if (!trump) return undefined;
 	switch (trump) {
-		case PrefDeckTrump.SPADE:
+		case _PrefDeckTrump.SPADE:
 			return PrefDeckSuit.SPADE;
-		case PrefDeckTrump.DIAMOND:
+		case _PrefDeckTrump.DIAMOND:
 			return PrefDeckSuit.DIAMOND;
-		case PrefDeckTrump.HEART:
+		case _PrefDeckTrump.HEART:
 			return PrefDeckSuit.HEART;
-		case PrefDeckTrump.CLUB:
+		case _PrefDeckTrump.CLUB:
 			return PrefDeckSuit.CLUB;
 	}
 };
 
-const suit2trump = (suit: PrefDeckSuit): PrefDeckTrump => {
+const _suit2trump = (suit: PrefDeckSuit): _PrefDeckTrump => {
 	switch (suit) {
 		case PrefDeckSuit.SPADE:
-			return PrefDeckTrump.SPADE;
+			return _PrefDeckTrump.SPADE;
 		case PrefDeckSuit.DIAMOND:
-			return PrefDeckTrump.DIAMOND;
+			return _PrefDeckTrump.DIAMOND;
 		case PrefDeckSuit.HEART:
-			return PrefDeckTrump.HEART;
+			return _PrefDeckTrump.HEART;
 		case PrefDeckSuit.CLUB:
-			return PrefDeckTrump.CLUB;
+			return _PrefDeckTrump.CLUB;
 	}
 };
 
-const _playerJsonOrEmpty = (p: PrefDeckTrickPlayer): {} | { card: string, player: 'p1' | 'p2' | 'p3' } => (p && p.card && p.player)
+const _playerJsonOrEmpty = (p: _PrefDeckTrickPlayer): {} | { card: string, player: 'p1' | 'p2' | 'p3' } => (p && p.card && p.player)
 	? { card: p.card.label, player: p.player }
 	: {};
 
@@ -50,16 +50,16 @@ const _secondWins = (c1: PrefDeckCard, c2: PrefDeckCard, c3?: PrefDeckCard, suit
 
 export default class PrefDeckTrick {
 	private readonly _players: 2 | 3;
-	private readonly _trump: PrefDeckTrump = PrefDeckTrump.NONE;
+	private readonly _trump: _PrefDeckTrump = _PrefDeckTrump.NONE;
 
-	private _first!: PrefDeckTrickPlayer;
-	private _second!: PrefDeckTrickPlayer;
-	private _third!: PrefDeckTrickPlayer;
+	private _first!: _PrefDeckTrickPlayer;
+	private _second!: _PrefDeckTrickPlayer;
+	private _third!: _PrefDeckTrickPlayer;
 	private _winner: 'p1' | 'p2' | 'p3' | undefined = undefined;
 
 	constructor(players: 2 | 3, trumpSuit?: PrefDeckSuit) {
 		this._players = players;
-		if (trumpSuit !== undefined) this._trump = suit2trump(trumpSuit);
+		if (trumpSuit !== undefined) this._trump = _suit2trump(trumpSuit);
 	}
 
 	public throw(player: 'p1' | 'p2' | 'p3', card: PrefDeckCard): PrefDeckTrick {
@@ -84,12 +84,8 @@ export default class PrefDeckTrick {
 		return this._third ? this._third.card : null;
 	}
 
-	get trump(): PrefDeckTrump {
-		return this._trump;
-	}
-
 	get suit(): PrefDeckSuit | undefined {
-		return trump2suit(this._trump);
+		return _trump2suit(this._trump);
 	}
 
 	get winner(): 'p1' | 'p2' | 'p3' {
@@ -132,7 +128,7 @@ export default class PrefDeckTrick {
 		this._winner = undefined;
 		if (!this.full) return this;
 
-		const suit = trump2suit(this._trump);
+		const suit = _trump2suit(this._trump);
 		const c1 = this._first.card;
 		const c2 = this._second.card;
 		const c3 = this._third ? this._third.card : undefined;
