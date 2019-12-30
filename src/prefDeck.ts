@@ -2,11 +2,13 @@
 'use strict';
 
 import * as _ from 'lodash';
-import PrefDeckCard from './prefDeckCard';
-import PrefDeckPile from './prefDeckPile';
-import { PrefDeckSuit, PrefDeckValue } from './prefDeckCard';
+import PrefDeckTrick from './prefDeckTrick';
+import PrefDeckPile, { PrefDeckSorting } from './prefDeckPile';
+import PrefDeckCard, { PrefDeckSuit, PrefDeckValue } from './prefDeckCard';
 
-export type PrefDeckDeal = { h1: PrefDeckPile, h2: PrefDeckPile, h3: PrefDeckPile, t: PrefDeckPile }
+type PrefDeckDeal = { h1: PrefDeckPile, h2: PrefDeckPile, h3: PrefDeckPile, t: PrefDeckPile }
+
+export { PrefDeckCard, PrefDeckPile, PrefDeckTrick, PrefDeckSuit, PrefDeckValue, PrefDeckDeal, PrefDeckSorting };
 
 const _createControlDeck = (): PrefDeckCard[] => {
 	const tmpCards: PrefDeckCard[] = [];
