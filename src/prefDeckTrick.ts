@@ -68,7 +68,7 @@ export default class PrefDeckTrick {
 		else if (this._players === 3 && !this._third) this._third = { player, card };
 		else throw new Error('PrefDeckTrick::throw:Trick is already full:[' + this.string + ']');
 
-		this.calculateWinner();
+		this._calculateWinner();
 		return this;
 	}
 
@@ -89,7 +89,7 @@ export default class PrefDeckTrick {
 	}
 
 	get winner(): 'p1' | 'p2' | 'p3' {
-		if (!this._winner) this.calculateWinner();
+		if (!this._winner) this._calculateWinner();
 		if (this._winner) return this._winner;
 		throw new Error('PrefDeckTrick::winner:Winner not found: [' + this.string + ']');
 	}
@@ -124,7 +124,7 @@ export default class PrefDeckTrick {
 		return cnt === this._players;
 	}
 
-	private calculateWinner(): PrefDeckTrick {
+	private _calculateWinner(): PrefDeckTrick {
 		this._winner = undefined;
 		if (!this.full) return this;
 
