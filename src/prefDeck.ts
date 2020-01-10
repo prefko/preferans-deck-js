@@ -6,9 +6,10 @@ import PrefDeckTrick from './prefDeckTrick';
 import PrefDeckPile, {PrefDeckSorting} from './prefDeckPile';
 import PrefDeckCard, {PrefDeckSuit, PrefDeckValue} from './prefDeckCard';
 
-type PrefDeckDeal = { hand1: PrefDeckPile, hand2: PrefDeckPile, hand3: PrefDeckPile, talon: PrefDeckPile }
+type PrefDeckTalon = { talon1: PrefDeckCard, talon2: PrefDeckCard };
+type PrefDeckDeal = { hand1: PrefDeckPile, hand2: PrefDeckPile, hand3: PrefDeckPile, talon: PrefDeckTalon }
 
-export {PrefDeckCard, PrefDeckPile, PrefDeckTrick, PrefDeckSuit, PrefDeckValue, PrefDeckDeal, PrefDeckSorting};
+export {PrefDeckCard, PrefDeckPile, PrefDeckTrick, PrefDeckSuit, PrefDeckValue, PrefDeckTalon, PrefDeckDeal, PrefDeckSorting};
 
 const _createControlDeck = (): PrefDeckCard[] => {
 	const tmpCards: PrefDeckCard[] = [];
@@ -124,7 +125,7 @@ export default class PrefDeck extends PrefDeckPile {
 			hand1: new PrefDeckPile(_.concat(h1a, h1b)),
 			hand2: new PrefDeckPile(_.concat(h2a, h2b)),
 			hand3: new PrefDeckPile(_.concat(h3a, h3b)),
-			talon: new PrefDeckPile(t),
+			talon: {talon1: t[0], talon2: t[1]},
 		};
 	}
 }

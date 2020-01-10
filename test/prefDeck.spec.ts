@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-import { expect } from 'chai';
+import {expect} from 'chai';
 import * as _ from 'lodash';
 import PrefDeck from '../src/prefDeck';
 
@@ -107,8 +107,8 @@ describe('PrefDeck tests', () => {
 			expect(deal.hand3.cards).to.be.an('array');
 			expect(deal.hand3.cards).to.have.lengthOf(10);
 			expect(deal.talon).to.be.an('object');
-			expect(deal.talon.cards).to.be.an('array');
-			expect(deal.talon.cards).to.have.lengthOf(2);
+			expect(deal.talon.talon1).to.be.an('object');
+			expect(deal.talon.talon2).to.be.an('object');
 		});
 	});
 
