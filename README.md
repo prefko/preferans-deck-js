@@ -29,10 +29,10 @@ preferans deck of cards
 
     let deck = new Deck();
     let deal = deck.deal();
-    console.log("Hand 1:", deal.h1.toUnicodeString());
-    console.log("Hand 2:", deal.h2.toUnicodeString());
-    console.log("Hand 3:", deal.h3.toUnicodeString());
-    console.log("Talon:", deal.t.toUnicodeString());
+    console.log("Hand 1:", deal.hand1.toUnicodeString());
+    console.log("Hand 2:", deal.hand2.toUnicodeString());
+    console.log("Hand 3:", deal.hand3.toUnicodeString());
+    console.log("Talon:", deal.talon.toUnicodeString());
 
     // Hand 1: 7♠8♠9♠X♠J♠8♥9♥X♥J♥Q♥
     // Hand 2: Q♠K♠A♠7♦8♦K♥A♥7♣8♣9♣

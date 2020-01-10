@@ -3,12 +3,12 @@
 
 import * as _ from 'lodash';
 import PrefDeckTrick from './prefDeckTrick';
-import PrefDeckPile, { PrefDeckSorting } from './prefDeckPile';
-import PrefDeckCard, { PrefDeckSuit, PrefDeckValue } from './prefDeckCard';
+import PrefDeckPile, {PrefDeckSorting} from './prefDeckPile';
+import PrefDeckCard, {PrefDeckSuit, PrefDeckValue} from './prefDeckCard';
 
-type PrefDeckDeal = { h1: PrefDeckPile, h2: PrefDeckPile, h3: PrefDeckPile, t: PrefDeckPile }
+type PrefDeckDeal = { hand1: PrefDeckPile, hand2: PrefDeckPile, hand3: PrefDeckPile, talon: PrefDeckPile }
 
-export { PrefDeckCard, PrefDeckPile, PrefDeckTrick, PrefDeckSuit, PrefDeckValue, PrefDeckDeal, PrefDeckSorting };
+export {PrefDeckCard, PrefDeckPile, PrefDeckTrick, PrefDeckSuit, PrefDeckValue, PrefDeckDeal, PrefDeckSorting};
 
 const _createControlDeck = (): PrefDeckCard[] => {
 	const tmpCards: PrefDeckCard[] = [];
@@ -121,10 +121,10 @@ export default class PrefDeck extends PrefDeckPile {
 		const h3b = _.slice(this._cards, 27, 32);
 
 		return {
-			h1: new PrefDeckPile(_.concat(h1a, h1b)),
-			h2: new PrefDeckPile(_.concat(h2a, h2b)),
-			h3: new PrefDeckPile(_.concat(h3a, h3b)),
-			t: new PrefDeckPile(t),
+			hand1: new PrefDeckPile(_.concat(h1a, h1b)),
+			hand2: new PrefDeckPile(_.concat(h2a, h2b)),
+			hand3: new PrefDeckPile(_.concat(h3a, h3b)),
+			talon: new PrefDeckPile(t),
 		};
 	}
 }

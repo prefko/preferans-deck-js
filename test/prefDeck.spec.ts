@@ -97,18 +97,18 @@ describe('PrefDeck tests', () => {
 			expect(deal).to.be.an('object');
 		});
 		it('PrefDeck cut should not equal to ' + ppnString, () => {
-			expect(deal.h1).to.be.an('object');
-			expect(deal.h1.cards).to.be.an('array');
-			expect(deal.h1.cards).to.have.lengthOf(10);
-			expect(deal.h2).to.be.an('object');
-			expect(deal.h2.cards).to.be.an('array');
-			expect(deal.h2.cards).to.have.lengthOf(10);
-			expect(deal.h3).to.be.an('object');
-			expect(deal.h3.cards).to.be.an('array');
-			expect(deal.h3.cards).to.have.lengthOf(10);
-			expect(deal.t).to.be.an('object');
-			expect(deal.t.cards).to.be.an('array');
-			expect(deal.t.cards).to.have.lengthOf(2);
+			expect(deal.hand1).to.be.an('object');
+			expect(deal.hand1.cards).to.be.an('array');
+			expect(deal.hand1.cards).to.have.lengthOf(10);
+			expect(deal.hand2).to.be.an('object');
+			expect(deal.hand2.cards).to.be.an('array');
+			expect(deal.hand2.cards).to.have.lengthOf(10);
+			expect(deal.hand3).to.be.an('object');
+			expect(deal.hand3.cards).to.be.an('array');
+			expect(deal.hand3.cards).to.have.lengthOf(10);
+			expect(deal.talon).to.be.an('object');
+			expect(deal.talon.cards).to.be.an('array');
+			expect(deal.talon.cards).to.have.lengthOf(2);
 		});
 	});
 
@@ -135,7 +135,7 @@ describe('PrefDeck tests', () => {
 		});
 		it('PrefDeck restore for cards should throw', () => {
 			expect(() => deck.restore([])).to.throw();
-			expect(() => deck.restore(deal.h1.cards)).to.throw();
+			expect(() => deck.restore(deal.hand1.cards)).to.throw();
 		});
 		it('PrefDeck validate should return false', () => {
 			expect(PrefDeck.validate([])).to.be.equal(false);
