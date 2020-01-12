@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
-import PrefDeckCard, { PrefDeckSuit } from './prefDeckCard';
-
-type _PrefDeckTrickPlayer = { player: 'p1' | 'p2' | 'p3', card: PrefDeckCard };
+import PrefDeckCard, {PrefDeckSuit} from './prefDeckCard';
+import {TPrefDeckTrickPlayer} from "./prefDeck.types";
 
 enum _PrefDeckTrump {
 	NONE = '',
@@ -40,8 +39,8 @@ const _suit2trump = (suit: PrefDeckSuit): _PrefDeckTrump => {
 	}
 };
 
-const _playerJsonOrEmpty = (p: _PrefDeckTrickPlayer): {} | { card: string, player: 'p1' | 'p2' | 'p3' } => (p && p.card && p.player)
-	? { card: p.card.label, player: p.player }
+const _playerJsonOrEmpty = (p: TPrefDeckTrickPlayer): {} | { card: string, player: 'p1' | 'p2' | 'p3' } => (p && p.card && p.player)
+	? {card: p.card.label, player: p.player}
 	: {};
 
 const _firstWins = (c1: PrefDeckCard, c2: PrefDeckCard, c3?: PrefDeckCard, suit?: PrefDeckSuit): boolean => c1.beats(c2, suit) && (!c3 || c1.beats(c3, suit));
@@ -52,9 +51,9 @@ export default class PrefDeckTrick {
 	private readonly _players: 2 | 3;
 	private readonly _trump: _PrefDeckTrump = _PrefDeckTrump.NONE;
 
-	private _first!: _PrefDeckTrickPlayer;
-	private _second!: _PrefDeckTrickPlayer;
-	private _third!: _PrefDeckTrickPlayer;
+	private _first!: TPrefDeckTrickPlayer;
+	private _second!: TPrefDeckTrickPlayer;
+	private _third!: TPrefDeckTrickPlayer;
 	private _winner: 'p1' | 'p2' | 'p3' | undefined = undefined;
 
 	constructor(players: 2 | 3, trumpSuit?: PrefDeckSuit) {
@@ -63,9 +62,9 @@ export default class PrefDeckTrick {
 	}
 
 	public throw(player: 'p1' | 'p2' | 'p3', card: PrefDeckCard): PrefDeckTrick {
-		if (!this._first) this._first = { player, card };
-		else if (!this._second) this._second = { player, card };
-		else if (this._players === 3 && !this._third) this._third = { player, card };
+		if (!this._first) this._first = {player, card};
+		else if (!this._second) this._second = {player, card};
+		else if (this._players === 3 && !this._third) this._third = {player, card};
 		else throw new Error('PrefDeckTrick::throw:Trick is already full:[' + this.string + ']');
 
 		this._calculateWinner();

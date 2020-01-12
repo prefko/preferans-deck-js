@@ -5,11 +5,9 @@ import * as _ from 'lodash';
 import PrefDeckTrick from './prefDeckTrick';
 import PrefDeckPile, {PrefDeckSorting} from './prefDeckPile';
 import PrefDeckCard, {PrefDeckSuit, PrefDeckValue} from './prefDeckCard';
+import {TPrefDeckTalon, TPrefDeckDeal} from "./prefDeck.types";
 
-type PrefDeckTalon = { talon1: PrefDeckCard, talon2: PrefDeckCard };
-type PrefDeckDeal = { hand1: PrefDeckPile, hand2: PrefDeckPile, hand3: PrefDeckPile, talon: PrefDeckTalon }
-
-export {PrefDeckCard, PrefDeckPile, PrefDeckTrick, PrefDeckSuit, PrefDeckValue, PrefDeckTalon, PrefDeckDeal, PrefDeckSorting};
+export {PrefDeckCard, PrefDeckPile, PrefDeckTrick, PrefDeckSuit, PrefDeckValue, TPrefDeckTalon, TPrefDeckDeal, PrefDeckSorting};
 
 const _createControlDeck = (): PrefDeckCard[] => {
 	const tmpCards: PrefDeckCard[] = [];
@@ -112,7 +110,7 @@ export default class PrefDeck extends PrefDeckPile {
 		return _isValidDeck(this.cards);
 	}
 
-	get deal(): PrefDeckDeal {
+	get deal(): TPrefDeckDeal {
 		const h1a = _.slice(this._cards, 0, 5);
 		const h2a = _.slice(this._cards, 5, 10);
 		const h3a = _.slice(this._cards, 10, 15);
