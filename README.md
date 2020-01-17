@@ -20,19 +20,20 @@ preferans deck of cards
 
 ### Usage
 
-    const Deck = require('preferans-deck-js');
-    const Card = Deck.Card;
+    const preferansDeckJs = require("preferans-deck-js");
+    const Deck = preferansDeckJs.default;
+    const Card = preferansDeckJs.Card;
 
     let card = new Card('7');
-    console.log(card.toUnicodeString());
+    console.log(card.unicode);
     // K♠
 
     let deck = new Deck();
-    let deal = deck.deal();
-    console.log("Hand 1:", deal.hand1.toUnicodeString());
-    console.log("Hand 2:", deal.hand2.toUnicodeString());
-    console.log("Hand 3:", deal.hand3.toUnicodeString());
-    console.log("Talon:", deal.talon.toUnicodeString());
+    let deal = deck.deal;
+    console.log("Hand 1:", deal.hand1.unicode);
+    console.log("Hand 2:", deal.hand2.unicode);
+    console.log("Hand 3:", deal.hand3.unicode);
+    console.log("Talon:", deal.talon.talon1.unicode + deal.talon.talon2.unicode);
 
     // Hand 1: 7♠8♠9♠X♠J♠8♥9♥X♥J♥Q♥
     // Hand 2: Q♠K♠A♠7♦8♦K♥A♥7♣8♣9♣
