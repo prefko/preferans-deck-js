@@ -20,17 +20,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14.4.0'
-    - uses: actions/checkout@v2
     - uses: borales/actions-yarn@v2.0.0
       with:
+        node-version: '14.4.0'
         cmd: install # will run `yarn install` command
     - uses: borales/actions-yarn@v2.0.0
       with:
+        node-version: '14.4.0'
         cmd: clean # will run `yarn clean` command
     - run: tsc
     - uses: borales/actions-yarn@v2.0.0
       with:
+        node-version: '14.4.0'
         cmd: test # will run `yarn test` command
