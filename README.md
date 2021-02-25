@@ -9,6 +9,8 @@
 [![dependencies](https://david-dm.org/prefko/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js)
 [![npm](https://img.shields.io/npm/dt/preferans-deck-js.svg)](https://www.npmjs.com/package/preferans-deck-js) [![Greenkeeper badge](https://badges.greenkeeper.io/prefko/preferans-deck-js.svg)](https://greenkeeper.io/)
 
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/prefko/preferans-deck-js)
+
 preferans deck of cards
 
 ### Install
