@@ -20,7 +20,7 @@ const _isBlackSorting = (sorting: PrefDeckSorting): boolean => sorting === PrefD
 const _countSuits = (cards: PrefDeckCard[]): number => _.size(_.uniq(_.map(cards, (card) => card.suit)));
 
 const _sortSuit = (cards: PrefDeckCard[], reverse: boolean): PrefDeckCard[] => {
-	cards = _.sortBy(cards, ['rank']);
+	cards = _.sortBy(cards, ['value']);
 	if (reverse) cards = _.reverse(cards);
 	return cards;
 };

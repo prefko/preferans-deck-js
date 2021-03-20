@@ -55,7 +55,6 @@ Mostly from [Wikipedia](https://en.wikipedia.org/wiki/Glossary_of_card_game_term
 * trump - the trump suit per round
 * plain suit - any suit that is not a trump suit
 * trick - cards thrown
-* rank - position (value) of a card relative to others in the same suit
 * shuffle - rearrange (a deck of cards)
 * seat - position relative to the dealer
 * ppn - Portable Preferans Notation (patent pending)

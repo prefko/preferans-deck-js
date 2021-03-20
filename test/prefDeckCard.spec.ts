@@ -12,7 +12,6 @@ const __cards = [
 		unicode: '7♠',
 		value: PrefDeckValue.SEVEN,
 		suit: PrefDeckSuit.SPADE,
-		rank: 7,
 		ppn: '1',
 	}, {
 		card: new PrefDeckCard(PrefDeckSuit.DIAMOND, PrefDeckValue.EIGHT),
@@ -20,7 +19,6 @@ const __cards = [
 		unicode: '8♦',
 		value: PrefDeckValue.EIGHT,
 		suit: PrefDeckSuit.DIAMOND,
-		rank: 8,
 		ppn: 'A',
 	}, {
 		card: new PrefDeckCard(PrefDeckSuit.HEART, PrefDeckValue.TEN),
@@ -28,7 +26,6 @@ const __cards = [
 		unicode: 'X♥',
 		value: PrefDeckValue.TEN,
 		suit: PrefDeckSuit.HEART,
-		rank: 10,
 		ppn: 'K',
 	}, {
 		card: new PrefDeckCard(PrefDeckSuit.DIAMOND, PrefDeckValue.JACK),
@@ -36,7 +33,6 @@ const __cards = [
 		unicode: 'J♦',
 		value: PrefDeckValue.JACK,
 		suit: PrefDeckSuit.DIAMOND,
-		rank: 12,
 		ppn: 'D',
 	}, {
 		card: new PrefDeckCard(PrefDeckSuit.CLUB, PrefDeckValue.QUEEN),
@@ -44,7 +40,6 @@ const __cards = [
 		unicode: 'Q♣',
 		value: PrefDeckValue.QUEEN,
 		suit: PrefDeckSuit.CLUB,
-		rank: 13,
 		ppn: 'U',
 	},
 ];
@@ -88,9 +83,6 @@ describe('PrefDeckCard tests', () => {
 			});
 			it(card.label + ' getSuit should return ' + card.suit, () => {
 				expect(card.card.suit).to.equal(card.suit);
-			});
-			it(card.label + ' getRank should return ' + card.rank, () => {
-				expect(card.card.rank).to.equal(card.rank);
 			});
 			it(card.label + ' getLabel should return ' + card.label, () => {
 				expect(card.card.label).to.equal(card.label);

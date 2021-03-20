@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
+import {get} from 'lodash';
+
 export enum PrefDeckValue {
 	SEVEN = 7, EIGHT = 8, NINE = 9, TEN = 10,
 	JACK = 12, QUEEN = 13, KING = 14, ACE = 15
@@ -13,181 +15,46 @@ export enum PrefDeckSuit {
 	CLUB = 'Club'
 }
 
-const _valueLabel = (value: PrefDeckValue): string => {
-	switch (value) {
-		case PrefDeckValue.SEVEN:
-			return '7';
-		case PrefDeckValue.EIGHT:
-			return '8';
-		case PrefDeckValue.NINE:
-			return '9';
-		case PrefDeckValue.TEN:
-			return 'X';
-		case PrefDeckValue.JACK:
-			return 'J';
-		case PrefDeckValue.QUEEN:
-			return 'Q';
-		case PrefDeckValue.KING:
-			return 'K';
-		case PrefDeckValue.ACE:
-			return 'A';
-	}
-};
+const _valueLabels = {7: '7', 8: '8', 9: '9', 10: 'X', 12: 'J', 13: 'Q', 14: 'K', 15: 'A'};
+const _valueLabel = (value: PrefDeckValue): string => _valueLabels[value];
 
-const _spadeCardToPPN = (value: PrefDeckValue): string => {
-	switch (value) {
-		case PrefDeckValue.SEVEN:
-			return '1';
-		case PrefDeckValue.EIGHT:
-			return '2';
-		case PrefDeckValue.NINE:
-			return '3';
-		case PrefDeckValue.TEN:
-			return '4';
-		case PrefDeckValue.JACK:
-			return '5';
-		case PrefDeckValue.QUEEN:
-			return '6';
-		case PrefDeckValue.KING:
-			return '7';
-		case PrefDeckValue.ACE:
-			return '8';
-	}
-};
+const _spadePPNs = {7: '1', 8: '2', 9: '3', 10: '4', 12: '5', 13: '6', 14: '7', 15: '8'};
+const _spadeCardToPPN = (value: PrefDeckValue): string => _spadePPNs[value];
 
-const _diamondCardToPPN = (value: PrefDeckValue): string => {
-	switch (value) {
-		case PrefDeckValue.SEVEN:
-			return '9';
-		case PrefDeckValue.EIGHT:
-			return 'A';
-		case PrefDeckValue.NINE:
-			return 'B';
-		case PrefDeckValue.TEN:
-			return 'C';
-		case PrefDeckValue.JACK:
-			return 'D';
-		case PrefDeckValue.QUEEN:
-			return 'E';
-		case PrefDeckValue.KING:
-			return 'F';
-		case PrefDeckValue.ACE:
-			return 'G';
-	}
-};
+const _diamondPPNs = {7: '9', 8: 'A', 9: 'B', 10: 'C', 12: 'D', 13: 'E', 14: 'F', 15: 'G'};
+const _diamondCardToPPN = (value: PrefDeckValue): string => _diamondPPNs[value];
 
-const _heartCardToPPN = (value: PrefDeckValue): string => {
-	switch (value) {
-		case PrefDeckValue.SEVEN:
-			return 'H';
-		case PrefDeckValue.EIGHT:
-			return 'I';
-		case PrefDeckValue.NINE:
-			return 'J';
-		case PrefDeckValue.TEN:
-			return 'K';
-		case PrefDeckValue.JACK:
-			return 'L';
-		case PrefDeckValue.QUEEN:
-			return 'M';
-		case PrefDeckValue.KING:
-			return 'N';
-		case PrefDeckValue.ACE:
-			return 'O';
-	}
-};
+const _heartPPNs = {7: 'H', 8: 'I', 9: 'J', 10: 'K', 12: 'L', 13: 'M', 14: 'N', 15: 'O'};
+const _heartCardToPPN = (value: PrefDeckValue): string => _heartPPNs[value];
 
-const _clubCardToPPN = (value: PrefDeckValue): string => {
-	switch (value) {
-		case PrefDeckValue.SEVEN:
-			return 'P';
-		case PrefDeckValue.EIGHT:
-			return 'Q';
-		case PrefDeckValue.NINE:
-			return 'R';
-		case PrefDeckValue.TEN:
-			return 'S';
-		case PrefDeckValue.JACK:
-			return 'T';
-		case PrefDeckValue.QUEEN:
-			return 'U';
-		case PrefDeckValue.KING:
-			return 'V';
-		case PrefDeckValue.ACE:
-			return 'W';
-	}
+const _clubPPNs = {7: 'P', 8: 'Q', 9: 'R', 10: 'S', 12: 'T', 13: 'U', 14: 'V', 15: 'W'};
+const _clubCardToPPN = (value: PrefDeckValue): string => _clubPPNs[value];
+
+const _ppnCards = {
+	'1': {suit: PrefDeckSuit.SPADE, value: 7}, '2': {suit: PrefDeckSuit.SPADE, value: 8},
+	'3': {suit: PrefDeckSuit.SPADE, value: 9}, '4': {suit: PrefDeckSuit.SPADE, value: 10},
+	'5': {suit: PrefDeckSuit.SPADE, value: 12}, '6': {suit: PrefDeckSuit.SPADE, value: 13},
+	'7': {suit: PrefDeckSuit.SPADE, value: 14}, '8': {suit: PrefDeckSuit.SPADE, value: 15},
+
+	'9': {suit: PrefDeckSuit.DIAMOND, value: 7}, 'A': {suit: PrefDeckSuit.DIAMOND, value: 8},
+	'B': {suit: PrefDeckSuit.DIAMOND, value: 9}, 'C': {suit: PrefDeckSuit.DIAMOND, value: 10},
+	'D': {suit: PrefDeckSuit.DIAMOND, value: 12}, 'E': {suit: PrefDeckSuit.DIAMOND, value: 13},
+	'F': {suit: PrefDeckSuit.DIAMOND, value: 14}, 'G': {suit: PrefDeckSuit.DIAMOND, value: 15},
+
+	'H': {suit: PrefDeckSuit.HEART, value: 7}, 'I': {suit: PrefDeckSuit.HEART, value: 8},
+	'J': {suit: PrefDeckSuit.HEART, value: 9}, 'K': {suit: PrefDeckSuit.HEART, value: 10},
+	'L': {suit: PrefDeckSuit.HEART, value: 12}, 'M': {suit: PrefDeckSuit.HEART, value: 13},
+	'N': {suit: PrefDeckSuit.HEART, value: 14}, 'O': {suit: PrefDeckSuit.HEART, value: 15},
+
+	'P': {suit: PrefDeckSuit.CLUB, value: 7}, 'Q': {suit: PrefDeckSuit.CLUB, value: 8},
+	'R': {suit: PrefDeckSuit.CLUB, value: 9}, 'S': {suit: PrefDeckSuit.CLUB, value: 10},
+	'T': {suit: PrefDeckSuit.CLUB, value: 12}, 'U': {suit: PrefDeckSuit.CLUB, value: 13},
+	'V': {suit: PrefDeckSuit.CLUB, value: 14}, 'W': {suit: PrefDeckSuit.CLUB, value: 15},
 };
 
 const _ppnToCard = (ppn: string): PrefDeckCard => {
-	switch (ppn) {
-		case '1':
-			return new PrefDeckCard(PrefDeckSuit.SPADE, 7);
-		case '2':
-			return new PrefDeckCard(PrefDeckSuit.SPADE, 8);
-		case '3':
-			return new PrefDeckCard(PrefDeckSuit.SPADE, 9);
-		case '4':
-			return new PrefDeckCard(PrefDeckSuit.SPADE, 10);
-		case '5':
-			return new PrefDeckCard(PrefDeckSuit.SPADE, 12);
-		case '6':
-			return new PrefDeckCard(PrefDeckSuit.SPADE, 13);
-		case '7':
-			return new PrefDeckCard(PrefDeckSuit.SPADE, 14);
-		case '8':
-			return new PrefDeckCard(PrefDeckSuit.SPADE, 15);
-
-		case '9':
-			return new PrefDeckCard(PrefDeckSuit.DIAMOND, 7);
-		case 'A':
-			return new PrefDeckCard(PrefDeckSuit.DIAMOND, 8);
-		case 'B':
-			return new PrefDeckCard(PrefDeckSuit.DIAMOND, 9);
-		case 'C':
-			return new PrefDeckCard(PrefDeckSuit.DIAMOND, 10);
-		case 'D':
-			return new PrefDeckCard(PrefDeckSuit.DIAMOND, 12);
-		case 'E':
-			return new PrefDeckCard(PrefDeckSuit.DIAMOND, 13);
-		case 'F':
-			return new PrefDeckCard(PrefDeckSuit.DIAMOND, 14);
-		case 'G':
-			return new PrefDeckCard(PrefDeckSuit.DIAMOND, 15);
-
-		case 'H':
-			return new PrefDeckCard(PrefDeckSuit.HEART, 7);
-		case 'I':
-			return new PrefDeckCard(PrefDeckSuit.HEART, 8);
-		case 'J':
-			return new PrefDeckCard(PrefDeckSuit.HEART, 9);
-		case 'K':
-			return new PrefDeckCard(PrefDeckSuit.HEART, 10);
-		case 'L':
-			return new PrefDeckCard(PrefDeckSuit.HEART, 12);
-		case 'M':
-			return new PrefDeckCard(PrefDeckSuit.HEART, 13);
-		case 'N':
-			return new PrefDeckCard(PrefDeckSuit.HEART, 14);
-		case 'O':
-			return new PrefDeckCard(PrefDeckSuit.HEART, 15);
-
-		case 'P':
-			return new PrefDeckCard(PrefDeckSuit.CLUB, 7);
-		case 'Q':
-			return new PrefDeckCard(PrefDeckSuit.CLUB, 8);
-		case 'R':
-			return new PrefDeckCard(PrefDeckSuit.CLUB, 9);
-		case 'S':
-			return new PrefDeckCard(PrefDeckSuit.CLUB, 10);
-		case 'T':
-			return new PrefDeckCard(PrefDeckSuit.CLUB, 12);
-		case 'U':
-			return new PrefDeckCard(PrefDeckSuit.CLUB, 13);
-		case 'V':
-			return new PrefDeckCard(PrefDeckSuit.CLUB, 14);
-		case 'W':
-			return new PrefDeckCard(PrefDeckSuit.CLUB, 15);
-	}
+	const card: { suit: PrefDeckSuit, value: number } = get(_ppnCards, ppn, null);
+	if (card) return new PrefDeckCard(card.suit, card.value);
 	throw new Error('PrefDeckCard::ppnToCard:Invalid ppn: ' + ppn);
 };
 
@@ -201,7 +68,7 @@ export default class PrefDeckCard {
 	}
 
 	public static compare(c1: PrefDeckCard, c2: PrefDeckCard, t?: PrefDeckSuit): -1 | 0 | 1 {
-		if (c1.suit === c2.suit) return _norm(c2.rank - c1.rank);
+		if (c1.suit === c2.suit) return _norm(c2.value - c1.value);
 		if (t && c2.suit === t) return 1;
 		return -1;
 	}
@@ -242,7 +109,6 @@ export default class PrefDeckCard {
 
 	private readonly _suit: PrefDeckSuit;
 	private readonly _value: PrefDeckValue;
-	private readonly _rank: number;
 	private readonly _label: string;
 	private readonly _unicode: string;
 	private readonly _ppn: string;
@@ -250,7 +116,6 @@ export default class PrefDeckCard {
 	constructor(suit: PrefDeckSuit, value: PrefDeckValue) {
 		this._suit = suit;
 		this._value = value;
-		this._rank = value;
 
 		this._label = PrefDeckCard.valueLabel(this._value) + '' + this._suit;
 		this._unicode = PrefDeckCard.valueLabel(this._value) + '' + PrefDeckCard.suitToUnicode(this._suit);
@@ -266,10 +131,6 @@ export default class PrefDeckCard {
 	}
 
 	get value(): number {
-		return this._value;
-	}
-
-	get rank(): number {
 		return this._value;
 	}
 
