@@ -22,6 +22,8 @@ const _createControlDeck = (): PrefDeckCard[] => {
 	return tmpCards;
 };
 
+const CONTROL_DECK: PrefDeckCard[] = _createControlDeck();
+
 const _createWeightedCuts = (): number[] => {
 	let i, j;
 	const tmpCuts = [2, 3];
@@ -30,8 +32,6 @@ const _createWeightedCuts = (): number[] => {
 	for (i = 0; i < 8; i++) for (j = 11; j <= 15; j++) tmpCuts.push(j);
 	return _.sortBy(_.concat(tmpCuts, _.map(tmpCuts, (t: number): number => 31 - t)));
 };
-
-const CONTROL_DECK: PrefDeckCard[] = _createControlDeck();
 const WEIGHTED_CUTS: number[] = _createWeightedCuts();
 
 const _weighted123 = (): 1 | 2 | 3 => {
@@ -111,19 +111,19 @@ export default class PrefDeck extends PrefDeckPile {
 	}
 
 	get deal(): TPrefDeckDeal {
-		const h1a = _.slice(this._cards, 0, 5);
-		const h2a = _.slice(this._cards, 5, 10);
-		const h3a = _.slice(this._cards, 10, 15);
-		const t = _.slice(this._cards, 15, 17);
-		const h1b = _.slice(this._cards, 17, 22);
-		const h2b = _.slice(this._cards, 22, 27);
-		const h3b = _.slice(this._cards, 27, 32);
+		const hand1a = _.slice(this._cards, 0, 5);
+		const hand2a = _.slice(this._cards, 5, 10);
+		const hand3a = _.slice(this._cards, 10, 15);
+		const talon = _.slice(this._cards, 15, 17);
+		const hand1b = _.slice(this._cards, 17, 22);
+		const hand2b = _.slice(this._cards, 22, 27);
+		const hand3b = _.slice(this._cards, 27, 32);
 
 		return {
-			hand1: new PrefDeckPile(_.concat(h1a, h1b)),
-			hand2: new PrefDeckPile(_.concat(h2a, h2b)),
-			hand3: new PrefDeckPile(_.concat(h3a, h3b)),
-			talon: {talon1: t[0], talon2: t[1]},
+			hand1: new PrefDeckPile(_.concat(hand1a, hand1b)),
+			hand2: new PrefDeckPile(_.concat(hand2a, hand2b)),
+			hand3: new PrefDeckPile(_.concat(hand3a, hand3b)),
+			talon: {talon1: talon[0], talon2: talon[1]},
 		};
 	}
 }

@@ -29,7 +29,6 @@ card:
 	- getters...
 		- value
 		- suit
-		- rank
 		- label
 		- ppn
 	- toString			()		- return cards two character representation
@@ -41,11 +40,6 @@ ppn:
 	- ppns	(labels)	- get PPN representations for labels
 	- card	(ppn)		- get a Card instance for given PPN representation
 	- cards	(ppns)		- get Card instances for given PPN representations
-
-rank:
-	- rank		(value)	- get rank for value
-	- isValid	(value)	- check if the value is valid
-	- all		()		- get all ranks array
 
 suit:
 	- suit		(label)	- get suit for label
