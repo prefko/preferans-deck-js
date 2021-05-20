@@ -1,6 +1,6 @@
 {
 	"name": "preferans-deck-js",
-	"version": "2.5.4",
+	"version": "2.5.5",
 	"description": "nodejs deck of cards for preferans",
 	"engines": {
 		"node": ">=14.4.0"
@@ -24,26 +24,6 @@
 	"files": [
 		"lib/**/*"
 	],
-	"nyc": {
-		"include": [
-			"src/**/*.ts"
-		],
-		"exclude": [
-			"test/**/*.ts"
-		],
-		"extension": [
-			".ts"
-		],
-		"require": [
-			"ts-node/register"
-		],
-		"reporter": [
-			"text-summary",
-			"html"
-		],
-		"sourceMap": true,
-		"instrument": true
-	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/cope/preferans-deck-js.git"
