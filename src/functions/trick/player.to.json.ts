@@ -7,6 +7,6 @@ const playerToJSON = (p: PrefDeckTrickPlayerType): {} | {card: string; player: '
 		? {
 				card: p.card.label,
 				player: p.player
-		  }
+			}
 		: {};
 export default playerToJSON;
