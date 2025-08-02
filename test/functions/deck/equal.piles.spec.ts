@@ -1,3 +1,3 @@
 'use strict';
 
-describe('equal.piles.ts tests', () => it('should be implemented'));
+describe('equal.piles.ts tests', () => todo('should be implemented'));

@@ -1,3 +1,3 @@
 'use strict';
 
-describe('pref.deck.sorting.ts tests', () => it('should be implemented'));
+describe('pref.deck.sorting.ts tests', () => todo('should be implemented'));

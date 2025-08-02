@@ -1,3 +1,3 @@
 'use strict';
 
-describe('is.second.player.the.winner.ts tests', () => it('should be implemented'));
+describe('is.second.player.the.winner.ts tests', () => todo('should be implemented'));

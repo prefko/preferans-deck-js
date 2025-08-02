@@ -1,3 +1,3 @@
 'use strict';
 
-describe('is.reverse.sorting.ts tests', () => it('should be implemented'));
+describe('is.reverse.sorting.ts tests', () => todo('should be implemented'));

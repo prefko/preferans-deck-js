@@ -1,3 +1,3 @@
 'use strict';
 
-describe('convert.cards.to.labels.ts tests', () => it('should be implemented'));
+describe('convert.cards.to.labels.ts tests', () => todo('should be implemented'));

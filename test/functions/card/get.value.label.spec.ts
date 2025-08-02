@@ -1,3 +1,3 @@
 'use strict';
 
-describe('get.value.label.ts tests', () => it('should be implemented'));
+describe('get.value.label.ts tests', () => todo('should be implemented'));

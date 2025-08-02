@@ -1,3 +1,3 @@
 'use strict';
 
-describe('is.red.sorting.ts tests', () => it('should be implemented'));
+describe('is.red.sorting.ts tests', () => todo('should be implemented'));

@@ -1,3 +1,3 @@
 'use strict';
 
-describe('is.valid.deck.ts tests', () => it('should be implemented'));
+describe('is.valid.deck.ts tests', () => todo('should be implemented'));

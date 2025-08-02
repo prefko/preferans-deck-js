@@ -1,3 +1,3 @@
 'use strict';
 
-describe('random.range.ts tests', () => it('should be implemented'));
+describe('random.range.ts tests', () => todo('should be implemented'));

@@ -1,3 +1,3 @@
 'use strict';
 
-describe('pref.deck.deal.type.ts tests', () => it('should be implemented'));
+describe('pref.deck.deal.type.ts tests', () => todo('should be implemented'));

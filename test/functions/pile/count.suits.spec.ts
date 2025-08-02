@@ -1,3 +1,3 @@
 'use strict';
 
-describe('count.suits.ts tests', () => it('should be implemented'));
+describe('count.suits.ts tests', () => todo('should be implemented'));

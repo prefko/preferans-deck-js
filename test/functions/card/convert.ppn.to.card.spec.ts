@@ -1,3 +1,3 @@
 'use strict';
 
-describe('convert.ppn.to.card.ts tests', () => it('should be implemented'));
+describe('convert.ppn.to.card.ts tests', () => todo('should be implemented'));

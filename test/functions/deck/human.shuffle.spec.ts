@@ -1,3 +1,3 @@
 'use strict';
 
-describe('human.shuffle.ts tests', () => it('should be implemented'));
+describe('human.shuffle.ts tests', () => todo('should be implemented'));

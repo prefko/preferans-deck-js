@@ -1,3 +1,3 @@
 'use strict';
 
-describe('is.suit.sorting.ts tests', () => it('should be implemented'));
+describe('is.suit.sorting.ts tests', () => todo('should be implemented'));
